@@ -1,0 +1,116 @@
+- !<ObjectPrefab/ea8d7511-5b80-4cb2-ac47-cff12840d19d>
+  PackagePath: ""
+  objects:
+    - !<own> c88bc424-5cd9-403a-85d2-d4ef89e5f760
+  LazyLoading: false
+  RetainAssets: true
+- !<AnimationPlayer/2dd5c302-90cc-4d71-842f-cfff225f4e8e>
+  PrefabRemaps:
+    []
+  Name: component_1
+  Enabled: false
+  Autoplay: true
+  ClipRangeType: Frames
+  AnimationClips:
+    - !<AnimationClip>
+      AnimationAsset: !<reference> 6f58f626-850f-4b2e-a13d-dc59ab969318
+      Name: BaseLayer
+      Weight: 1.000000
+      PlaybackSpeed: 1.000000
+      Begin: 0.000000
+      End: 0.000000
+      Reversed: false
+      Disabled: false
+      BlendMode: Default
+      ScaleMode: Multiply
+      PlaybackMode: Loop
+- !<ColliderComponent/6c1a954e-eb3e-4b83-8d68-13188e33f995>
+  PrefabRemaps:
+    []
+  Name: Physics Collider
+  Enabled: false
+  Shape: !<Mesh>
+    Mesh: !<reference> 15dd1732-d7a0-4947-ac2d-2a18ed48f10c
+    Convex: false
+    Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
+- !<SceneObject/704bb713-639d-4266-9075-9ce3d1e689d4>
+  PrefabRemaps:
+    []
+  Name: RedCup
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: -0.005000, z: -0.095373}
+    rotation: {x: -90.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 0.025400, y: 0.025400, z: 0.025400}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> f1d0c678-89a6-476b-9bbf-53b24b366803
+    - !<own> a0079a44-da43-4e49-942f-0adee7495366
+- !<ColliderComponent/a0079a44-da43-4e49-942f-0adee7495366>
+  PrefabRemaps:
+    []
+  Name: Physics Collider
+  Enabled: true
+  Shape: !<Mesh>
+    Mesh: !<reference> 15dd1732-d7a0-4947-ac2d-2a18ed48f10c
+    Convex: false
+    Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
+- !<SceneObject/c88bc424-5cd9-403a-85d2-d4ef89e5f760>
+  PrefabRemaps:
+    []
+  Name: RedCup 15
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: -5.000000, y: -37.497116, z: -122.965134}
+    rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 100.000000, y: 100.000000, z: 100.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    - !<own> 704bb713-639d-4266-9075-9ce3d1e689d4
+  Components:
+    - !<own> 2dd5c302-90cc-4d71-842f-cfff225f4e8e
+    - !<own> 6c1a954e-eb3e-4b83-8d68-13188e33f995
+- !<RenderMeshVisual/f1d0c678-89a6-476b-9bbf-53b24b366803>
+  PrefabRemaps:
+    []
+  Name: component_0
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 010239ad-cdce-4982-8ca8-e394734a2677
+  Mesh: !<reference> 15dd1732-d7a0-4947-ac2d-2a18ed48f10c
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}

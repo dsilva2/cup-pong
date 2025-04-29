@@ -1,0 +1,143 @@
+- !<AssetImportMetadata/af62e41c-69c4-422b-a95a-deb5d1c23a4d>
+  ImportedAssetIds:
+    .hidden/RedCup: !<reference> 72e1f465-7c6e-44f8-9344-5879c50f9d18
+    .hidden/white: !<reference> 3bb503fb-6c5d-4fdd-b0ad-37d806daf2cc
+    3139a5be1faedd58: !<reference> 0c68cc31-9fdc-44d8-81b9-5f537ed1d73f
+    66780cf3a4dcb2b8: !<reference> df2c64ca-b373-4cea-a0ea-4656547dcfc8
+    Animations/BaseLayer: !<reference> 6f58f626-850f-4b2e-a13d-dc59ab969318
+    Materials/RedCup: !<reference> 010239ad-cdce-4982-8ca8-e394734a2677
+    Materials/RedCup|RedCup|GraphPassInfo: !<reference> 49ea0cf0-ff2c-427f-b614-619f438ae9ce
+    Meshes/RedCup: !<reference> 15dd1732-d7a0-4947-ac2d-2a18ed48f10c
+    Scene: !<reference> 19c142ce-d1fd-470e-93a0-c764040c6e3a
+    Textures/RedCupAlbedo: !<reference> f5f3251d-02a7-4915-80f3-316bd638247d
+    Textures/RedCupNormal: !<reference> 08a4de07-71d4-4ac2-a877-fb098a61ff7a
+    a6bdc487a3be0f05: !<reference> ec2ed75b-d1f9-4a4d-93cc-1a2da6820f8c
+    d56449042852f529: !<reference> 7af215f5-e4f0-4232-8386-7cd237ccecf8
+  ImporterName: FbxImporter
+  PrimaryAsset: !<reference> 19c142ce-d1fd-470e-93a0-c764040c6e3a
+  PackageType: LegacyPackage
+  PackagePolicy: CanBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    Scene: !<own> 2eec0743-1fb5-435a-bca1-a61411fa4480
+  DependentFiles:
+    - RedCupAlbedo.png
+    - RedCupMetal.png
+    - RedCupNormal.png
+    - RedCupRough.png
+  ImporterSettings: !<FbxImporterSettings>
+    UseLegacyImporter: false
+    WithMaterials: true
+    NamingConvention: ByCategorySanitizeV2
+    PersistentIdGenerationAlgorithm: DescriptorBased
+    AnimationCurveOptimization: true
+    CustomAnimationSamplingRate: 30.000000
+    ImportVertexColor: true
+    ImportTangentsAndBinormals: true
+    RegenerateTangentsAndBinormals: false
+    RegenerateNormalsForSkinnedMeshes: true
+    ImportBlendShapeAnimation: true
+    ImportVertexAnimation: true
+    GeneratePivots: true
+    TriangulateNURBS: true
+    UseLegacyFbxLoader: false
+  CompressionSettings: !<ComplexCompressionSettings>
+    Presets:
+      None Compression: !<SingleCompressionSettings>
+        CompressorName: None
+        CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+      Performance Compression: !<SingleCompressionSettings>
+        CompressorName: Performance
+        CompressionSettings: !<TextureCompressionSettings>
+          Level: Medium
+    ExtensionMappings:
+      mesh: None Compression
+      png: Performance Compression
+      jpg: Performance Compression
+    Overrides:
+      {}
+- !<ObjectPrefab/062ba3ad-45ed-4a2d-b8ca-c36f13db29c3>
+  PackagePath: ""
+  objects:
+    - !<own> 29be97b2-6bfc-47d0-839f-d7bd203392ff
+  LazyLoading: false
+  RetainAssets: true
+- !<SceneObject/29be97b2-6bfc-47d0-839f-d7bd203392ff>
+  PrefabRemaps:
+    []
+  Name: RedCup
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    - !<own> c0835890-0110-435c-937d-c826519c5d18
+  Components:
+    - !<own> 2d74ac6a-ca15-4a54-8ae5-696ae3564c2b
+- !<RenderMeshVisual/2cc09bf3-57d8-45f4-bb19-c7a764306f7c>
+  PrefabRemaps:
+    []
+  Name: component_0
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 010239ad-cdce-4982-8ca8-e394734a2677
+  Mesh: !<reference> 15dd1732-d7a0-4947-ac2d-2a18ed48f10c
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<AnimationPlayer/2d74ac6a-ca15-4a54-8ae5-696ae3564c2b>
+  PrefabRemaps:
+    []
+  Name: component_1
+  Enabled: true
+  Autoplay: true
+  ClipRangeType: Frames
+  AnimationClips:
+    - !<AnimationClip>
+      AnimationAsset: !<reference> 6f58f626-850f-4b2e-a13d-dc59ab969318
+      Name: BaseLayer
+      Weight: 1.000000
+      PlaybackSpeed: 1.000000
+      Begin: 0.000000
+      End: 0.000000
+      Reversed: false
+      Disabled: false
+      BlendMode: Default
+      ScaleMode: Multiply
+      PlaybackMode: Loop
+- !<ObjectPrefabAssetData/2eec0743-1fb5-435a-bca1-a61411fa4480>
+  SourceRemaps:
+    - 0c68cc31-9fdc-44d8-81b9-5f537ed1d73f: c0835890-0110-435c-937d-c826519c5d18
+    - 19c142ce-d1fd-470e-93a0-c764040c6e3a: 062ba3ad-45ed-4a2d-b8ca-c36f13db29c3
+    - 7af215f5-e4f0-4232-8386-7cd237ccecf8: 2d74ac6a-ca15-4a54-8ae5-696ae3564c2b
+    - df2c64ca-b373-4cea-a0ea-4656547dcfc8: 29be97b2-6bfc-47d0-839f-d7bd203392ff
+    - ec2ed75b-d1f9-4a4d-93cc-1a2da6820f8c: 2cc09bf3-57d8-45f4-bb19-c7a764306f7c
+  SourceState: !<own> 062ba3ad-45ed-4a2d-b8ca-c36f13db29c3
+- !<SceneObject/c0835890-0110-435c-937d-c826519c5d18>
+  PrefabRemaps:
+    []
+  Name: RedCup
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: -90.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 0.025400, y: 0.025400, z: 0.025400}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 2cc09bf3-57d8-45f4-bb19-c7a764306f7c

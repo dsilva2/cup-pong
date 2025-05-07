@@ -1,0 +1,205 @@
+- !<AssetImportMetadata/73243c97-3ae8-47e9-8a9c-328ee6212dce>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 85d47bcf-ee6f-4273-9258-8d89ca8aec7e
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 85d47bcf-ee6f-4273-9258-8d89ca8aec7e
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> c3b7a980-42ec-4452-a4f9-bd61ff22bd3b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptComponent/2396e6c9-76c8-48ca-ab40-ec1bada2cd62>
+  PrefabRemaps:
+    []
+  Name: InteractableManipulation
+  Enabled: true
+  ScriptAsset: !<reference> 664b556b-1946-4c2c-866a-e675b4e86006
+  ScriptInputsDefault:
+    manipulateRootSceneObject: true
+    minimumScaleFactor: true
+    maximumScaleFactor: true
+    enableTranslation: true
+    enableRotation: true
+    enableStretchZ: true
+    showStretchZProperties: true
+    zStretchFactorMin: true
+    zStretchFactorMax: true
+    useFilter: true
+    showFilterProperties: true
+    minCutoff: true
+    beta: true
+    dcutoff: true
+    showTranslationProperties: true
+    _enableXTranslation: true
+    _enableYTranslation: true
+    _enableZTranslation: true
+    showRotationProperties: true
+    _rotationAxis: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      manipulateRootSceneObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      minimumScaleFactor: 0.250000
+      maximumScaleFactor: !<float> 20.000000
+      enableTranslation: true
+      enableRotation: true
+      enableScale: false
+      enableStretchZ: true
+      showStretchZProperties: false
+      zStretchFactorMin: !<float> 1.000000
+      zStretchFactorMax: !<float> 12.000000
+      useFilter: true
+      showFilterProperties: false
+      minCutoff: !<float> 2.000000
+      beta: 0.015000
+      dcutoff: !<float> 1.000000
+      showTranslationProperties: false
+      _enableXTranslation: true
+      _enableYTranslation: true
+      _enableZTranslation: true
+      showRotationProperties: false
+      _rotationAxis: All
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/43ea9140-3028-4ad7-8311-c8f044fbd8a3>
+  PrefabRemaps:
+    []
+  Name: Interactable
+  Enabled: true
+  ScriptAsset: !<reference> 652e631a-22d0-4941-9f74-2943df59f34c
+  ScriptInputsDefault:
+    enableInstantDrag: true
+    allowMultipleInteractors: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      targetingMode: !<float> 1.000000
+      enableInstantDrag: false
+      allowMultipleInteractors: true
+  ScriptTypes:
+    "":
+      {}
+- !<AudioComponent/60004500-f772-489d-b009-89d6ed6f6547>
+  PrefabRemaps:
+    []
+  Name: Audio
+  Enabled: true
+  AudioTrack: !<reference> 4c3c4150-013a-407b-ae19-391641f6d12d
+  EnableAutoplayLoop: false
+  Volume: 1.000000
+  EnableMixToSnap: false
+  RecordVolume: 1.000000
+  EnableSpatialAudio: true
+  EnableDistanceEffect: true
+  CurveType: Logarithm
+  MinDistance: 0.000000
+  MaxDistance: 1000.000000
+  EnableDirectivityEffect: true
+  EnablePositionEffect: true
+- !<SceneObject/6d876bfb-6bba-46f1-b4e0-023509853aae>
+  PrefabRemaps:
+    []
+  Name: PingPongBallNew
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 20.857748, z: 0.000000}
+    rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 4.000000, y: 4.000000, z: 4.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 7cec936b-d46f-46b5-b0f4-b143efa664ef
+    - !<own> d01bdedc-3150-4447-85bc-cc5bbfa955c0
+    - !<own> 60004500-f772-489d-b009-89d6ed6f6547
+    - !<own> 43ea9140-3028-4ad7-8311-c8f044fbd8a3
+    - !<own> 2396e6c9-76c8-48ca-ab40-ec1bada2cd62
+    - !<own> 9c42ad6b-3038-457b-868d-040c63e65ea8
+- !<RenderMeshVisual/7cec936b-d46f-46b5-b0f4-b143efa664ef>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 6da745e3-1140-4131-a53a-3da6e3dfd3eb
+  Mesh: !<reference> df2e3c19-b55b-4eb1-9629-88dc02096d68
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<ScriptComponent/9c42ad6b-3038-457b-868d-040c63e65ea8>
+  PrefabRemaps:
+    []
+  Name: PingPongBallBehavior
+  Enabled: true
+  ScriptAsset: !<reference> 661e8ebe-53a2-4317-9deb-c25c09b94a23
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      audio: !<reference.AudioComponent> 60004500-f772-489d-b009-89d6ed6f6547
+      targetOutlineMaterial: !<reference.Material> 7231c7bc-6c14-4331-ad23-9ab928107707
+      meshVisual: !<reference.RenderMeshVisual> 7cec936b-d46f-46b5-b0f4-b143efa664ef
+  ScriptTypes:
+    "":
+      {}
+- !<ObjectPrefabAssetData/c3b7a980-42ec-4452-a4f9-bd61ff22bd3b>
+  SourceRemaps:
+    - 152aaffd-5133-4fdc-b12e-3a5ff5ac3820: 43ea9140-3028-4ad7-8311-c8f044fbd8a3
+    - 1e7afa1e-5715-4d16-b96b-0df6f678cb94: d01bdedc-3150-4447-85bc-cc5bbfa955c0
+    - 24310381-d41d-4f4e-9a99-f6451407f0e7: 60004500-f772-489d-b009-89d6ed6f6547
+    - 28ce3679-3f78-4769-b5e7-2a365066ee2f: 2396e6c9-76c8-48ca-ab40-ec1bada2cd62
+    - 85d47bcf-ee6f-4273-9258-8d89ca8aec7e: ea25413e-6ca8-49b3-919b-4e06e10aa78a
+    - 94853a31-9d0b-4c6c-b41d-236e3e19491d: 9c42ad6b-3038-457b-868d-040c63e65ea8
+    - a146f3dd-403d-4ef1-943e-b2b728ad8250: 6d876bfb-6bba-46f1-b4e0-023509853aae
+    - c83c63e4-c139-4bda-b426-6584468a065f: 7cec936b-d46f-46b5-b0f4-b143efa664ef
+  SourceState: !<own> ea25413e-6ca8-49b3-919b-4e06e10aa78a
+- !<BodyComponent/d01bdedc-3150-4447-85bc-cc5bbfa955c0>
+  PrefabRemaps:
+    []
+  Name: Physics Body
+  Enabled: true
+  Shape: !<Sphere>
+    FitVisual: false
+    Radius: 0.500000
+  Matter: !<reference> 136fb47c-9df1-4aa9-841b-b3862ba4ca51
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 32fa292a-8acb-469e-b941-e9ec518d8ca0
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
+  Dynamic: false
+  BodySetting: Mass
+  BodySettingValue: 0.002000
+  Damping: 0.010000
+  AngularDamping: 0.010000
+- !<ObjectPrefab/ea25413e-6ca8-49b3-919b-4e06e10aa78a>
+  PackagePath: ""
+  objects:
+    - !<own> 6d876bfb-6bba-46f1-b4e0-023509853aae
+  LazyLoading: false
+  RetainAssets: true

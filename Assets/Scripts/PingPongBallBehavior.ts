@@ -3,18 +3,24 @@ import WorldCameraFinderProvider from "SpectaclesSyncKit/SpectaclesInteractionKi
 import { SIK } from "SpectaclesSyncKit/SpectaclesInteractionKit/SIK";
 import { Buffer } from "Scripts/Utils/Buffer";
 import { InteractorEvent } from "SpectaclesSyncKit/SpectaclesInteractionKit/Core/Interactor/InteractorEvent";
-import { InteractorInputType } from "SpectaclesSyncKit/SpectaclesInteractionKit/Core/Interactor/Interactor";
+import {
+  InteractorInputType,
+  Interactor,
+} from "SpectaclesSyncKit/SpectaclesInteractionKit/Core/Interactor/Interactor";
 import { TennisBallBehavior } from "./TennisBallBehavior";
+import { Grabbable } from "./Grabbable";
 
 @component
 export class PingPongBallBehavior extends TennisBallBehavior {
   protected OBJECT_MASS = 0.02;
-  protected HAND_ACCELERATION_MULTIPLIER = 0.08;
-  protected HAND_BASE_VELOCITY_MULTIPLIER = 0.6;
+  protected HAND_ACCELERATION_MULTIPLIER = 5.08;
+  protected HAND_BASE_VELOCITY_MULTIPLIER = 3.6;
   private originPoint: vec3;
-  private distanceThreshold = 150; // Distance in units before regeneration
+  private distanceThreshold = 1500; // Distance in units before regeneration
 
   onAwake() {
+    super.onAwake();
+
     this.audio.playbackMode = Audio.PlaybackMode.LowLatency;
 
     this.sceneObject.getComponent("MeshVisual").mainMaterial = this.sceneObject
@@ -28,14 +34,13 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     this.physicsBody.mass = this.OBJECT_MASS;
     this.physicsBody.onCollisionEnter.add(this.onCollisionEnter.bind(this));
 
+    // Set up interactable component
     this.interactable = this.sceneObject.getComponent(
       Interactable.getTypeName()
     );
     this.interactable.onTriggerStart(this.onTriggerStart.bind(this));
     this.interactable.onTriggerEnd(this.onTriggerEnd.bind(this));
-
     this.interactable.enabled = true;
-    // this.interactableManipulation.enabled = true;
 
     this.createEvent("UpdateEvent").bind(this.onUpdate.bind(this));
 
@@ -57,17 +62,47 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     // Reset position to origin
     this.t.setWorldPosition(this.originPoint);
 
-    // Reset physics and disable physics
+    // Reset physics and temporarily disable physics
     if (this.physicsBody) {
       this.physicsBody.velocity = new vec3(0, 0, 0);
       this.physicsBody.angularVelocity = new vec3(0, 0, 0);
-      this.physicsBody.dynamic = false; // Disable physics
+      this.physicsBody.dynamic = false; // Disable physics until grabbed
     }
 
     // Change color for visual feedback
     this.sceneObject.getComponent(
       "MeshVisual"
     ).mainMaterial.mainPass.mainColor = this.getRandomRainbowColor();
+  }
+
+  onTriggerStart(interactor: Interactor) {
+    // Enable physics when grabbed
+    if (this.physicsBody) {
+      this.physicsBody.dynamic = true;
+    }
+    super.onTriggerStart(interactor);
+  }
+
+  onTriggerEnd() {
+    // Keep physics enabled when released and apply hand velocity
+    if (this.physicsBody) {
+      this.physicsBody.dynamic = true;
+      this.physicsBody.intangible = false;
+
+      // Calculate the velocity to apply to the ball from the hand movement
+      let baseVelocity = this.getHandVelocity();
+      print("Base velocity before scaling: " + baseVelocity.toString());
+
+      baseVelocity = baseVelocity.uniformScale(
+        this.HAND_BASE_VELOCITY_MULTIPLIER * 0.5
+      ); // Reduced multiplier
+      print("Base velocity after scaling: " + baseVelocity.toString());
+
+      // Set velocity directly instead of using forces
+      this.physicsBody.velocity = baseVelocity;
+      print("Set velocity: " + baseVelocity.toString());
+    }
+    super.onTriggerEnd();
   }
 
   getRandomRainbowColor(): vec4 {
@@ -87,13 +122,5 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
     // Return the selected random color
     return rainbowColors[randomIndex];
-  }
-
-  onTriggerEnd() {
-    // Re-enable physics when the ball is released
-    if (this.physicsBody) {
-      this.physicsBody.dynamic = true; // Re-enable physics
-    }
-    super.onTriggerEnd();
   }
 }

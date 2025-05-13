@@ -1707,7 +1707,7 @@
   PrefabRemaps:
     []
   Name: SyncEntity
-  Enabled: true
+  Enabled: false
   ScriptAsset: !<reference> 4d117214-18ac-4128-9fa1-ea62263a7ed6
   ScriptInputsDefault:
     {}
@@ -10671,7 +10671,7 @@
   PrefabRemaps:
     []
   Name: SyncEntity
-  Enabled: true
+  Enabled: false
   ScriptAsset: !<reference> 4d117214-18ac-4128-9fa1-ea62263a7ed6
   ScriptInputsDefault:
     {}
@@ -13362,7 +13362,7 @@
   PrefabRemaps:
     []
   Name: ToolPicker 1
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: -35.000000, z: -85.000000}
@@ -15677,7 +15677,7 @@
   PrefabRemaps:
     []
   Name: SpawnPoints
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 0.000000, z: 0.000000}

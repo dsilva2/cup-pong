@@ -4,7 +4,18 @@
     - !<own> 74bf0ead-6ab6-4102-bc1a-21327eb31b7d
 - !<PassInfo/74bf0ead-6ab6-4102-bc1a-21327eb31b7d>
   CachedProperties:
-    []
+    - Port_Exponent_N000:
+        typeIdx: 1
+        value: 0.500000
+    - Port_Intensity_N000:
+        typeIdx: 1
+        value: 1.000000
+    - Port_Normal_N000:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 1.000000}
+    - PreviewEnabled:
+        typeIdx: 0
+        value: 0
   DepthWrite: true
   DepthTest: true
   DepthFunction: LessEqual
@@ -19,16 +30,5 @@
     []
   BlendMode: Disabled
   Properties:
-    Port_Exponent_N000:
-      typeIdx: 1
-      value: 0.500000
-    Port_Intensity_N000:
-      typeIdx: 1
-      value: 1.000000
-    Port_Normal_N000:
-      typeIdx: 4
-      value: {x: 0.000000, y: 0.000000, z: 1.000000}
-    PreviewEnabled:
-      typeIdx: 0
-      value: 0
+    {}
   Pass: !<reference> d2472616-7ed7-405b-99ba-406ad87cae87

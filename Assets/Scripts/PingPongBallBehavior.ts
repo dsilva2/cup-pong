@@ -16,7 +16,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
   protected HAND_ACCELERATION_MULTIPLIER = 5.08;
   protected HAND_BASE_VELOCITY_MULTIPLIER = 3.6;
   private originPoint: vec3;
-  private distanceThreshold = 1500; // Distance in units before regeneration
+  private distanceThreshold = 1000; // Distance in units before regeneration
 
   onAwake() {
     super.onAwake();

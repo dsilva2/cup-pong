@@ -4,12 +4,7 @@
     - !<own> 5e37a85a-9cc4-4bc0-a325-4438ae13b61e
 - !<PassInfo/5e37a85a-9cc4-4bc0-a325-4438ae13b61e>
   CachedProperties:
-    - PreviewEnabled:
-        typeIdx: 0
-        value: 0
-    - Tweak_N95:
-        typeIdx: 5
-        value: {x: 0.070588, y: 0.070588, z: 0.070588, w: 1.000000}
+    []
   DepthWrite: true
   DepthTest: true
   DepthFunction: LessEqual
@@ -24,5 +19,10 @@
     []
   BlendMode: Disabled
   Properties:
-    {}
+    PreviewEnabled:
+      typeIdx: 0
+      value: 0
+    Tweak_N95:
+      typeIdx: 5
+      value: {x: 0.070588, y: 0.070588, z: 0.070588, w: 1.000000}
   Pass: !<reference> 7351a2c4-7fd4-45c9-afa2-eca8e7a6d130

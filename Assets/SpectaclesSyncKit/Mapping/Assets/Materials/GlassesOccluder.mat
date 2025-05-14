@@ -4,12 +4,7 @@
     - !<own> b2c31400-0847-4305-99b7-8bde314da3c0
 - !<PassInfo/b2c31400-0847-4305-99b7-8bde314da3c0>
   CachedProperties:
-    - Port_FinalColor_N004:
-        typeIdx: 5
-        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-    - PreviewEnabled:
-        typeIdx: 0
-        value: 0
+    []
   DepthWrite: true
   DepthTest: true
   DepthFunction: LessEqual
@@ -24,5 +19,10 @@
     []
   BlendMode: PremultipliedAlphaAuto
   Properties:
-    {}
+    Port_FinalColor_N004:
+      typeIdx: 5
+      value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    PreviewEnabled:
+      typeIdx: 0
+      value: 0
   Pass: !<reference> f9cc29bc-a8d3-4026-b948-d3021de0b39f

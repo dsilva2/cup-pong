@@ -17,6 +17,9 @@ export class PingPongBallBehavior extends TennisBallBehavior {
   protected HAND_BASE_VELOCITY_MULTIPLIER = 3.6;
   private originPoint: vec3;
   private distanceThreshold = 1000; // Distance in units before regeneration
+  private regenerationTimer: DelayedCallbackEvent;
+  private regenerationDelay = 2.0; // Time in seconds after release before regeneration
+  private isBeingInteracted = false; // Track interaction state manually
 
   onAwake() {
     super.onAwake();
@@ -46,15 +49,21 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
     this.t = this.getTransform();
     this.originPoint = this.t.getWorldPosition();
+    
+    // Create a regeneration timer but don't start it yet
+    this.regenerationTimer = this.createEvent("DelayedCallbackEvent");
+    this.regenerationTimer.bind(this.regenerateBall.bind(this));
   }
 
   onUpdate() {
     // Check if ball has strayed too far from origin
-    const currentPos = this.t.getWorldPosition();
-    const distanceFromOrigin = currentPos.distance(this.originPoint);
+    if (!this.isBeingInteracted) {
+      const currentPos = this.t.getWorldPosition();
+      const distanceFromOrigin = currentPos.distance(this.originPoint);
 
-    if (distanceFromOrigin > this.distanceThreshold) {
-      this.regenerateBall();
+      if (distanceFromOrigin > this.distanceThreshold) {
+        this.regenerateBall();
+      }
     }
   }
 
@@ -73,9 +82,20 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     this.sceneObject.getComponent(
       "MeshVisual"
     ).mainMaterial.mainPass.mainColor = this.getRandomRainbowColor();
+    
+    // Play audio when ball regenerates
+    if (this.audio) {
+      this.audio.play(1.0);
+    }
   }
 
   onTriggerStart(interactor: Interactor) {
+    // Set our interaction flag
+    this.isBeingInteracted = true;
+    
+    // Reset timer
+    this.regenerationTimer.reset(0);
+    
     // Enable physics when grabbed
     if (this.physicsBody) {
       this.physicsBody.dynamic = true;
@@ -84,6 +104,8 @@ export class PingPongBallBehavior extends TennisBallBehavior {
   }
 
   onTriggerEnd() {
+    this.isBeingInteracted = false;
+    
     // Keep physics enabled when released and apply hand velocity
     if (this.physicsBody) {
       this.physicsBody.dynamic = true;
@@ -101,6 +123,9 @@ export class PingPongBallBehavior extends TennisBallBehavior {
       // Set velocity directly instead of using forces
       this.physicsBody.velocity = baseVelocity;
       print("Set velocity: " + baseVelocity.toString());
+      
+      // Regenerate the ball after a delay
+      this.regenerationTimer.reset(this.regenerationDelay);
     }
     super.onTriggerEnd();
   }

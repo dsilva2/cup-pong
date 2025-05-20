@@ -1,12 +1,12 @@
-import { Interactable } from "SpectaclesSyncKit/SpectaclesInteractionKit/Components/Interaction/Interactable/Interactable";
-import WorldCameraFinderProvider from "SpectaclesSyncKit/SpectaclesInteractionKit/Providers/CameraProvider/WorldCameraFinderProvider";
-import { SIK } from "SpectaclesSyncKit/SpectaclesInteractionKit/SIK";
+import { Interactable } from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable";
+import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
+import { SIK } from "SpectaclesInteractionKit.lspkg/SIK";
 import { Buffer } from "Scripts/Utils/Buffer";
-import { InteractorEvent } from "SpectaclesSyncKit/SpectaclesInteractionKit/Core/Interactor/InteractorEvent";
+import { InteractorEvent } from "SpectaclesInteractionKit.lspkg/Core/Interactor/InteractorEvent";
 import {
   InteractorInputType,
   Interactor,
-} from "SpectaclesSyncKit/SpectaclesInteractionKit/Core/Interactor/Interactor";
+} from "SpectaclesInteractionKit.lspkg/Core/Interactor/Interactor";
 import { TennisBallBehavior } from "./TennisBallBehavior";
 import { Grabbable } from "./Grabbable";
 
@@ -19,7 +19,10 @@ export class PingPongBallBehavior extends TennisBallBehavior {
   private distanceThreshold = 1000; // Distance in units before regeneration
   private regenerationTimer: DelayedCallbackEvent;
   private regenerationDelay = 2.0; // Time in seconds after release before regeneration
-  private isBeingInteracted = false; // Track interaction state manually
+  private isBeingInteracted = false;
+  private positionBuffer: Buffer = new Buffer(4);
+  private rotationBuffer: Buffer = new Buffer(4);
+  private velocityBuffer: Buffer = new Buffer(4);
 
   onAwake() {
     super.onAwake();
@@ -49,7 +52,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
     this.t = this.getTransform();
     this.originPoint = this.t.getWorldPosition();
-    
+
     // Create a regeneration timer but don't start it yet
     this.regenerationTimer = this.createEvent("DelayedCallbackEvent");
     this.regenerationTimer.bind(this.regenerateBall.bind(this));
@@ -64,6 +67,13 @@ export class PingPongBallBehavior extends TennisBallBehavior {
       if (distanceFromOrigin > this.distanceThreshold) {
         this.regenerateBall();
       }
+    }
+
+    // Update buffers for synchronization
+    if (this.isBeingInteracted) {
+      this.positionBuffer.add(this.t.getWorldPosition());
+      this.rotationBuffer.add(this.t.getWorldRotation());
+      this.velocityBuffer.add(this.physicsBody.velocity);
     }
   }
 
@@ -82,7 +92,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     this.sceneObject.getComponent(
       "MeshVisual"
     ).mainMaterial.mainPass.mainColor = this.getRandomRainbowColor();
-    
+
     // Play audio when ball regenerates
     if (this.audio) {
       this.audio.play(1.0);
@@ -92,10 +102,10 @@ export class PingPongBallBehavior extends TennisBallBehavior {
   onTriggerStart(interactor: Interactor) {
     // Set our interaction flag
     this.isBeingInteracted = true;
-    
+
     // Reset timer
     this.regenerationTimer.reset(0);
-    
+
     // Enable physics when grabbed
     if (this.physicsBody) {
       this.physicsBody.dynamic = true;
@@ -105,7 +115,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
   onTriggerEnd() {
     this.isBeingInteracted = false;
-    
+
     // Keep physics enabled when released and apply hand velocity
     if (this.physicsBody) {
       this.physicsBody.dynamic = true;
@@ -123,7 +133,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
       // Set velocity directly instead of using forces
       this.physicsBody.velocity = baseVelocity;
       print("Set velocity: " + baseVelocity.toString());
-      
+
       // Regenerate the ball after a delay
       this.regenerationTimer.reset(this.regenerationDelay);
     }
@@ -133,13 +143,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
   getRandomRainbowColor(): vec4 {
     // Define rainbow colors as vec4 (RGBA, with alpha = 1.0 for full opacity)
     const rainbowColors = [
-      // new vec4(148 / 255, 0 / 255, 211 / 255, 1.0), // Violet
-      // new vec4(75 / 255, 0 / 255, 130 / 255, 1.0), // Indigo
       new vec4(0 / 255, 191 / 255, 255 / 255, 1.0), // Blue
-      // new vec4(0 / 255, 255 / 255, 0 / 255, 1.0), // Green
-      // new vec4(255 / 255, 255 / 255, 0 / 255, 1.0), // Yellow
-      // new vec4(255 / 255, 127 / 255, 0 / 255, 1.0), // Orange
-      // new vec4(255 / 255, 0 / 255, 0 / 255, 1.0), // Red
     ];
 
     // Select a random index from the rainbow colors array

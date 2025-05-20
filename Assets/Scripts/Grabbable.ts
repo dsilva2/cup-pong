@@ -1,115 +1,87 @@
-import { InteractionManager } from "SpectaclesSyncKit/SpectaclesInteractionKit/Core/InteractionManager/InteractionManager";
-import { InteractorInputType } from "SpectaclesSyncKit/SpectaclesInteractionKit/Core/Interactor/Interactor";
-import { Interactor } from "SpectaclesSyncKit/SpectaclesInteractionKit/Core/Interactor/Interactor";
-import { SIK } from "SpectaclesSyncKit/SpectaclesInteractionKit/SIK";
-import Event from "SpectaclesSyncKit/SpectaclesInteractionKit/Utils/Event";
+import { InteractionManager } from "SpectaclesInteractionKit.lspkg/Core/InteractionManager/InteractionManager";
+import { InteractorInputType } from "SpectaclesInteractionKit.lspkg/Core/Interactor/Interactor";
+import { Interactor } from "SpectaclesInteractionKit.lspkg/Core/Interactor/Interactor";
+import { SIK } from "SpectaclesInteractionKit.lspkg/SIK";
+import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
 
 @component
 export class Grabbable extends BaseScriptComponent {
-  private isGrabbed: boolean = false;
-  private isHandOverlapping: boolean = false;
 
-  @input
-  @allowUndefined
-  public collider: ColliderComponent;
+    private isGrabbed: boolean = false;
+    private isHandOverlapping: boolean = false;
 
-  @input
-  public handColliderName: string = "ColliderTargetProvider";
+    @input
+    @allowUndefined
+    public collider: ColliderComponent;
 
-  private gestureModule: GestureModule = require("LensStudio:GestureModule");
+    @input
+    public handColliderName:string = "ColliderTargetProvider"
 
-  public onGrabStartEvent: Event<Interactor> = new Event<Interactor>();
-  public onGrabEndEvent: Event<Interactor> = new Event<Interactor>();
+    private gestureModule: GestureModule = require('LensStudio:GestureModule');
 
-  public onHoverStartEvent: Event = new Event();
-  public onHoverEndEvent: Event = new Event();
+    public onGrabStartEvent:Event<Interactor> = new Event<Interactor>();
+    public onGrabEndEvent:Event<Interactor> = new Event<Interactor>();
 
-  onGrabBeginEvent: any;
+    public onHoverStartEvent:Event = new Event();
+    public onHoverEndEvent:Event = new Event();
 
-  onAwake() {
-    if (!this.collider) {
-      this.collider = this.sceneObject.getComponent("ColliderComponent");
+    onGrabBeginEvent: any;
+
+    onAwake() {
+
+        if (!this.collider) {
+            this.collider = this.sceneObject.getComponent("ColliderComponent");
+        }
+
+        if (!this.collider) {
+            print("Grabbable component requires a collider component.");
+            return;
+        }
+
+        this.collider.overlapFilter.includeIntangible = true;
+        this.collider.onOverlapEnter.add(this.onOverlapEnter.bind(this));
+        this.collider.onOverlapExit.add(this.onOverlapExit.bind(this));
+
+        this.gestureModule.getGrabBeginEvent(GestureModule.HandType.Right)
+            .add((GrabBeginArgs) => this.onGrabBegin(InteractionManager.getInstance().getInteractorsByType(InteractorInputType.RightHand)[0]));
+
+        this.gestureModule.getGrabEndEvent(GestureModule.HandType.Right)
+            .add((GrabEndArgs) => this.onGrabEnd(InteractionManager.getInstance().getInteractorsByType(InteractorInputType.RightHand)[0]));
+
+        this.gestureModule.getGrabBeginEvent(GestureModule.HandType.Left)
+            .add((GrabBeginArgs) => this.onGrabBegin(InteractionManager.getInstance().getInteractorsByType(InteractorInputType.LeftHand)[0]));
+
+        this.gestureModule.getGrabEndEvent(GestureModule.HandType.Left)
+            .add((GrabEndArgs) => this.onGrabEnd(InteractionManager.getInstance().getInteractorsByType(InteractorInputType.LeftHand)[0]));
+
     }
 
-    if (!this.collider) {
-      print("Grabbable component requires a collider component.");
-      return;
+    onOverlapEnter (e:OverlapEnterEventArgs) {
+        if (e.overlap.collider.getSceneObject().name == this.handColliderName) {
+            if (!this.isHandOverlapping) { this.onHoverStartEvent.invoke() }
+            this.isHandOverlapping = true;
+        }
     }
 
-    this.collider.overlapFilter.includeIntangible = true;
-    this.collider.onOverlapEnter.add(this.onOverlapEnter.bind(this));
-    this.collider.onOverlapExit.add(this.onOverlapExit.bind(this));
-
-    this.gestureModule
-      .getGrabBeginEvent(GestureModule.HandType.Right)
-      .add((GrabBeginArgs) =>
-        this.onGrabBegin(
-          InteractionManager.getInstance().getInteractorsByType(
-            InteractorInputType.RightHand
-          )[0]
-        )
-      );
-
-    this.gestureModule
-      .getGrabEndEvent(GestureModule.HandType.Right)
-      .add((GrabEndArgs) =>
-        this.onGrabEnd(
-          InteractionManager.getInstance().getInteractorsByType(
-            InteractorInputType.RightHand
-          )[0]
-        )
-      );
-
-    this.gestureModule
-      .getGrabBeginEvent(GestureModule.HandType.Left)
-      .add((GrabBeginArgs) =>
-        this.onGrabBegin(
-          InteractionManager.getInstance().getInteractorsByType(
-            InteractorInputType.LeftHand
-          )[0]
-        )
-      );
-
-    this.gestureModule
-      .getGrabEndEvent(GestureModule.HandType.Left)
-      .add((GrabEndArgs) =>
-        this.onGrabEnd(
-          InteractionManager.getInstance().getInteractorsByType(
-            InteractorInputType.LeftHand
-          )[0]
-        )
-      );
-  }
-
-  onOverlapEnter(e: OverlapEnterEventArgs) {
-    if (e.overlap.collider.getSceneObject().name == this.handColliderName) {
-      if (!this.isHandOverlapping) {
-        this.onHoverStartEvent.invoke();
-      }
-      this.isHandOverlapping = true;
+    onOverlapExit (e:OverlapExitEventArgs) {
+        if (e.overlap.collider.getSceneObject().name == this.handColliderName) {
+            if (this.isHandOverlapping) { this.onHoverEndEvent.invoke() }
+            this.isHandOverlapping = false;
+        }
     }
-  }
 
-  onOverlapExit(e: OverlapExitEventArgs) {
-    if (e.overlap.collider.getSceneObject().name == this.handColliderName) {
-      if (this.isHandOverlapping) {
-        this.onHoverEndEvent.invoke();
-      }
-      this.isHandOverlapping = false;
+    private onGrabBegin(interactor:Interactor) {
+        if (this.isHandOverlapping) {
+            this.isGrabbed = true;
+            this.onGrabStartEvent.invoke(interactor);
+        }
     }
-  }
 
-  private onGrabBegin(interactor: Interactor) {
-    if (this.isHandOverlapping) {
-      this.isGrabbed = true;
-      this.onGrabStartEvent.invoke(interactor);
+    private onGrabEnd (interactor:Interactor) {
+        if (this.isGrabbed) {
+            this.onGrabEndEvent.invoke(interactor);
+        }
+        this.isGrabbed = false;
     }
-  }
 
-  private onGrabEnd(interactor: Interactor) {
-    if (this.isGrabbed) {
-      this.onGrabEndEvent.invoke(interactor);
-    }
-    this.isGrabbed = false;
-  }
 }

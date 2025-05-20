@@ -1,4 +1,4 @@
-- !<ObjectPrefab/85d47bcf-ee6f-4273-9258-8d89ca8aec7e>
+- !<ObjectPrefab/aa95413a-2434-486e-8b1a-0bed06cc4e80>
   PackagePath: ""
   objects:
     - !<own> a146f3dd-403d-4ef1-943e-b2b728ad8250
@@ -13,6 +13,12 @@
   ScriptInputsDefault:
     enableInstantDrag: true
     allowMultipleInteractors: true
+    enablePokeDirectionality: true
+    acceptableXDirections: true
+    acceptableYDirections: true
+    acceptableZDirections: true
+    isSynced: true
+    acceptableSyncInteractionTypes: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -20,6 +26,12 @@
       targetingMode: !<float> 1.000000
       enableInstantDrag: false
       allowMultipleInteractors: true
+      enablePokeDirectionality: false
+      acceptableXDirections: !<float> 0.000000
+      acceptableYDirections: !<float> 0.000000
+      acceptableZDirections: !<float> 1.000000
+      isSynced: true
+      acceptableSyncInteractionTypes: !<float> 7.000000
   ScriptTypes:
     "":
       {}
@@ -35,7 +47,7 @@
   Filter: !<reference> 00000000-0000-0000-0000-000000000000
   OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
   WorldSettings: !<reference> 32fa292a-8acb-469e-b941-e9ec518d8ca0
-  EnableSmoothing: false
+  EnableSmoothing: true
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false

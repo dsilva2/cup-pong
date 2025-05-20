@@ -1,68 +1,67 @@
-import { InteractableManipulation } from "SpectaclesSyncKit/SpectaclesInteractionKit/Components/Interaction/InteractableManipulation/InteractableManipulation";
-import { ContainerFrame } from "SpectaclesSyncKit/SpectaclesInteractionKit/Components/UI/ContainerFrame/ContainerFrame";
+import { InteractableManipulation } from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation"
+import { ContainerFrame } from "SpectaclesInteractionKit.lspkg/Components/UI/ContainerFrame/ContainerFrame"
 
 @component
 export class ToolPickerBehavior extends BaseScriptComponent {
-  @input
-  public toolPrefabs: ObjectPrefab[];
 
-  @input
-  public toolSpawnPoints: SceneObject[];
-  public toolSpawnPointsT: Transform[];
+    @input
+    public toolPrefabs:ObjectPrefab[]
 
-  private latestObj: SceneObject[];
-  private latestObjT: Transform[];
+    @input
+    public toolSpawnPoints:SceneObject[]
+    public toolSpawnPointsT:Transform[]
 
-  private yOffset = 5;
-  private distanceOffset = 15;
+    private latestObj:SceneObject[]
+    private latestObjT:Transform[]
 
-  @input
-  public containerObj: SceneObject;
+    private yOffset = 5
+    private distanceOffset = 15
 
-  onAwake() {
-    this.init();
-    this.createEvent("UpdateEvent").bind(this.onUpdate.bind(this));
-  }
+    @input
+    public containerObj:SceneObject
 
-  init() {
-    this.toolSpawnPointsT = [];
-    this.latestObj = [];
-    this.latestObjT = [];
-    this.spanwAllTools();
-  }
+    onAwake() {
+        this.init()
+        this.createEvent("UpdateEvent").bind(this.onUpdate.bind(this))
+    }
 
-  spanwAllTools() {
-    this.toolSpawnPoints.forEach((value, ind) => {
-      let spawnPoint = value;
-      this.toolSpawnPointsT[ind] = spawnPoint.getTransform();
-      this.spawnAndReplace(ind);
-    });
-  }
+    init () {
+        this.toolSpawnPointsT = []
+        this.latestObj = []
+        this.latestObjT = []
+        this.spanwAllTools()
+    }
 
-  onUpdate() {
-    this.toolSpawnPoints.forEach((value, ind) => {
-      let spawnPointT = this.toolSpawnPointsT[ind];
-      let objectT = this.latestObjT[ind];
+    spanwAllTools () {
+        this.toolSpawnPoints.forEach((value, ind) => {
+            let spawnPoint = value
+            this.toolSpawnPointsT[ind] = spawnPoint.getTransform()
+            this.spawnAndReplace(ind)
+        })
+    }
 
-      if (
-        objectT.getWorldPosition().distance(spawnPointT.getWorldPosition()) >
-        this.distanceOffset
-      ) {
-        objectT.getSceneObject().setParent(null);
-        this.spawnAndReplace(ind);
-      }
-    });
-  }
+    onUpdate () {
+        this.toolSpawnPoints.forEach((value, ind) => {
+            let spawnPointT = this.toolSpawnPointsT[ind]
+            let objectT = this.latestObjT[ind]
 
-  spawnAndReplace(ind) {
-    let spawnPos = this.toolSpawnPointsT[ind].getWorldPosition();
-    spawnPos.y += this.yOffset;
+            if (objectT.getWorldPosition().distance(spawnPointT.getWorldPosition()) 
+                > this.distanceOffset) {
+                objectT.getSceneObject().setParent(null)
+                this.spawnAndReplace(ind)
+            }
+        })
+    }
 
-    let nObject = this.toolPrefabs[ind].instantiate(this.containerObj);
-    nObject.enabled = true;
-    nObject.getTransform().setWorldPosition(spawnPos);
+    spawnAndReplace (ind) {
+        let spawnPos =  this.toolSpawnPointsT[ind].getWorldPosition()
+        spawnPos.y += this.yOffset
 
-    this.latestObj[ind] = nObject;
-    this.latestObjT[ind] = nObject.getTransform();
-  }
+        let nObject = this.toolPrefabs[ind].instantiate(this.containerObj)
+        nObject.enabled = true
+        nObject.getTransform().setWorldPosition(spawnPos)
+
+        this.latestObj[ind] = nObject
+        this.latestObjT[ind] = nObject.getTransform()
+    }
 }

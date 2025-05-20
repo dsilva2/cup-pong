@@ -1,24 +1,24 @@
-- !<AssetImportMetadata/58cbc3c0-364a-4398-9fe1-92afdea5796d>
+- !<AssetImportMetadata/fade3828-38c4-4699-a81c-1ab357acb113>
   ImportedAssetIds:
-    .hidden/table: !<reference> f8d878d4-59fb-4c61-b0a9-d3e723932284
-    .hidden/white: !<reference> 120afe31-3912-482a-8eec-f2332d6475d4
-    2dbb36c24510babb: !<reference> ae7935f1-c29d-4ba4-913b-ad274a475aef
-    66780cf3a4dcb2b8: !<reference> 00e285e1-d4c4-4bde-944e-74c04f152d36
-    Animations/BaseLayer: !<reference> daa43e1c-9e99-42c9-8789-9695ff3ab923
-    Materials/table: !<reference> 5c23fcb4-d423-4ef9-9312-baf0b035d6f6
-    Materials/table|table|GraphPassInfo: !<reference> 39682c1a-76dc-4340-b724-d5c1c56858ba
-    Meshes/Table: !<reference> d5a06e97-5c6d-4763-b56b-f0a735d024c0
-    Scene: !<reference> 9e343e5d-d711-4a9d-9460-3bd5a7bffd4d
-    d416dcb8d0a23de4: !<reference> d08334b2-d99e-4a52-9f99-c1bdc3787d04
-    d56449042852f529: !<reference> f570f442-7554-47fd-b33a-8fce9c1b1b2c
+    .hidden/table: !<reference> 7826ef0e-2bbd-4441-8806-4db298aabcc7
+    .hidden/white: !<reference> 750e7118-7b07-4d02-8655-15134b735930
+    2dbb36c24510babb: !<reference> 5f40a0cb-ad37-4828-ae10-7e28cdb1e823
+    66780cf3a4dcb2b8: !<reference> 068a0060-55d4-4224-b40f-408fd3567724
+    Animations/BaseLayer: !<reference> 401c6c59-2c43-403b-8094-b252ee1f079a
+    Materials/table: !<reference> 7cb12f6e-36f7-430c-ad6c-0f5af1a77c8b
+    Materials/table|table|GraphPassInfo: !<reference> 4ee81b1c-a440-4f61-9ad9-d2962ffc71e0
+    Meshes/Table: !<reference> b7ec5e6f-6c6f-4e86-9468-0a339071952e
+    Scene: !<reference> 804cd65c-315c-4df2-aad5-e88406a21123
+    d416dcb8d0a23de4: !<reference> 8ae7f729-83c2-4765-83cb-e5eadd56165a
+    d56449042852f529: !<reference> 8ae39561-9878-47c9-8d12-93ffecf363fa
   ImporterName: FbxImporter
-  PrimaryAsset: !<reference> 9e343e5d-d711-4a9d-9460-3bd5a7bffd4d
+  PrimaryAsset: !<reference> 804cd65c-315c-4df2-aad5-e88406a21123
   PackageType: LegacyPackage
   PackagePolicy: CanBeUnpacked
   ExtraData:
     {}
   AssetDataMap:
-    Scene: !<own> a9d7f814-a179-472a-ba01-7e961cd53669
+    Scene: !<own> d13f4233-3f0b-450f-a541-380e6b2216a4
   DependentFiles:
     []
   ImporterSettings: !<FbxImporterSettings>
@@ -44,49 +44,35 @@
         CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
       Performance Compression: !<SingleCompressionSettings>
         CompressorName: Performance
-        CompressionSettings: !<TextureCompressionSettings>
+        CompressionSettings: !<TextureCompressionMipmapSettings>
           Level: Medium
+          Mipmap: false
     ExtensionMappings:
       mesh: None Compression
       jpg: Performance Compression
     Overrides:
       {}
-- !<SceneObject/35ae115c-d4fa-45fd-90f3-5c15cb792197>
+- !<RenderMeshVisual/25641227-f2a7-42f4-85b2-129fa974dbc1>
   PrefabRemaps:
     []
-  Name: uploads_files_821916_Table
+  Name: component_0
   Enabled: true
-  Layers: 1
-  LocalTransform:
-    position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    hasSegmentScaleCompensation: false
-  Children:
-    - !<own> 42150f12-0e89-43f9-84c9-c0c0b31c3e88
-  Components:
-    - !<own> 4068ebe9-5053-4f61-bcd5-37c2f4e338dc
-- !<AnimationPlayer/4068ebe9-5053-4f61-bcd5-37c2f4e338dc>
-  PrefabRemaps:
-    []
-  Name: component_1
-  Enabled: true
-  Autoplay: true
-  ClipRangeType: Frames
-  AnimationClips:
-    - !<AnimationClip>
-      AnimationAsset: !<reference> daa43e1c-9e99-42c9-8789-9695ff3ab923
-      Name: BaseLayer
-      Weight: 1.000000
-      PlaybackSpeed: 1.000000
-      Begin: 0.000000
-      End: 0.000000
-      Reversed: false
-      Disabled: false
-      BlendMode: Default
-      ScaleMode: Multiply
-      PlaybackMode: Loop
-- !<SceneObject/42150f12-0e89-43f9-84c9-c0c0b31c3e88>
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 7cb12f6e-36f7-430c-ad6c-0f5af1a77c8b
+  Mesh: !<reference> b7ec5e6f-6c6f-4e86-9468-0a339071952e
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<SceneObject/485801f0-7961-4995-9a96-b085e7c49601>
   PrefabRemaps:
     []
   Name: Table
@@ -100,38 +86,54 @@
   Children:
     []
   Components:
-    - !<own> 8d81a956-646e-4820-9747-781e7e469988
-- !<RenderMeshVisual/8d81a956-646e-4820-9747-781e7e469988>
+    - !<own> 25641227-f2a7-42f4-85b2-129fa974dbc1
+- !<AnimationPlayer/a93db6fc-35c4-4828-8704-be1e7eac28e6>
   PrefabRemaps:
     []
-  Name: component_0
+  Name: component_1
   Enabled: true
-  RenderOrder: 0
-  StretchMode: Stretch
-  VerticalAlignment: Center
-  HorizontalAlignment: Center
-  MeshShadowMode: None
-  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-  ShadowDensity: 1.000000
-  Materials:
-    - !<reference> 5c23fcb4-d423-4ef9-9312-baf0b035d6f6
-  Mesh: !<reference> d5a06e97-5c6d-4763-b56b-f0a735d024c0
-  Skin: !<reference> 00000000-0000-0000-0000-000000000000
-  BlendShapesEnabled: true
-  BlendNormals: false
-  BlendShapes:
-    {}
-- !<ObjectPrefabAssetData/a9d7f814-a179-472a-ba01-7e961cd53669>
+  Autoplay: true
+  ClipRangeType: Frames
+  AnimationClips:
+    - !<AnimationClip>
+      AnimationAsset: !<reference> 401c6c59-2c43-403b-8094-b252ee1f079a
+      Name: BaseLayer
+      Weight: 1.000000
+      PlaybackSpeed: 1.000000
+      Begin: 0.000000
+      End: 0.000000
+      Offset: 0.000000
+      Reversed: false
+      Disabled: false
+      BlendMode: Default
+      ScaleMode: Multiply
+      PlaybackMode: Loop
+- !<SceneObject/c8864788-e833-4fde-869e-e17211ecdaca>
+  PrefabRemaps:
+    []
+  Name: uploads_files_821916_Table
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    - !<own> 485801f0-7961-4995-9a96-b085e7c49601
+  Components:
+    - !<own> a93db6fc-35c4-4828-8704-be1e7eac28e6
+- !<ObjectPrefabAssetData/d13f4233-3f0b-450f-a541-380e6b2216a4>
   SourceRemaps:
-    - 00e285e1-d4c4-4bde-944e-74c04f152d36: 35ae115c-d4fa-45fd-90f3-5c15cb792197
-    - 9e343e5d-d711-4a9d-9460-3bd5a7bffd4d: c8a335f2-4ba2-4da9-ae78-5c2c2880ab31
-    - ae7935f1-c29d-4ba4-913b-ad274a475aef: 8d81a956-646e-4820-9747-781e7e469988
-    - d08334b2-d99e-4a52-9f99-c1bdc3787d04: 42150f12-0e89-43f9-84c9-c0c0b31c3e88
-    - f570f442-7554-47fd-b33a-8fce9c1b1b2c: 4068ebe9-5053-4f61-bcd5-37c2f4e338dc
-  SourceState: !<own> c8a335f2-4ba2-4da9-ae78-5c2c2880ab31
-- !<ObjectPrefab/c8a335f2-4ba2-4da9-ae78-5c2c2880ab31>
+    - 068a0060-55d4-4224-b40f-408fd3567724: c8864788-e833-4fde-869e-e17211ecdaca
+    - 5f40a0cb-ad37-4828-ae10-7e28cdb1e823: 25641227-f2a7-42f4-85b2-129fa974dbc1
+    - 804cd65c-315c-4df2-aad5-e88406a21123: f4fecc72-37d2-4718-8176-ffffc62e49d2
+    - 8ae39561-9878-47c9-8d12-93ffecf363fa: a93db6fc-35c4-4828-8704-be1e7eac28e6
+    - 8ae7f729-83c2-4765-83cb-e5eadd56165a: 485801f0-7961-4995-9a96-b085e7c49601
+  SourceState: !<own> f4fecc72-37d2-4718-8176-ffffc62e49d2
+- !<ObjectPrefab/f4fecc72-37d2-4718-8176-ffffc62e49d2>
   PackagePath: ""
   objects:
-    - !<own> 35ae115c-d4fa-45fd-90f3-5c15cb792197
+    - !<own> c8864788-e833-4fde-869e-e17211ecdaca
   LazyLoading: false
   RetainAssets: true

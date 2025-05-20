@@ -1,20 +1,146 @@
-- !<AssetImportMetadata/73243c97-3ae8-47e9-8a9c-328ee6212dce>
+- !<AssetImportMetadata/ac83b588-805a-40bf-8734-c499fa2f4364>
   ImportedAssetIds:
-    ObjectPrefab: !<reference> 85d47bcf-ee6f-4273-9258-8d89ca8aec7e
+    ObjectPrefab: !<reference> aa95413a-2434-486e-8b1a-0bed06cc4e80
   ImporterName: ObjectPrefabImporter
-  PrimaryAsset: !<reference> 85d47bcf-ee6f-4273-9258-8d89ca8aec7e
+  PrimaryAsset: !<reference> aa95413a-2434-486e-8b1a-0bed06cc4e80
   PackageType: NotAPackage
   PackagePolicy: CannotBeUnpacked
   ExtraData:
     {}
   AssetDataMap:
-    ObjectPrefab: !<own> c3b7a980-42ec-4452-a4f9-bd61ff22bd3b
+    ObjectPrefab: !<own> 0c5f1b5a-a709-4ede-acfd-0553f5572571
   DependentFiles:
     []
   ImporterSettings: !<AssetImporterSettings>
     {}
   CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
-- !<ScriptComponent/2396e6c9-76c8-48ca-ab40-ec1bada2cd62>
+- !<ObjectPrefabAssetData/0c5f1b5a-a709-4ede-acfd-0553f5572571>
+  SourceRemaps:
+    - 152aaffd-5133-4fdc-b12e-3a5ff5ac3820: 3edd5ad4-bdf3-4ad0-b892-9a2aa99b2227
+    - 1e7afa1e-5715-4d16-b96b-0df6f678cb94: 194317c4-d5bd-4989-a5ac-69acc332d4bb
+    - 24310381-d41d-4f4e-9a99-f6451407f0e7: 6f5fe2bc-949f-4a5f-a095-111fd3a6bbc1
+    - 28ce3679-3f78-4769-b5e7-2a365066ee2f: 8de687c8-6089-4559-a5af-2f6392d61fee
+    - 94853a31-9d0b-4c6c-b41d-236e3e19491d: 74652068-f841-4820-b665-837b49919fc5
+    - a146f3dd-403d-4ef1-943e-b2b728ad8250: af7d881f-a68c-444d-b459-64f2edf5a642
+    - aa95413a-2434-486e-8b1a-0bed06cc4e80: 78d0ed76-4438-4112-8fe8-65570f796151
+    - c83c63e4-c139-4bda-b426-6584468a065f: 4f0008fe-39bb-4b0b-894c-d3dd152861b2
+  SourceState: !<own> 78d0ed76-4438-4112-8fe8-65570f796151
+- !<BodyComponent/194317c4-d5bd-4989-a5ac-69acc332d4bb>
+  PrefabRemaps:
+    []
+  Name: Physics Body
+  Enabled: true
+  Shape: !<Sphere>
+    FitVisual: false
+    Radius: 0.500000
+  Matter: !<reference> 136fb47c-9df1-4aa9-841b-b3862ba4ca51
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 32fa292a-8acb-469e-b941-e9ec518d8ca0
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
+  Dynamic: false
+  BodySetting: Mass
+  BodySettingValue: 0.002000
+  Damping: 0.010000
+  AngularDamping: 0.010000
+- !<ScriptComponent/3edd5ad4-bdf3-4ad0-b892-9a2aa99b2227>
+  PrefabRemaps:
+    []
+  Name: Interactable
+  Enabled: true
+  ScriptAsset: !<reference> 652e631a-22d0-4941-9f74-2943df59f34c
+  ScriptInputsDefault:
+    enableInstantDrag: true
+    allowMultipleInteractors: true
+    enablePokeDirectionality: true
+    acceptableXDirections: true
+    acceptableYDirections: true
+    acceptableZDirections: true
+    isSynced: true
+    acceptableSyncInteractionTypes: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      targetingMode: !<float> 1.000000
+      enableInstantDrag: false
+      allowMultipleInteractors: true
+      enablePokeDirectionality: false
+      acceptableXDirections: !<float> 0.000000
+      acceptableYDirections: !<float> 0.000000
+      acceptableZDirections: !<float> 1.000000
+      isSynced: true
+      acceptableSyncInteractionTypes: !<float> 7.000000
+  ScriptTypes:
+    "":
+      {}
+- !<RenderMeshVisual/4f0008fe-39bb-4b0b-894c-d3dd152861b2>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 6da745e3-1140-4131-a53a-3da6e3dfd3eb
+  Mesh: !<reference> df2e3c19-b55b-4eb1-9629-88dc02096d68
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<AudioComponent/6f5fe2bc-949f-4a5f-a095-111fd3a6bbc1>
+  PrefabRemaps:
+    []
+  Name: Audio
+  Enabled: true
+  AudioTrack: !<reference> 4c3c4150-013a-407b-ae19-391641f6d12d
+  EnableAutoplayLoop: false
+  Volume: 1.000000
+  EnableMixToSnap: false
+  RecordVolume: 1.000000
+  EnableSpatialAudio: true
+  EnableDistanceEffect: true
+  CurveType: Logarithm
+  MinDistance: 0.000000
+  MaxDistance: 1000.000000
+  EnableDirectivityEffect: true
+  EnablePositionEffect: true
+- !<ScriptComponent/74652068-f841-4820-b665-837b49919fc5>
+  PrefabRemaps:
+    []
+  Name: PingPongBallBehavior
+  Enabled: true
+  ScriptAsset: !<reference> 661e8ebe-53a2-4317-9deb-c25c09b94a23
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      audio: !<reference.AudioComponent> 6f5fe2bc-949f-4a5f-a095-111fd3a6bbc1
+      targetOutlineMaterial: !<reference.Material> 7231c7bc-6c14-4331-ad23-9ab928107707
+      meshVisual: !<reference.RenderMeshVisual> 4f0008fe-39bb-4b0b-894c-d3dd152861b2
+  ScriptTypes:
+    "":
+      {}
+- !<ObjectPrefab/78d0ed76-4438-4112-8fe8-65570f796151>
+  PackagePath: ""
+  objects:
+    - !<own> af7d881f-a68c-444d-b459-64f2edf5a642
+  LazyLoading: false
+  RetainAssets: true
+- !<ScriptComponent/8de687c8-6089-4559-a5af-2f6392d61fee>
   PrefabRemaps:
     []
   Name: InteractableManipulation
@@ -69,43 +195,7 @@
   ScriptTypes:
     "":
       {}
-- !<ScriptComponent/43ea9140-3028-4ad7-8311-c8f044fbd8a3>
-  PrefabRemaps:
-    []
-  Name: Interactable
-  Enabled: true
-  ScriptAsset: !<reference> 652e631a-22d0-4941-9f74-2943df59f34c
-  ScriptInputsDefault:
-    enableInstantDrag: true
-    allowMultipleInteractors: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      targetingMode: !<float> 1.000000
-      enableInstantDrag: false
-      allowMultipleInteractors: true
-  ScriptTypes:
-    "":
-      {}
-- !<AudioComponent/60004500-f772-489d-b009-89d6ed6f6547>
-  PrefabRemaps:
-    []
-  Name: Audio
-  Enabled: true
-  AudioTrack: !<reference> 4c3c4150-013a-407b-ae19-391641f6d12d
-  EnableAutoplayLoop: false
-  Volume: 1.000000
-  EnableMixToSnap: false
-  RecordVolume: 1.000000
-  EnableSpatialAudio: true
-  EnableDistanceEffect: true
-  CurveType: Logarithm
-  MinDistance: 0.000000
-  MaxDistance: 1000.000000
-  EnableDirectivityEffect: true
-  EnablePositionEffect: true
-- !<SceneObject/6d876bfb-6bba-46f1-b4e0-023509853aae>
+- !<SceneObject/af7d881f-a68c-444d-b459-64f2edf5a642>
   PrefabRemaps:
     []
   Name: PingPongBallNew
@@ -119,87 +209,9 @@
   Children:
     []
   Components:
-    - !<own> 7cec936b-d46f-46b5-b0f4-b143efa664ef
-    - !<own> d01bdedc-3150-4447-85bc-cc5bbfa955c0
-    - !<own> 60004500-f772-489d-b009-89d6ed6f6547
-    - !<own> 43ea9140-3028-4ad7-8311-c8f044fbd8a3
-    - !<own> 2396e6c9-76c8-48ca-ab40-ec1bada2cd62
-    - !<own> 9c42ad6b-3038-457b-868d-040c63e65ea8
-- !<RenderMeshVisual/7cec936b-d46f-46b5-b0f4-b143efa664ef>
-  PrefabRemaps:
-    []
-  Name: Render Mesh Visual
-  Enabled: true
-  RenderOrder: 0
-  StretchMode: Stretch
-  VerticalAlignment: Center
-  HorizontalAlignment: Center
-  MeshShadowMode: None
-  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-  ShadowDensity: 1.000000
-  Materials:
-    - !<reference> 6da745e3-1140-4131-a53a-3da6e3dfd3eb
-  Mesh: !<reference> df2e3c19-b55b-4eb1-9629-88dc02096d68
-  Skin: !<reference> 00000000-0000-0000-0000-000000000000
-  BlendShapesEnabled: true
-  BlendNormals: false
-  BlendShapes:
-    {}
-- !<ScriptComponent/9c42ad6b-3038-457b-868d-040c63e65ea8>
-  PrefabRemaps:
-    []
-  Name: PingPongBallBehavior
-  Enabled: true
-  ScriptAsset: !<reference> 661e8ebe-53a2-4317-9deb-c25c09b94a23
-  ScriptInputsDefault:
-    {}
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      audio: !<reference.AudioComponent> 60004500-f772-489d-b009-89d6ed6f6547
-      targetOutlineMaterial: !<reference.Material> 7231c7bc-6c14-4331-ad23-9ab928107707
-      meshVisual: !<reference.RenderMeshVisual> 7cec936b-d46f-46b5-b0f4-b143efa664ef
-  ScriptTypes:
-    "":
-      {}
-- !<ObjectPrefabAssetData/c3b7a980-42ec-4452-a4f9-bd61ff22bd3b>
-  SourceRemaps:
-    - 152aaffd-5133-4fdc-b12e-3a5ff5ac3820: 43ea9140-3028-4ad7-8311-c8f044fbd8a3
-    - 1e7afa1e-5715-4d16-b96b-0df6f678cb94: d01bdedc-3150-4447-85bc-cc5bbfa955c0
-    - 24310381-d41d-4f4e-9a99-f6451407f0e7: 60004500-f772-489d-b009-89d6ed6f6547
-    - 28ce3679-3f78-4769-b5e7-2a365066ee2f: 2396e6c9-76c8-48ca-ab40-ec1bada2cd62
-    - 85d47bcf-ee6f-4273-9258-8d89ca8aec7e: ea25413e-6ca8-49b3-919b-4e06e10aa78a
-    - 94853a31-9d0b-4c6c-b41d-236e3e19491d: 9c42ad6b-3038-457b-868d-040c63e65ea8
-    - a146f3dd-403d-4ef1-943e-b2b728ad8250: 6d876bfb-6bba-46f1-b4e0-023509853aae
-    - c83c63e4-c139-4bda-b426-6584468a065f: 7cec936b-d46f-46b5-b0f4-b143efa664ef
-  SourceState: !<own> ea25413e-6ca8-49b3-919b-4e06e10aa78a
-- !<BodyComponent/d01bdedc-3150-4447-85bc-cc5bbfa955c0>
-  PrefabRemaps:
-    []
-  Name: Physics Body
-  Enabled: true
-  Shape: !<Sphere>
-    FitVisual: false
-    Radius: 0.500000
-  Matter: !<reference> 136fb47c-9df1-4aa9-841b-b3862ba4ca51
-  Filter: !<reference> 00000000-0000-0000-0000-000000000000
-  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
-  WorldSettings: !<reference> 32fa292a-8acb-469e-b941-e9ec518d8ca0
-  EnableSmoothing: false
-  PositionTension: 30.000000
-  RotationTension: 30.000000
-  ForceCompound: false
-  Intangible: false
-  ShowCollider: false
-  Dynamic: false
-  BodySetting: Mass
-  BodySettingValue: 0.002000
-  Damping: 0.010000
-  AngularDamping: 0.010000
-- !<ObjectPrefab/ea25413e-6ca8-49b3-919b-4e06e10aa78a>
-  PackagePath: ""
-  objects:
-    - !<own> 6d876bfb-6bba-46f1-b4e0-023509853aae
-  LazyLoading: false
-  RetainAssets: true
+    - !<own> 4f0008fe-39bb-4b0b-894c-d3dd152861b2
+    - !<own> 194317c4-d5bd-4989-a5ac-69acc332d4bb
+    - !<own> 6f5fe2bc-949f-4a5f-a095-111fd3a6bbc1
+    - !<own> 3edd5ad4-bdf3-4ad0-b892-9a2aa99b2227
+    - !<own> 8de687c8-6089-4559-a5af-2f6392d61fee
+    - !<own> 74652068-f841-4820-b665-837b49919fc5

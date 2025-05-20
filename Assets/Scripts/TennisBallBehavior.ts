@@ -1,13 +1,12 @@
-import { Interactable } from "SpectaclesSyncKit/SpectaclesInteractionKit/Components/Interaction/Interactable/Interactable";
-// import { InteractableManipulation } from "SpectaclesSyncKit/SpectaclesInteractionKit/Components/Interaction/Interactable/InteractableManipulation";
-import WorldCameraFinderProvider from "SpectaclesSyncKit/SpectaclesInteractionKit/Providers/CameraProvider/WorldCameraFinderProvider";
-import { SIK } from "SpectaclesSyncKit/SpectaclesInteractionKit/SIK";
+import { Interactable } from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable";
+import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
+import { SIK } from "SpectaclesInteractionKit.lspkg/SIK";
 import { Buffer } from "Scripts/Utils/Buffer";
-import { InteractorEvent } from "SpectaclesSyncKit/SpectaclesInteractionKit/Core/Interactor/InteractorEvent";
+import { InteractorEvent } from "SpectaclesInteractionKit.lspkg/Core/Interactor/InteractorEvent";
 import {
   Interactor,
   InteractorInputType,
-} from "SpectaclesSyncKit/SpectaclesInteractionKit/Core/Interactor/Interactor";
+} from "SpectaclesInteractionKit.lspkg/Core/Interactor/Interactor";
 import { Grabbable } from "./Grabbable";
 import { ScreenLogger } from "./Utils/ScreenLogger";
 
@@ -49,8 +48,6 @@ export class TennisBallBehavior extends BaseScriptComponent {
    * to be "grabbed" or interacted with by the user's hand or controller.
    */
   interactable: Interactable;
-
-  // interactableManipulation: InteractableManipulation;
 
   /**
    * Cached reference to the object's Transform component.

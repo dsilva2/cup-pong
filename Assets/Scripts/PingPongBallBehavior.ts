@@ -15,7 +15,8 @@ export class PingPongBallBehavior extends TennisBallBehavior {
   protected OBJECT_MASS = 0.02;
   protected HAND_ACCELERATION_MULTIPLIER = 5.08;
   protected HAND_BASE_VELOCITY_MULTIPLIER = 3.6;
-  private originPoint: vec3;
+  private originPoint1: vec3;
+  private originPoint2: vec3;
   private distanceThreshold = 1000; // Distance in units before regeneration
   private regenerationTimer: DelayedCallbackEvent;
   private regenerationDelay = 2.0; // Time in seconds after release before regeneration
@@ -23,6 +24,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
   private positionBuffer: Buffer = new Buffer(4);
   private rotationBuffer: Buffer = new Buffer(4);
   private velocityBuffer: Buffer = new Buffer(4);
+  private throwCount: number = 0; // Track number of throws
 
   onAwake() {
     super.onAwake();
@@ -51,7 +53,10 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     this.createEvent("UpdateEvent").bind(this.onUpdate.bind(this));
 
     this.t = this.getTransform();
-    this.originPoint = this.t.getWorldPosition();
+    // Initialize origin points for each player
+    this.originPoint1 = new vec3(20, 20, -20);
+    this.originPoint2 = new vec3(-20, 20, -220);
+    this.t.setWorldPosition(this.originPoint1);
 
     // Create a regeneration timer but don't start it yet
     this.regenerationTimer = this.createEvent("DelayedCallbackEvent");
@@ -62,7 +67,11 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     // Check if ball has strayed too far from origin
     if (!this.isBeingInteracted) {
       const currentPos = this.t.getWorldPosition();
-      const distanceFromOrigin = currentPos.distance(this.originPoint);
+      const currentOrigin =
+        Math.floor(this.throwCount / 2) % 2 === 0
+          ? this.originPoint1
+          : this.originPoint2;
+      const distanceFromOrigin = currentPos.distance(currentOrigin);
 
       if (distanceFromOrigin > this.distanceThreshold) {
         this.regenerateBall();
@@ -78,8 +87,12 @@ export class PingPongBallBehavior extends TennisBallBehavior {
   }
 
   private regenerateBall() {
-    // Reset position to origin
-    this.t.setWorldPosition(this.originPoint);
+    // Alternate between origin points based on throw count
+    const isEvenThrowSet = Math.floor(this.throwCount / 2) % 2 === 0;
+    const targetOrigin = isEvenThrowSet ? this.originPoint1 : this.originPoint2;
+
+    // Reset position to the appropriate origin point
+    this.t.setWorldPosition(targetOrigin);
 
     // Reset physics and temporarily disable physics
     if (this.physicsBody) {
@@ -133,6 +146,9 @@ export class PingPongBallBehavior extends TennisBallBehavior {
       // Set velocity directly instead of using forces
       this.physicsBody.velocity = baseVelocity;
       print("Set velocity: " + baseVelocity.toString());
+
+      // Increment throw count
+      this.throwCount++;
 
       // Regenerate the ball after a delay
       this.regenerationTimer.reset(this.regenerationDelay);

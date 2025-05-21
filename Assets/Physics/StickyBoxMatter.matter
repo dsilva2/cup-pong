@@ -1,0 +1,11 @@
+- !<Matter/df264e78-6975-4fb4-b7a4-9e47a6061334>
+  PackagePath: ""
+  Friction: 0.800000
+  RollingFriction: 0.800000
+  SpinningFriction: 0.800000
+  DynamicBounciness: 0.000000
+  StaticBounciness: 0.000000
+  Name: StickyBoxMatter
+  Restitution: !<float> 0.000000
+  DynamicFriction: 0.800000
+  StaticFriction: 0.800000

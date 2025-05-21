@@ -26,6 +26,8 @@ export class PingPongBallBehavior extends TennisBallBehavior {
   private velocityBuffer: Buffer = new Buffer(4);
   private throwCount: number = 0; // Track number of throws
 
+  @input displayText: SceneObject;
+
   onAwake() {
     super.onAwake();
 
@@ -54,8 +56,8 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
     this.t = this.getTransform();
     // Initialize origin points for each player
-    this.originPoint1 = new vec3(20, 20, -20);
-    this.originPoint2 = new vec3(-20, 20, -220);
+    this.originPoint1 = new vec3(10, 10, -20);
+    this.originPoint2 = new vec3(-10, 10, -220);
     this.t.setWorldPosition(this.originPoint1);
 
     // Create a regeneration timer but don't start it yet
@@ -167,5 +169,94 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
     // Return the selected random color
     return rainbowColors[randomIndex];
+  }
+
+  onCollisionEnter(e) {
+    let collision = e.collision;
+    let shouldPlayAudio = false;
+
+    // Used to determine the closest collision contact point to the world camera.
+    let closestHit = null;
+    let wCamera = WorldCameraFinderProvider.getInstance().getWorldPosition();
+    let hitObject: SceneObject = null;
+
+    e.collision.contacts.forEach((contact) => {
+      // Update closest collision point for reference if none is set,
+      // or if this contact is closer to the camera.
+      if (closestHit == null) {
+        hitObject = collision.collider.getSceneObject();
+        closestHit = contact.position;
+      } else {
+        if (contact.position.distance(wCamera) < closestHit.distance(wCamera)) {
+          closestHit = contact.position;
+          hitObject = collision.collider.getSceneObject();
+        }
+      }
+
+      // Print collision with any object
+      const hitSceneObject = collision.collider.getSceneObject();
+      print("Ping pong ball hit: " + hitSceneObject.name);
+
+      // Check if we hit liquid
+      if (
+        hitSceneObject.name.toLowerCase().indexOf("liquid") >= 0 ||
+        hitSceneObject.name.toLowerCase().indexOf("water") >= 0
+      ) {
+        print("Ping pong ball hit liquid!");
+
+        // Find the parent cup object (the one with the number in its name)
+        let parentObject = hitSceneObject;
+        while (parentObject && !parentObject.name.match(/cup v2 \d+/)) {
+          print("Checking parent: " + parentObject.name);
+          parentObject = parentObject.getParent();
+        }
+
+        if (parentObject) {
+          parentObject.enabled = false; // Hide the cup and its contents
+          print("Hid cup: " + parentObject.name);
+        }
+      }
+
+      // If we hit something that isn't another ball and the collision impulse is big enough,
+      // we play a sound.
+      if (
+        collision.collider.getSceneObject().name.indexOf("Ball") < 0 &&
+        contact.impulse > 0.1
+      ) {
+        shouldPlayAudio = true;
+      }
+
+      // Handle cylinder/cup collision
+      if (hitSceneObject.name.indexOf("cup") >= 0) {
+        // Find the parent cup object (the one with the number in its name)
+        let parentObject = hitSceneObject;
+        while (parentObject && !parentObject.name.match(/cup v2 \d+/)) {
+          parentObject = parentObject.getParent();
+        }
+
+        if (parentObject) {
+          const message = "Hit cup: " + parentObject.name;
+          print(message);
+          if (this.displayText) {
+            const textComponent = this.displayText.getComponent("Text");
+            if (textComponent) {
+              textComponent.text = message;
+              textComponent.enabled = true;
+
+              // Hide the text after 2 seconds
+              const hideEvent = this.createEvent("DelayedCallbackEvent");
+              hideEvent.bind(() => {
+                textComponent.enabled = false;
+              });
+              hideEvent.reset(2.0);
+            }
+          }
+        }
+      }
+    });
+
+    if (shouldPlayAudio) {
+      this.audio.play(1);
+    }
   }
 }

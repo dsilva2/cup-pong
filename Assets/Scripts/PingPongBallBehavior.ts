@@ -25,8 +25,8 @@ export class PingPongBallBehavior extends TennisBallBehavior {
   private rotationBuffer: Buffer = new Buffer(4);
   private velocityBuffer: Buffer = new Buffer(4);
   private throwCount: number = 0; // Track number of throws
-
-  @input displayText: SceneObject;
+  // Add this property to your class at the top with other properties:
+  private hasHitCupThisThrow: boolean = false;
 
   onAwake() {
     super.onAwake();
@@ -90,6 +90,8 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
   private regenerateBall() {
     // Alternate between origin points based on throw count
+    this.physicsBody.enabled = true;
+    this.hasHitCupThisThrow = false;
     const isEvenThrowSet = Math.floor(this.throwCount / 2) % 2 === 0;
     const targetOrigin = isEvenThrowSet ? this.originPoint1 : this.originPoint2;
 
@@ -130,6 +132,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
   onTriggerEnd() {
     this.isBeingInteracted = false;
+    this.hasHitCupThisThrow = false;
 
     // Keep physics enabled when released and apply hand velocity
     if (this.physicsBody) {
@@ -150,7 +153,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
       print("Set velocity: " + baseVelocity.toString());
 
       // Increment throw count
-      this.throwCount++;
+
 
       // Regenerate the ball after a delay
       this.regenerationTimer.reset(this.regenerationDelay);
@@ -169,6 +172,56 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
     // Return the selected random color
     return rainbowColors[randomIndex];
+  }
+
+  private animateCupRemoval(cupObject: SceneObject) {
+    // Animation parameters
+    const riseDuration = 1.0; // seconds for rise
+    const dashDuration = 0.3; // seconds for dash
+    const totalDuration = riseDuration + dashDuration;
+    const riseHeight = 50; // units to rise
+    const dashDistance = 200; // units to dash right
+    const startTime = getTime();
+    const startPosition = cupObject.getTransform().getWorldPosition();
+
+    // Create update event for animation
+    const animationEvent = this.createEvent("UpdateEvent");
+    animationEvent.bind(() => {
+      const elapsed = getTime() - startTime;
+
+      if (elapsed < riseDuration) {
+        // Phase 1: Rising up
+        const riseProgress = elapsed / riseDuration;
+        const easedProgress = 1 - Math.pow(1 - riseProgress, 3);
+
+        const newPosition = new vec3(
+          startPosition.x,
+          startPosition.y + (riseHeight * easedProgress),
+          startPosition.z
+        );
+        cupObject.getTransform().setWorldPosition(newPosition);
+      } else {
+        // Phase 2: Dashing to the right
+        const dashProgress = (elapsed - riseDuration) / dashDuration;
+        const easedDashProgress = dashProgress * dashProgress; // Accelerating dash
+
+        const newPosition = new vec3(
+          startPosition.x + (dashDistance * easedDashProgress),
+          startPosition.y + riseHeight, // Stay at risen height
+          startPosition.z
+        );
+        cupObject.getTransform().setWorldPosition(newPosition);
+
+        // Check if animation is complete
+        if (elapsed >= totalDuration) {
+          // Remove the update event
+          animationEvent.enabled = false;
+
+          // Disable the cup object
+          cupObject.enabled = false;
+        }
+      }
+    });
   }
 
   onCollisionEnter(e) {
@@ -203,6 +256,12 @@ export class PingPongBallBehavior extends TennisBallBehavior {
         hitSceneObject.name.toLowerCase().indexOf("water") >= 0
       ) {
         print("Ping pong ball hit liquid!");
+        if (this.hasHitCupThisThrow) {
+          print("Already hit a cup this throw, ignoring additional hits");
+          return; // Exit early, don't process this hit
+        }
+
+        print("Ping pong ball hit liquid!");
 
         // Find the parent cup object (the one with the number in its name)
         let parentObject = hitSceneObject;
@@ -212,8 +271,18 @@ export class PingPongBallBehavior extends TennisBallBehavior {
         }
 
         if (parentObject) {
-          parentObject.enabled = false; // Hide the cup and its contents
-          print("Hid cup: " + parentObject.name);
+          // Mark that we've hit a cup this throw
+          this.hasHitCupThisThrow = true;
+
+          this.animateCupRemoval(parentObject);
+
+          // Optionally disable the ball's physics to prevent further collisions
+          if (this.physicsBody) {
+            this.physicsBody.enabled = false;
+          }
+
+          // Regenerate the ball after a short delay
+          this.regenerationTimer.reset(0.5);
         }
       }
 
@@ -237,20 +306,6 @@ export class PingPongBallBehavior extends TennisBallBehavior {
         if (parentObject) {
           const message = "Hit cup: " + parentObject.name;
           print(message);
-          if (this.displayText) {
-            const textComponent = this.displayText.getComponent("Text");
-            if (textComponent) {
-              textComponent.text = message;
-              textComponent.enabled = true;
-
-              // Hide the text after 2 seconds
-              const hideEvent = this.createEvent("DelayedCallbackEvent");
-              hideEvent.bind(() => {
-                textComponent.enabled = false;
-              });
-              hideEvent.reset(2.0);
-            }
-          }
         }
       }
     });

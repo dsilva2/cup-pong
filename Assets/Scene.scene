@@ -745,7 +745,7 @@
   PrefabRemaps:
     []
   Name: HiddenFromSceneView
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -9761,7 +9761,6 @@
       audio: !<reference.AudioComponent> be859f42-bb44-4aa6-9ada-6c9dd6ccf823
       targetOutlineMaterial: !<reference.Material> 7231c7bc-6c14-4331-ad23-9ab928107707
       meshVisual: !<reference.RenderMeshVisual> 80e8f960-6fe2-4fa1-a553-56c4fad85e6d
-      displayText: !<reference.SceneObject> d8ba4697-c463-450f-8545-062d6c046a35
   ScriptTypes:
     "":
       {}
@@ -21271,7 +21270,6 @@
     audio: true
     targetOutlineMaterial: true
     meshVisual: true
-    displayText: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -21279,7 +21277,6 @@
       audio: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
       targetOutlineMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
       meshVisual: !<reference.RenderMeshVisual> 00000000-0000-0000-0000-000000000000
-      displayText: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     "":
       {}

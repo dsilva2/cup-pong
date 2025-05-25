@@ -123,7 +123,7 @@
   Enabled: true
   ScriptAsset: !<reference> 661e8ebe-53a2-4317-9deb-c25c09b94a23
   ScriptInputsDefault:
-    displayText: true
+    {}
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -131,7 +131,6 @@
       audio: !<reference.AudioComponent> 6f5fe2bc-949f-4a5f-a095-111fd3a6bbc1
       targetOutlineMaterial: !<reference.Material> 7231c7bc-6c14-4331-ad23-9ab928107707
       meshVisual: !<reference.RenderMeshVisual> 4f0008fe-39bb-4b0b-894c-d3dd152861b2
-      displayText: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     "":
       {}

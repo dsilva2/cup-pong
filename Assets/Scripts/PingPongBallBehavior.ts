@@ -26,7 +26,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
   private velocityBuffer: Buffer = new Buffer(4);
   private throwCount: number = 0; // Track number of throws
 
-  @input displayText: SceneObject;
+  // @input displayText: SceneObject;
 
   onAwake() {
     super.onAwake();
@@ -57,7 +57,8 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     this.t = this.getTransform();
     // Initialize origin points for each player
     this.originPoint1 = new vec3(10, 10, -20);
-    this.originPoint2 = new vec3(-10, 10, -220);
+    this.originPoint2 = new vec3(10, 10, -20);
+    // this.originPoint2 = new vec3(-10, 10, -220);
     this.t.setWorldPosition(this.originPoint1);
 
     // Create a regeneration timer but don't start it yet
@@ -212,8 +213,27 @@ export class PingPongBallBehavior extends TennisBallBehavior {
         }
 
         if (parentObject) {
-          parentObject.enabled = false; // Hide the cup and its contents
-          print("Hid cup: " + parentObject.name);
+          // Animate the cup upward by 100 units over 6 seconds, then hide it
+          const transform = parentObject.getTransform();
+          const startPos = transform.getWorldPosition();
+          const endPos = new vec3(startPos.x, startPos.y + 100, startPos.z);
+          const duration = 6.0; // seconds
+          let elapsed = 0;
+
+          const animateUp = () => {
+            elapsed += getDeltaTime();
+            const t = Math.min(elapsed / duration, 1.0);
+            const newY = startPos.y + (endPos.y - startPos.y) * t;
+            transform.setWorldPosition(new vec3(startPos.x, newY, startPos.z));
+            if (t < 1.0) {
+              this.createEvent("UpdateEvent").bind(animateUp);
+            } else {
+              parentObject.enabled = false;
+              print("Raised and hid cup: " + parentObject.name);
+            }
+          };
+
+          animateUp();
         }
       }
 
@@ -237,20 +257,20 @@ export class PingPongBallBehavior extends TennisBallBehavior {
         if (parentObject) {
           const message = "Hit cup: " + parentObject.name;
           print(message);
-          if (this.displayText) {
-            const textComponent = this.displayText.getComponent("Text");
-            if (textComponent) {
-              textComponent.text = message;
-              textComponent.enabled = true;
+          // if (this.displayText) {
+          //   const textComponent = this.displayText.getComponent("Text");
+          //   if (textComponent) {
+          //     textComponent.text = message;
+          //     textComponent.enabled = true;
 
-              // Hide the text after 2 seconds
-              const hideEvent = this.createEvent("DelayedCallbackEvent");
-              hideEvent.bind(() => {
-                textComponent.enabled = false;
-              });
-              hideEvent.reset(2.0);
-            }
-          }
+          //     // Hide the text after 2 seconds
+          //     const hideEvent = this.createEvent("DelayedCallbackEvent");
+          //     hideEvent.bind(() => {
+          //       textComponent.enabled = false;
+          //     });
+          //     hideEvent.reset(2.0);
+          //   }
+          // }
         }
       }
     });

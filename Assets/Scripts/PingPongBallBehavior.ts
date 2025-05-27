@@ -26,7 +26,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
   private velocityBuffer: Buffer = new Buffer(4);
   private throwCount: number = 0; // Track number of throws
 
-  @input displayText: SceneObject;
+  // @input displayText: SceneObject;
 
   onAwake() {
     super.onAwake();
@@ -57,7 +57,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     this.t = this.getTransform();
     // Initialize origin points for each player
     this.originPoint1 = new vec3(10, 10, -20);
-    this.originPoint2 = new vec3(-10, 10, -220);
+    this.originPoint2 = new vec3(-10, 10, -20);
     this.t.setWorldPosition(this.originPoint1);
 
     // Create a regeneration timer but don't start it yet
@@ -138,16 +138,16 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
       // Calculate the velocity to apply to the ball from the hand movement
       let baseVelocity = this.getHandVelocity();
-      print("Base velocity before scaling: " + baseVelocity.toString());
+      // print("Base velocity before scaling: " + baseVelocity.toString());
 
       baseVelocity = baseVelocity.uniformScale(
         this.HAND_BASE_VELOCITY_MULTIPLIER * 0.5
       ); // Reduced multiplier
-      print("Base velocity after scaling: " + baseVelocity.toString());
+      // print("Base velocity after scaling: " + baseVelocity.toString());
 
       // Set velocity directly instead of using forces
       this.physicsBody.velocity = baseVelocity;
-      print("Set velocity: " + baseVelocity.toString());
+      // print("Set velocity: " + baseVelocity.toString());
 
       // Increment throw count
       this.throwCount++;
@@ -196,6 +196,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
       // Print collision with any object
       const hitSceneObject = collision.collider.getSceneObject();
       print("Ping pong ball hit: " + hitSceneObject.name);
+      print("hit scene object" + JSON.stringify(hitSceneObject));
 
       // Check if we hit liquid
       if (
@@ -203,6 +204,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
         hitSceneObject.name.toLowerCase().indexOf("water") >= 0
       ) {
         print("Ping pong ball hit liquid!");
+        print("Hit object name: " + hitSceneObject.name);
 
         // Find the parent cup object (the one with the number in its name)
         let parentObject = hitSceneObject;
@@ -212,8 +214,28 @@ export class PingPongBallBehavior extends TennisBallBehavior {
         }
 
         if (parentObject) {
-          parentObject.enabled = false; // Hide the cup and its contents
-          print("Hid cup: " + parentObject.name);
+          print("Found parent cup: " + parentObject.name);
+
+          // Try all script components and call setHidden if available
+          const scripts = parentObject.getComponents("Component.Script");
+          let found = false;
+          for (let i = 0; i < scripts.length; i++) {
+            print("Trying script component " + i);
+            if (typeof scripts[i].setHidden === "function") {
+              print("Calling setHidden on script component " + i);
+              scripts[i].setHidden(true);
+              found = true;
+            }
+          }
+          if (!found) {
+            print(
+              "Warning: CupStorageProperty.setHidden not found on any script component for cup: " +
+                parentObject.name +
+                ". Please make sure the CupStorageProperty component is attached to the cup in the Inspector."
+            );
+          }
+        } else {
+          print("Warning: Could not find parent cup object");
         }
       }
 
@@ -237,20 +259,20 @@ export class PingPongBallBehavior extends TennisBallBehavior {
         if (parentObject) {
           const message = "Hit cup: " + parentObject.name;
           print(message);
-          if (this.displayText) {
-            const textComponent = this.displayText.getComponent("Text");
-            if (textComponent) {
-              textComponent.text = message;
-              textComponent.enabled = true;
+          // if (this.displayText) {
+          //   const textComponent = this.displayText.getComponent("Text");
+          //   if (textComponent) {
+          //     textComponent.text = message;
+          //     textComponent.enabled = true;
 
-              // Hide the text after 2 seconds
-              const hideEvent = this.createEvent("DelayedCallbackEvent");
-              hideEvent.bind(() => {
-                textComponent.enabled = false;
-              });
-              hideEvent.reset(2.0);
-            }
-          }
+          //     // Hide the text after 2 seconds
+          //     const hideEvent = this.createEvent("DelayedCallbackEvent");
+          //     hideEvent.bind(() => {
+          //       textComponent.enabled = false;
+          //     });
+          //     hideEvent.reset(2.0);
+          //   }
+          // }
         }
       }
     });

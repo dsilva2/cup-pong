@@ -369,6 +369,22 @@
     - !<own> 7b750bef-8d35-4d2d-88bb-21c7f4d39fed
   Components:
     []
+- !<ScriptComponent/04331c46-c4c0-4e90-a4bc-28ce110088dd>
+  PrefabRemaps:
+    []
+  Name: PositionRotationScaleStoragePropertyExample
+  Enabled: false
+  ScriptAsset: !<reference> 78425c27-135b-45d4-9d0d-70aa33f3177c
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/044bacd3-572d-4db0-a1c5-c05942c5f81e>
   PrefabRemaps:
     []
@@ -2579,6 +2595,22 @@
     - !<own> d98adabf-5d0e-4f07-b2ba-4ccf1bc9a34a
   Components:
     []
+- !<ScriptComponent/1886c6d5-6433-4eec-9a5b-506035a1854a>
+  PrefabRemaps:
+    []
+  Name: CupStorageProperty
+  Enabled: true
+  ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cupObject: !<reference.SceneObject> 891f3579-2e0a-4246-8275-065f4ed472d2
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/188cb2ac-17b0-4e9c-ab4c-31ed8b5a5680>
   PrefabRemaps:
     []
@@ -8485,6 +8517,38 @@
     - !<own> eb9e0bf9-c82e-4c62-a94e-372a26a90c57
   Components:
     []
+- !<ScriptComponent/679f277c-a919-41b3-b42d-0cf9b21f1324>
+  PrefabRemaps:
+    []
+  Name: SyncTransform
+  Enabled: true
+  ScriptAsset: !<reference> f3c20594-375f-43d8-a93f-a8e75bd6a61d
+  ScriptInputsDefault:
+    networkIdTypeString: true
+    customNetworkId: true
+    positionSyncString: true
+    rotationSyncString: true
+    scaleSyncString: true
+    persistenceString: true
+    sendsPerSecondLimit: true
+    useSmoothing: true
+    interpolationTarget: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      networkIdTypeString: objectId
+      customNetworkId: enter_unique_id
+      positionSyncString: Local
+      rotationSyncString: Local
+      scaleSyncString: Local
+      persistenceString: Session
+      sendsPerSecondLimit: 10
+      useSmoothing: true
+      interpolationTarget: -0.250000
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/67a9869d-e2c7-4507-b25e-df13bdf3941b>
   PrefabRemaps:
     []
@@ -9761,7 +9825,6 @@
       audio: !<reference.AudioComponent> be859f42-bb44-4aa6-9ada-6c9dd6ccf823
       targetOutlineMaterial: !<reference.Material> 7231c7bc-6c14-4331-ad23-9ab928107707
       meshVisual: !<reference.RenderMeshVisual> 80e8f960-6fe2-4fa1-a553-56c4fad85e6d
-      displayText: !<reference.SceneObject> d8ba4697-c463-450f-8545-062d6c046a35
   ScriptTypes:
     "":
       {}
@@ -11402,7 +11465,7 @@
     - 9994d86b-430d-4e37-899c-400a6fa9bf62: 44169637-59b1-4672-965f-0fdd57459459
     - f38ad7a5-a2b9-4349-8931-fc824c6b393d: 3af7b6dd-198b-4ecc-9914-d2b149a95576
   Name: cup v2 99
-  Enabled: false
+  Enabled: true
   Layers: 1
   LocalTransform:
     position: {x: 5.000000, y: -26.795439, z: -141.591614}
@@ -11412,7 +11475,10 @@
   Children:
     - !<own> 015c81df-a52e-4490-b03c-5081ba4fedff
   Components:
-    - !<own> e23f90a6-f560-4221-88a0-44a391235ab2
+    - !<own> 679f277c-a919-41b3-b42d-0cf9b21f1324
+    - !<own> ec33011e-5ef7-433f-a81f-714e188c8b36
+    - !<own> 1886c6d5-6433-4eec-9a5b-506035a1854a
+    - !<own> 04331c46-c4c0-4e90-a4bc-28ce110088dd
 - !<SceneObject/895702ab-2afb-4b1b-b7f0-45389deafa67>
   PrefabRemaps:
     []
@@ -11838,6 +11904,22 @@
     []
   Components:
     - !<own> dfb4e054-3f20-42c9-9cdd-696ecfafee0a
+- !<ScriptComponent/8e1537b3-0374-4803-b28d-c9a07ede1040>
+  PrefabRemaps:
+    []
+  Name: CupStorageProperty
+  Enabled: true
+  ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cupObject: !<reference.SceneObject> efe962b2-d03f-4169-a0ce-063e05cc0de4
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/8e1acdcf-0152-48cf-b78b-2304ba21ab14>
   PrefabRemaps:
     []
@@ -12988,6 +13070,21 @@
     []
   Components:
     - !<own> e174f41e-2f8a-45b2-805f-8c31ad2452c0
+- !<SceneObject/9cd8373a-c976-4f5d-af69-65f30e353d79>
+  PrefabRemaps:
+    []
+  Name: CupStorageProperty
+  Enabled: false
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 8e1537b3-0374-4803-b28d-c9a07ede1040
 - !<SceneObject/9ceec2b7-eb52-4ef8-9e81-e611aa066f18>
   PrefabRemaps:
     - 2259e172-b35a-430c-8260-4a0220fdbd46: 44169637-59b1-4672-965f-0fdd57459459
@@ -18862,24 +18959,6 @@
     CapitalizationOverride: None
   DepthTest: false
   TwoSided: false
-- !<ColliderComponent/e23f90a6-f560-4221-88a0-44a391235ab2>
-  PrefabRemaps:
-    []
-  Name: Physics Collider
-  Enabled: true
-  Shape: !<Sphere>
-    FitVisual: true
-    Radius: 6.000000
-  Matter: !<reference> 00000000-0000-0000-0000-000000000000
-  Filter: !<reference> 00000000-0000-0000-0000-000000000000
-  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
-  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
-  EnableSmoothing: false
-  PositionTension: 30.000000
-  RotationTension: 30.000000
-  ForceCompound: false
-  Intangible: false
-  ShowCollider: false
 - !<SceneObject/e27dd726-7fba-4581-b8fe-58f36de6df2c>
   PrefabRemaps:
     []
@@ -19622,6 +19701,22 @@
     - !<own> a1bed033-2f9d-43e2-af81-4269eb6a25c5
   Components:
     []
+- !<ScriptComponent/ec33011e-5ef7-433f-a81f-714e188c8b36>
+  PrefabRemaps:
+    []
+  Name: SyncEntityExample
+  Enabled: true
+  ScriptAsset: !<reference> df192039-0ebe-4ed6-90eb-cbb5eaf90cc3
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/ec63684e-846d-4ebe-b8e3-0b7bf55456b3>
   PrefabRemaps:
     []
@@ -20992,6 +21087,7 @@
     - !<own> 96de38e5-371c-4b5d-9ec6-f9ed14200570
     - !<own> 4d0ab994-d9e5-4beb-a177-a552a8a67095
     - !<own> af82836f-6380-4fea-aee7-ffbfe085000d
+    - !<own> 9cd8373a-c976-4f5d-af69-65f30e353d79
     - !<own> 8b1bedbd-6f14-428a-aca5-06544f776d8a
     - !<own> efe962b2-d03f-4169-a0ce-063e05cc0de4
     - !<own> 674b1808-14b8-4f35-9395-8edebdde67af
@@ -21271,7 +21367,6 @@
     audio: true
     targetOutlineMaterial: true
     meshVisual: true
-    displayText: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -21279,7 +21374,6 @@
       audio: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
       targetOutlineMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
       meshVisual: !<reference.RenderMeshVisual> 00000000-0000-0000-0000-000000000000
-      displayText: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     "":
       {}

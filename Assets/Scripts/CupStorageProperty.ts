@@ -22,7 +22,6 @@ export class CupStorageProperty extends BaseScriptComponent {
     (newValue) => {
       if (this.cupObject) {
         this.t.setWorldPosition(newValue);
-        print("Updated cup position to: " + newValue.toString());
       }
     }
   );

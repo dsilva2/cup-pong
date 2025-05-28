@@ -216,20 +216,20 @@ export class PingPongBallBehavior extends TennisBallBehavior {
         if (parentObject) {
           print("Found parent cup: " + parentObject.name);
 
-          // Try all script components and call setHidden if available
+          // Try all script components and call resetPosition if available
           const scripts = parentObject.getComponents("Component.Script");
           let found = false;
           for (let i = 0; i < scripts.length; i++) {
             print("Trying script component " + i);
-            if (typeof scripts[i].setHidden === "function") {
-              print("Calling setHidden on script component " + i);
-              scripts[i].setHidden(true);
+            if (typeof scripts[i].resetPosition === "function") {
+              print("Calling resetPosition on script component " + i);
+              scripts[i].resetPosition();
               found = true;
             }
           }
           if (!found) {
             print(
-              "Warning: CupStorageProperty.setHidden not found on any script component for cup: " +
+              "Warning: CupStorageProperty.resetPosition not found on any script component for cup: " +
                 parentObject.name +
                 ". Please make sure the CupStorageProperty component is attached to the cup in the Inspector."
             );

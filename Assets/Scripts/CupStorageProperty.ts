@@ -13,32 +13,38 @@ export class CupStorageProperty extends BaseScriptComponent {
   @input
   public cupObject: SceneObject;
 
-  // Local variable for the hidden state
-  private isHidden: boolean = false;
+  private t: Transform;
 
-  // StorageProperty for syncing isHidden
-  private propIsHidden = StorageProperty.autoBool(
-    "isHidden",
-    () => this.isHidden,
+  // StorageProperty for syncing position
+  private propPosition = StorageProperty.autoVec3(
+    "position",
+    () => this.t.getWorldPosition(),
     (newValue) => {
-      this.isHidden = newValue;
-      this.updateVisibility();
+      if (this.cupObject) {
+        this.t.setWorldPosition(newValue);
+        print("Updated cup position to: " + newValue.toString());
+      }
     }
   );
 
   // StoragePropertySet for SyncEntity
-  private storagePropertySet = new StoragePropertySet([this.propIsHidden]);
+  private storagePropertySet = new StoragePropertySet([this.propPosition]);
 
   // SyncEntity for multiplayer sync - CHANGED: removed auto-own
   private syncEntity: SyncEntity = new SyncEntity(
     this,
     this.storagePropertySet,
-    true // Enable auto-ownership
+    false // Changed to false - no auto-ownership
   );
 
   onAwake(): void {
-    // Set initial visibility
-    this.updateVisibility();
+    print(
+      "CupStorageProperty onAwake for: " +
+        (this.cupObject ? this.cupObject.name : "(no cupObject)")
+    );
+
+    // Get the transform component
+    this.t = this.cupObject.getTransform();
 
     // Listen for ready event
     this.syncEntity.notifyOnReady(() => {
@@ -46,64 +52,20 @@ export class CupStorageProperty extends BaseScriptComponent {
         "CupStorageProperty ready for: " +
           (this.cupObject ? this.cupObject.name : "(no cupObject)")
       );
-      // Request ownership when ready
-      this.syncEntity.requestOwnership();
     });
   }
 
   /**
-   * Call this to hide or show the cup (will sync across all clients)
+   * Call this to reset the cup's position (will sync across all clients)
    */
-  public setHidden(hidden: boolean) {
+  public resetPosition() {
     print(
-      "setHidden called. hidden: " +
-        hidden +
-        ", cup: " +
+      "resetPosition called for cup: " +
         (this.cupObject ? this.cupObject.name : "(no cupObject)")
     );
 
-    // Request ownership before setting the value
-    this.syncEntity.requestOwnership();
-
-    // Assign to isHidden, rely on autoBool setter for updateVisibility and sync
-    this.isHidden = hidden;
-  }
-
-  /**
-   * Update the cup's visibility based on isHidden
-   */
-  private updateVisibility() {
-    if (this.cupObject) {
-      // Disable the cup object itself
-      this.cupObject.enabled = !this.isHidden;
-
-      // Safely disable child objects if they exist
-      try {
-        let child = this.cupObject.getChild(0);
-        if (child) {
-          // Only proceed if there's at least one child
-          let index = 0;
-          while (child) {
-            child.enabled = !this.isHidden;
-            index++;
-            child = this.cupObject.getChild(index);
-          }
-        }
-      } catch (error) {
-        // print("No children to update for cup: " + this.cupObject.name);
-      }
-
-      print(
-        `Updated visibility for cup ${this.cupObject.name}: enabled=${!this
-          .isHidden}`
-      );
-    }
-  }
-
-  /**
-   * Public getter to check if cup is hidden
-   */
-  public getIsHidden(): boolean {
-    return this.isHidden;
+    // Set position directly - no ownership needed
+    const newPosition = new vec3(0, 5000, 0);
+    this.t.setWorldPosition(newPosition);
   }
 }

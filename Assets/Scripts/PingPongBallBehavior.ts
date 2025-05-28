@@ -63,6 +63,8 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     // Create a regeneration timer but don't start it yet
     this.regenerationTimer = this.createEvent("DelayedCallbackEvent");
     this.regenerationTimer.bind(this.regenerateBall.bind(this));
+
+
   }
 
   onUpdate() {

@@ -113,7 +113,7 @@ export class TennisBallBehavior extends BaseScriptComponent {
     }
 
     if (!this.grabbable) {
-      print("This module requires the Grabbable component.");
+      // print("This module requires the Grabbable component.");
       return;
     }
 

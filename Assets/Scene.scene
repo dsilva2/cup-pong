@@ -293,6 +293,22 @@
     []
   Components:
     - !<own> b397d2f9-89fc-41c7-a733-1c73a85d5b10
+- !<ScriptComponent/02776359-8e2c-40ca-8ceb-c6fd2f1664a7>
+  PrefabRemaps:
+    []
+  Name: CupStorageProperty
+  Enabled: true
+  ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cupObject: !<reference.SceneObject> 585db05c-7e36-4316-9ca7-6da999eca2a4
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/027de13f-dd78-4ecc-9509-64a395035683>
   PrefabRemaps:
     []
@@ -661,6 +677,22 @@
     - !<own> 5f148a01-a0fe-43e2-9751-3823f66993b5
   Components:
     []
+- !<ScriptComponent/072a6ff6-0946-4302-8c02-426668fa7840>
+  PrefabRemaps:
+    []
+  Name: CupStorageProperty
+  Enabled: true
+  ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cupObject: !<reference.SceneObject> 674b1808-14b8-4f35-9395-8edebdde67af
+  ScriptTypes:
+    "":
+      {}
 - !<RenderMeshVisual/08537416-43de-4f1f-83cf-1f1d6f7f7eb9>
   PrefabRemaps:
     []
@@ -2579,6 +2611,22 @@
     - !<own> d98adabf-5d0e-4f07-b2ba-4ccf1bc9a34a
   Components:
     []
+- !<ScriptComponent/1886c6d5-6433-4eec-9a5b-506035a1854a>
+  PrefabRemaps:
+    []
+  Name: CupStorageProperty
+  Enabled: true
+  ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cupObject: !<reference.SceneObject> 891f3579-2e0a-4246-8275-065f4ed472d2
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/188cb2ac-17b0-4e9c-ab4c-31ed8b5a5680>
   PrefabRemaps:
     []
@@ -2614,6 +2662,22 @@
   ForceCompound: false
   Intangible: false
   ShowCollider: false
+- !<ScriptComponent/19bf0465-8848-46c4-8d9e-22d69511da14>
+  PrefabRemaps:
+    []
+  Name: CupStorageProperty
+  Enabled: true
+  ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cupObject: !<reference.SceneObject> c56ca737-b00f-493c-902c-d5c5d7282135
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/19c1a4a0-0964-4b34-af1b-a707e8aa13e9>
   PrefabRemaps:
     []
@@ -4436,7 +4500,7 @@
   Children:
     - !<own> 765c5061-3312-4dcc-a6d5-d8e8f66cfbde
   Components:
-    []
+    - !<own> ae6b0c63-0973-4a4a-8453-e727a31aa427
 - !<SceneObject/304ca338-e913-4243-975f-6ed345e1d6a2>
   PrefabRemaps:
     []
@@ -4628,6 +4692,22 @@
     - !<own> 19c1a4a0-0964-4b34-af1b-a707e8aa13e9
   Components:
     []
+- !<ScriptComponent/353e9520-bed9-4189-9d15-ae5f7738db0c>
+  PrefabRemaps:
+    []
+  Name: CupStorageProperty
+  Enabled: true
+  ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cupObject: !<reference.SceneObject> bdd31a5d-5439-40c5-a4f0-aaacc9c03a44
+  ScriptTypes:
+    "":
+      {}
 - !<RenderMeshVisual/3587d7b7-e1e9-4214-8fc1-b626e947ab8d>
   PrefabRemaps:
     []
@@ -7091,7 +7171,7 @@
   Children:
     - !<own> c7395bce-7e3e-4378-a490-5caffa80ba8b
   Components:
-    []
+    - !<own> c68c9a22-b912-42c3-90e3-708d0974a5ba
 - !<SceneObject/527311f4-281d-475a-9582-9270343ca55b>
   PrefabRemaps:
     []
@@ -7477,7 +7557,7 @@
   Children:
     - !<own> 2a885d8c-0662-4656-bfce-fd4ccd36cec0
   Components:
-    []
+    - !<own> 02776359-8e2c-40ca-8ceb-c6fd2f1664a7
 - !<SceneObject/5881e74d-8155-45c1-9054-f7a508b33c35>
   PrefabRemaps:
     []
@@ -8471,7 +8551,7 @@
   Children:
     - !<own> 0396b604-deed-4e81-b543-8902815b7fce
   Components:
-    []
+    - !<own> 072a6ff6-0946-4302-8c02-426668fa7840
 - !<SceneObject/676b6c1b-4d79-4160-aa9c-c56d5feb9ad8>
   PrefabRemaps:
     - 428a2bd5-7081-470d-9e96-fad15332f6f1: 44169637-59b1-4672-965f-0fdd57459459
@@ -8489,7 +8569,7 @@
   Children:
     - !<own> eb9e0bf9-c82e-4c62-a94e-372a26a90c57
   Components:
-    []
+    - !<own> cab3a66d-0ab9-4c4f-8b5d-4bc0666f88e0
 - !<SceneObject/67a9869d-e2c7-4507-b25e-df13bdf3941b>
   PrefabRemaps:
     []
@@ -8630,7 +8710,7 @@
   Children:
     - !<own> e587ef37-3e9d-43cd-9ec3-7f181c9d1959
   Components:
-    []
+    - !<own> b9912aa4-4b17-4ec0-9924-22ecdd67e1bd
 - !<RenderMeshVisual/68257880-a74e-48e1-8843-a5efa45b6f43>
   PrefabRemaps:
     []
@@ -9260,6 +9340,22 @@
   ScriptTypes:
     "":
       {}
+- !<ScriptComponent/6cf139f7-2f1d-4a1a-8901-598b9535109d>
+  PrefabRemaps:
+    []
+  Name: CupStorageProperty
+  Enabled: true
+  ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cupObject: !<reference.SceneObject> 6d03bce8-8fea-49a5-9bdb-936725cda1d5
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/6d03bce8-8fea-49a5-9bdb-936725cda1d5>
   PrefabRemaps:
     - 1ebf6e97-38ac-4120-8258-6a4d29ef6bc8: 3af7b6dd-198b-4ecc-9914-d2b149a95576
@@ -9277,7 +9373,7 @@
   Children:
     - !<own> adad1c31-9b93-4c3c-98da-20fda8727086
   Components:
-    []
+    - !<own> 6cf139f7-2f1d-4a1a-8901-598b9535109d
 - !<SceneObject/6d0c9b98-0a09-48ca-87cf-eb5f009f7848>
   PrefabRemaps:
     []
@@ -9786,7 +9882,7 @@
   Children:
     - !<own> 77ed836f-66e2-4698-bbbf-2d9e6bfa69d3
   Components:
-    []
+    - !<own> bf68c872-0b05-4771-aa9e-925b8027d038
 - !<SceneObject/75f8036b-38c3-4a30-a437-2a35011db23d>
   PrefabRemaps:
     []
@@ -9957,7 +10053,7 @@
   Children:
     - !<own> 0021f104-0ea9-4521-8e7c-223c388e0b2f
   Components:
-    []
+    - !<own> cb97340e-a9ff-4ed9-8a9b-12ff2277bd55
 - !<Text/789df906-33b3-4fb4-9740-87c307d5a403>
   PrefabRemaps:
     []
@@ -10294,6 +10390,22 @@
   Components:
     - !<own> c5e4cf28-3878-4b3e-92d5-c0c5eaa8d09a
     - !<own> 87859d0f-f714-4b55-b733-d0e391c6ae7c
+- !<ScriptComponent/7d615954-91eb-40e1-9498-72011e34a5dc>
+  PrefabRemaps:
+    []
+  Name: CupStorageProperty
+  Enabled: true
+  ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cupObject: !<reference.SceneObject> 80b2ae1f-2c61-438b-a1bc-ae8451c3cbe8
+  ScriptTypes:
+    "":
+      {}
 - !<RenderMeshVisual/7daf89d7-e6f9-4be7-a14b-881dfb20aafe>
   PrefabRemaps:
     []
@@ -10395,6 +10507,22 @@
     - !<own> 67c42251-ca29-4e80-9722-6d2c9e2968c4
   Components:
     []
+- !<ScriptComponent/7e925ef9-0d82-41f7-8f65-67599c77169c>
+  PrefabRemaps:
+    []
+  Name: CupStorageProperty
+  Enabled: true
+  ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cupObject: !<reference.SceneObject> ca587567-4d06-49b5-8789-8e6ee2f90152
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/7eb526b7-0afe-44d2-98fd-272008f98ffd>
   PrefabRemaps:
     []
@@ -10427,7 +10555,7 @@
   Children:
     - !<own> 97ccc410-f4a1-4c02-bf79-4defeb1c1be1
   Components:
-    []
+    - !<own> d91d004e-8314-4f05-ae87-8d9f5bf24c0c
 - !<SceneObject/7f630883-283f-4368-9f03-9971605d84ca>
   PrefabRemaps:
     []
@@ -10583,7 +10711,7 @@
   Children:
     - !<own> f22e206f-2dec-4857-a67c-40ac21732128
   Components:
-    []
+    - !<own> 7d615954-91eb-40e1-9498-72011e34a5dc
 - !<RenderMeshVisual/80e8f960-6fe2-4fa1-a553-56c4fad85e6d>
   PrefabRemaps:
     []
@@ -11080,6 +11208,22 @@
     - !<own> 6e16ed98-064e-405f-a40a-ee5589145ba5
   Components:
     []
+- !<ScriptComponent/85f3cd39-b160-476f-b03a-5542b0ba8b72>
+  PrefabRemaps:
+    []
+  Name: CupStorageProperty
+  Enabled: true
+  ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cupObject: !<reference.SceneObject> c72e635b-df74-49a9-a8f3-c70133618b9f
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/861a73a6-96a8-4f0c-9785-4f7acc477309>
   PrefabRemaps:
     []
@@ -11394,14 +11538,14 @@
   Enabled: false
   Layers: 1
   LocalTransform:
-    position: {x: 5.000000, y: -26.795439, z: -141.591614}
+    position: {x: 5.000000, y: -26.795401, z: -141.591614}
     rotation: {x: -90.000000, y: -0.000000, z: 0.000000}
     scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     hasSegmentScaleCompensation: false
   Children:
     - !<own> 015c81df-a52e-4490-b03c-5081ba4fedff
   Components:
-    - !<own> e23f90a6-f560-4221-88a0-44a391235ab2
+    - !<own> 1886c6d5-6433-4eec-9a5b-506035a1854a
 - !<SceneObject/895702ab-2afb-4b1b-b7f0-45389deafa67>
   PrefabRemaps:
     []
@@ -11827,6 +11971,22 @@
     []
   Components:
     - !<own> dfb4e054-3f20-42c9-9cdd-696ecfafee0a
+- !<ScriptComponent/8e1537b3-0374-4803-b28d-c9a07ede1040>
+  PrefabRemaps:
+    []
+  Name: CupStorageProperty
+  Enabled: true
+  ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cupObject: !<reference.SceneObject> efe962b2-d03f-4169-a0ce-063e05cc0de4
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/8e1acdcf-0152-48cf-b78b-2304ba21ab14>
   PrefabRemaps:
     []
@@ -12972,6 +13132,21 @@
     []
   Components:
     - !<own> e174f41e-2f8a-45b2-805f-8c31ad2452c0
+- !<SceneObject/9cd8373a-c976-4f5d-af69-65f30e353d79>
+  PrefabRemaps:
+    []
+  Name: CupStorageProperty
+  Enabled: false
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 8e1537b3-0374-4803-b28d-c9a07ede1040
 - !<SceneObject/9ceec2b7-eb52-4ef8-9e81-e611aa066f18>
   PrefabRemaps:
     - 2259e172-b35a-430c-8260-4a0220fdbd46: 44169637-59b1-4672-965f-0fdd57459459
@@ -12989,7 +13164,7 @@
   Children:
     - !<own> 22adecdf-103c-4942-a3a2-8eb36d2f0ab5
   Components:
-    []
+    - !<own> a0ea8b52-4ef3-491f-a554-b9e3c7eed307
 - !<SceneObject/9d4c5125-fe67-4547-ae2e-a6bacc5cd74f>
   PrefabRemaps:
     []
@@ -13193,7 +13368,23 @@
   Children:
     - !<own> 139ba8fb-1ad3-45cf-844d-e571cbb3726b
   Components:
+    - !<own> a902bd7e-e593-41cb-a3e3-1a90ff998232
+- !<ScriptComponent/a0ea8b52-4ef3-491f-a554-b9e3c7eed307>
+  PrefabRemaps:
     []
+  Name: CupStorageProperty
+  Enabled: true
+  ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cupObject: !<reference.SceneObject> 9ceec2b7-eb52-4ef8-9e81-e611aa066f18
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/a1262e17-d9a4-4a80-a8ae-aa43778d929e>
   PrefabRemaps:
     []
@@ -13342,6 +13533,22 @@
     CapitalizationOverride: None
   DepthTest: false
   TwoSided: false
+- !<ScriptComponent/a2622b6d-c317-40cf-986f-67f627d4a05b>
+  PrefabRemaps:
+    []
+  Name: CupStorageProperty
+  Enabled: true
+  ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cupObject: !<reference.SceneObject> efe962b2-d03f-4169-a0ce-063e05cc0de4
+  ScriptTypes:
+    "":
+      {}
 - !<RenderMeshVisual/a35ebdd4-55aa-48c4-b977-52c1a9371f25>
   PrefabRemaps:
     []
@@ -13607,6 +13814,22 @@
     CapitalizationOverride: None
   DepthTest: false
   TwoSided: false
+- !<ScriptComponent/a60f0965-6da8-4e10-8943-f4d9abea6ccf>
+  PrefabRemaps:
+    []
+  Name: CupStorageProperty
+  Enabled: true
+  ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cupObject: !<reference.SceneObject> fa829f89-fb5a-4912-890e-eb82c0593f1b
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/a6193ddd-2502-492a-80f1-9d84fdcca9c3>
   PrefabRemaps:
     []
@@ -14028,6 +14251,22 @@
     []
   Components:
     - !<own> 8d455daf-5523-431a-ad22-4e2097debcf1
+- !<ScriptComponent/a902bd7e-e593-41cb-a3e3-1a90ff998232>
+  PrefabRemaps:
+    []
+  Name: CupStorageProperty
+  Enabled: true
+  ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cupObject: !<reference.SceneObject> a0ca6760-e232-4a05-99dc-9a2b62238140
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/a99901cc-6c02-4fe6-957c-ffb28b757140>
   PrefabRemaps:
     []
@@ -14673,6 +14912,22 @@
   ScriptTypes:
     "":
       {}
+- !<ScriptComponent/ae6b0c63-0973-4a4a-8453-e727a31aa427>
+  PrefabRemaps:
+    []
+  Name: CupStorageProperty
+  Enabled: true
+  ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cupObject: !<reference.SceneObject> 30061d87-d797-44ec-b033-73f1e73545b5
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/ae7eb089-a921-46d2-bf7a-1704a28cf6c0>
   PrefabRemaps:
     []
@@ -15249,6 +15504,22 @@
   ForceCompound: false
   Intangible: false
   ShowCollider: false
+- !<ScriptComponent/b3a74635-fc74-4150-a4a6-c988a5b00d05>
+  PrefabRemaps:
+    []
+  Name: CupStorageProperty
+  Enabled: true
+  ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cupObject: !<reference.SceneObject> d122c61f-8b11-4455-afd3-265b84ba2b75
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/b3aa69ee-381c-4a54-8bae-95b25db4a96a>
   PrefabRemaps:
     []
@@ -15900,6 +16171,22 @@
     []
   Components:
     - !<own> e971a7bd-51bb-47fb-bd02-e11ef4d2f664
+- !<ScriptComponent/b9912aa4-4b17-4ec0-9924-22ecdd67e1bd>
+  PrefabRemaps:
+    []
+  Name: CupStorageProperty
+  Enabled: true
+  ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cupObject: !<reference.SceneObject> 68120722-b871-4627-9119-a117cd96723e
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/b9e0afc7-9f10-4367-9571-e1772da1951b>
   PrefabRemaps:
     []
@@ -16151,7 +16438,7 @@
   Children:
     - !<own> e8e26f34-df5b-4747-9753-b1a22540c9b0
   Components:
-    []
+    - !<own> 353e9520-bed9-4189-9d15-ae5f7738db0c
 - !<ScriptComponent/bde0882d-092f-4753-9e81-bd2b4986a209>
   PrefabRemaps:
     []
@@ -16317,6 +16604,22 @@
     "":
       instantiator: !<MappingBased.AssignableType> ec9ae8aa-91af-4ad7-95d9-dda8428094e1
       prefab: !<reference.ObjectPrefab> 1f9e33dc-e464-491d-b435-dc1703b3f5a3
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/bf68c872-0b05-4771-aa9e-925b8027d038>
+  PrefabRemaps:
+    []
+  Name: CupStorageProperty
+  Enabled: true
+  ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cupObject: !<reference.SceneObject> 75dc09e9-67a6-4cd7-b9e8-716e9aa72a48
   ScriptTypes:
     "":
       {}
@@ -16757,7 +17060,7 @@
   Children:
     - !<own> e4e9fb09-cf99-4c18-b997-6ac4b0474e09
   Components:
-    []
+    - !<own> 19bf0465-8848-46c4-8d9e-22d69511da14
 - !<SceneObject/c5d004a1-3452-471a-b9bd-a3d34b8d9e00>
   PrefabRemaps:
     []
@@ -16831,6 +17134,22 @@
     []
   Components:
     []
+- !<ScriptComponent/c68c9a22-b912-42c3-90e3-708d0974a5ba>
+  PrefabRemaps:
+    []
+  Name: CupStorageProperty
+  Enabled: true
+  ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cupObject: !<reference.SceneObject> 52604627-a03e-4f9b-b7a6-644a3910eb08
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/c6b55fae-92a2-4307-b6be-3967776b030d>
   PrefabRemaps:
     []
@@ -16878,7 +17197,7 @@
   Children:
     - !<own> 6576d8fa-c386-4c02-a405-b3b7fc90fc6f
   Components:
-    []
+    - !<own> 85f3cd39-b160-476f-b03a-5542b0ba8b72
 - !<SceneObject/c7395bce-7e3e-4378-a490-5caffa80ba8b>
   PrefabRemaps:
     []
@@ -17079,7 +17398,23 @@
   Children:
     - !<own> fbe49db2-2ae3-4489-9e54-14b95bdef208
   Components:
+    - !<own> 7e925ef9-0d82-41f7-8f65-67599c77169c
+- !<ScriptComponent/cab3a66d-0ab9-4c4f-8b5d-4bc0666f88e0>
+  PrefabRemaps:
     []
+  Name: CupStorageProperty
+  Enabled: true
+  ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cupObject: !<reference.SceneObject> 676b6c1b-4d79-4160-aa9c-c56d5feb9ad8
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/cb08717f-4f62-485a-a28e-8d03193e293d>
   PrefabRemaps:
     []
@@ -17195,6 +17530,22 @@
   ForceCompound: false
   Intangible: false
   ShowCollider: false
+- !<ScriptComponent/cb97340e-a9ff-4ed9-8a9b-12ff2277bd55>
+  PrefabRemaps:
+    []
+  Name: CupStorageProperty
+  Enabled: true
+  ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cupObject: !<reference.SceneObject> 7825375a-07f7-47aa-8a11-2c37b731dcb1
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/cba478f2-92e2-4e4b-9df4-1a89227ccc57>
   PrefabRemaps:
     []
@@ -17623,7 +17974,7 @@
   Children:
     - !<own> ce6287d1-4802-48d9-b178-18c39e73510d
   Components:
-    []
+    - !<own> b3a74635-fc74-4150-a4a6-c988a5b00d05
 - !<ScriptComponent/d1e3f197-5324-46af-9c14-d3f332fe05c6>
   PrefabRemaps:
     []
@@ -17927,6 +18278,22 @@
     - !<own> 8f0ba0af-d3a5-4a91-ae6c-a5be9e825367
     - !<own> 46caf7a4-a663-4ff1-9d1f-72d314101eac
     - !<own> a496f61a-e97d-4ef9-953f-aa30ce5ac3c5
+- !<ScriptComponent/d91d004e-8314-4f05-ae87-8d9f5bf24c0c>
+  PrefabRemaps:
+    []
+  Name: CupStorageProperty
+  Enabled: true
+  ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cupObject: !<reference.SceneObject> 7ee78597-c9de-4d1d-bdd0-5d61d21ba90d
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/d98adabf-5d0e-4f07-b2ba-4ccf1bc9a34a>
   PrefabRemaps:
     []
@@ -18774,24 +19141,6 @@
     CapitalizationOverride: None
   DepthTest: false
   TwoSided: false
-- !<ColliderComponent/e23f90a6-f560-4221-88a0-44a391235ab2>
-  PrefabRemaps:
-    []
-  Name: Physics Collider
-  Enabled: true
-  Shape: !<Sphere>
-    FitVisual: true
-    Radius: 6.000000
-  Matter: !<reference> 00000000-0000-0000-0000-000000000000
-  Filter: !<reference> 00000000-0000-0000-0000-000000000000
-  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
-  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
-  EnableSmoothing: false
-  PositionTension: 30.000000
-  RotationTension: 30.000000
-  ForceCompound: false
-  Intangible: false
-  ShowCollider: false
 - !<SceneObject/e27dd726-7fba-4581-b8fe-58f36de6df2c>
   PrefabRemaps:
     []
@@ -19758,7 +20107,7 @@
   Children:
     - !<own> 13d10f51-a3d7-4606-9ebe-5c0ff5bba589
   Components:
-    []
+    - !<own> a2622b6d-c317-40cf-986f-67f627d4a05b
 - !<ScriptComponent/f017d942-1cbf-4243-8b9d-c5c4244a7769>
   PrefabRemaps:
     []
@@ -20853,7 +21202,7 @@
   Children:
     - !<own> 0fcb0ea3-b822-4958-9aac-5c40689674a9
   Components:
-    []
+    - !<own> a60f0965-6da8-4e10-8943-f4d9abea6ccf
 - !<SceneObject/fac799ad-e0cd-4a07-b661-275f96d5e10a>
   PrefabRemaps:
     []
@@ -20904,6 +21253,7 @@
     - !<own> 96de38e5-371c-4b5d-9ec6-f9ed14200570
     - !<own> 4d0ab994-d9e5-4beb-a177-a552a8a67095
     - !<own> af82836f-6380-4fea-aee7-ffbfe085000d
+    - !<own> 9cd8373a-c976-4f5d-af69-65f30e353d79
     - !<own> 8b1bedbd-6f14-428a-aca5-06544f776d8a
     - !<own> efe962b2-d03f-4169-a0ce-063e05cc0de4
     - !<own> 674b1808-14b8-4f35-9395-8edebdde67af

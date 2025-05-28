@@ -57,7 +57,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     this.t = this.getTransform();
     // Initialize origin points for each player
     this.originPoint1 = new vec3(10, 10, -20);
-    this.originPoint2 = new vec3(-10, 10, -220);
+    this.originPoint2 = new vec3(-10, 10, -20);
     this.t.setWorldPosition(this.originPoint1);
 
     // Create a regeneration timer but don't start it yet
@@ -143,16 +143,16 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
       // Calculate the velocity to apply to the ball from the hand movement
       let baseVelocity = this.getHandVelocity();
-      print("Base velocity before scaling: " + baseVelocity.toString());
+      // print("Base velocity before scaling: " + baseVelocity.toString());
 
       baseVelocity = baseVelocity.uniformScale(
         this.HAND_BASE_VELOCITY_MULTIPLIER * 0.5
       ); // Reduced multiplier
-      print("Base velocity after scaling: " + baseVelocity.toString());
+      // print("Base velocity after scaling: " + baseVelocity.toString());
 
       // Set velocity directly instead of using forces
       this.physicsBody.velocity = baseVelocity;
-      print("Set velocity: " + baseVelocity.toString());
+      // print("Set velocity: " + baseVelocity.toString());
 
       // Increment throw count
 
@@ -251,6 +251,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
       // Print collision with any object
       const hitSceneObject = collision.collider.getSceneObject();
       print("Ping pong ball hit: " + hitSceneObject.name);
+      print("hit scene object" + JSON.stringify(hitSceneObject));
 
       // Check if we hit liquid
       if (
@@ -285,6 +286,28 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
           // Regenerate the ball after a short delay
           this.regenerationTimer.reset(0.5);
+          print("Found parent cup: " + parentObject.name);
+
+          // Try all script components and call resetPosition if available
+          const scripts = parentObject.getComponents("Component.Script");
+          let found = false;
+          for (let i = 0; i < scripts.length; i++) {
+            print("Trying script component " + i);
+            if (typeof scripts[i].resetPosition === "function") {
+              print("Calling resetPosition on script component " + i);
+              scripts[i].resetPosition();
+              found = true;
+            }
+          }
+          if (!found) {
+            print(
+              "Warning: CupStorageProperty.resetPosition not found on any script component for cup: " +
+                parentObject.name +
+                ". Please make sure the CupStorageProperty component is attached to the cup in the Inspector."
+            );
+          }
+        } else {
+          print("Warning: Could not find parent cup object");
         }
       }
 

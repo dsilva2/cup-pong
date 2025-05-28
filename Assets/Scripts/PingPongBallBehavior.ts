@@ -1,3 +1,5 @@
+import { TennisBallBehavior } from "./TennisBallBehavior";
+import { Grabbable } from "./Grabbable";
 import { Interactable } from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable";
 import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
 import { SIK } from "SpectaclesInteractionKit.lspkg/SIK";
@@ -7,8 +9,7 @@ import {
   InteractorInputType,
   Interactor,
 } from "SpectaclesInteractionKit.lspkg/Core/Interactor/Interactor";
-import { TennisBallBehavior } from "./TennisBallBehavior";
-import { Grabbable } from "./Grabbable";
+import { InteractableManipulation } from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation";
 
 @component
 export class PingPongBallBehavior extends TennisBallBehavior {
@@ -25,8 +26,10 @@ export class PingPongBallBehavior extends TennisBallBehavior {
   private rotationBuffer: Buffer = new Buffer(4);
   private velocityBuffer: Buffer = new Buffer(4);
   private throwCount: number = 0; // Track number of throws
-  // Add this property to your class at the top with other properties:
   private hasHitCupThisThrow: boolean = false;
+  private textObject: Text;
+  private closeButton: Interactable;
+  private closeButtonText: Text;
 
   onAwake() {
     super.onAwake();
@@ -64,7 +67,41 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     this.regenerationTimer = this.createEvent("DelayedCallbackEvent");
     this.regenerationTimer.bind(this.regenerateBall.bind(this));
 
+    // Create a text object
+    const textSceneObject = global.scene.createSceneObject("Text");
+    this.textObject = textSceneObject.createComponent("Text");
 
+    // Set basic text properties
+    this.textObject.text = ""; // Will be set when a cup is hit
+
+    // Position the text in front of the camera
+    const textTransform = textSceneObject.getTransform();
+    textTransform.setWorldPosition(new vec3(0, 0, -5)); // 5 units in front of camera
+
+    // Create close button
+    const closeButtonObject = global.scene.createSceneObject("CloseButton");
+    this.closeButton = closeButtonObject.createComponent(
+      Interactable.getTypeName()
+    );
+
+    // Add text component to the close button
+    this.closeButtonText = closeButtonObject.createComponent("Text");
+    this.closeButtonText.text = "X";
+
+    // Set up close button callback
+    this.closeButton.onTriggerStart.add(() => {
+      this.textObject.enabled = false;
+      this.closeButton.enabled = false;
+      this.closeButtonText.enabled = false;
+    });
+
+    // Position close button in top-right corner
+    const closeButtonTransform = closeButtonObject.getTransform();
+    closeButtonTransform.setLocalPosition(new vec3(6.5, 1.5, 0));
+
+    this.textObject.enabled = false;
+    this.closeButton.enabled = false;
+    this.closeButtonText.enabled = false;
   }
 
   onUpdate() {
@@ -156,7 +193,6 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
       // Increment throw count
 
-
       // Regenerate the ball after a delay
       this.regenerationTimer.reset(this.regenerationDelay);
     }
@@ -198,7 +234,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
         const newPosition = new vec3(
           startPosition.x,
-          startPosition.y + (riseHeight * easedProgress),
+          startPosition.y + riseHeight * easedProgress,
           startPosition.z
         );
         cupObject.getTransform().setWorldPosition(newPosition);
@@ -208,7 +244,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
         const easedDashProgress = dashProgress * dashProgress; // Accelerating dash
 
         const newPosition = new vec3(
-          startPosition.x + (dashDistance * easedDashProgress),
+          startPosition.x + dashDistance * easedDashProgress,
           startPosition.y + riseHeight, // Stay at risen height
           startPosition.z
         );
@@ -221,6 +257,12 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
           // Disable the cup object
           cupObject.enabled = false;
+
+          // Update and show the text with the cup's name
+          this.textObject.text = "Hit " + cupObject.name + "!";
+          this.textObject.enabled = true;
+          this.closeButton.enabled = true;
+          this.closeButtonText.enabled = true;
         }
       }
     });

@@ -12934,7 +12934,7 @@
   Children:
     - !<own> 1f979b77-16ab-4ec9-8b14-7053d861399d
   Components:
-    - !<own> ad67130b-897a-4c7d-911a-61c9dbea1861
+    []
 - !<Text/9c317731-40bd-4e57-bcc9-66464f8b3ebe>
   PrefabRemaps:
     []
@@ -14619,68 +14619,6 @@
   ScriptInputs:
     "":
       {}
-  ScriptTypes:
-    "":
-      {}
-- !<ScriptComponent/ad67130b-897a-4c7d-911a-61c9dbea1861>
-  PrefabRemaps:
-    []
-  Name: ContainerFrame
-  Enabled: true
-  ScriptAsset: !<reference> 94ea82ba-1d42-4617-b71f-c92262f5960b
-  ScriptInputsDefault:
-    innerSize: true
-    border: true
-    constantPadding: true
-    allowScaling: true
-    autoScaleContent: true
-    relativeZ: true
-    isContentInteractable: true
-    allowTranslation: true
-    cutOut: true
-    minimumSize: true
-    maximumSize: true
-    useBillboarding: true
-    xOnTranslate: true
-    xAlways: true
-    yOnTranslate: true
-    yAlways: true
-    useSnapping: true
-    itemSnapping: true
-    worldSnapping: true
-    showFollowButton: true
-    useFOVFollow: true
-    isFollowing: true
-    showCloseButton: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      autoShowHide: false
-      innerSize: !<Vec2> {x: 32.000000, y: 32.000000}
-      border: !<float> 4.000000
-      constantPadding: !<Vec2> {x: 0.000000, y: 0.000000}
-      allowScaling: true
-      autoScaleContent: true
-      relativeZ: false
-      isContentInteractable: false
-      allowTranslation: true
-      cutOut: false
-      minimumSize: !<Vec2> {x: 10.000000, y: 10.000000}
-      maximumSize: !<Vec2> {x: 300.000000, y: 300.000000}
-      useBillboarding: false
-      xOnTranslate: false
-      xAlways: false
-      yOnTranslate: false
-      yAlways: false
-      useSnapping: false
-      itemSnapping: false
-      worldSnapping: false
-      showFollowButton: false
-      useFOVFollow: false
-      isFollowing: false
-      showCloseButton: true
-      _enableInteractionPlane: true
   ScriptTypes:
     "":
       {}

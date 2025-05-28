@@ -672,15 +672,15 @@ precision when interacting with buttons and UI elements using hand tracking."
 
         // hovering over interactable container content ONLY
         if (hoveringInteractable && !isNearFieldMode) {
-          if (!this.hoveringContentInteractableLast) {
+          if (!this.hoveringContentInteractableLasth) {
             this.hideCursorHighlight()
           }
         } else {
-          if (this.hoveringContentInteractableLast) {
+          if (this.hoveringContentInteractableLasth) {
             this.showCursorHighlight()
           }
         }
-        this.hoveringContentInteractableLast = hoveringInteractable
+        this.hoveringContentInteractableLasth = hoveringInteractable
 
         // hover over interactable area ( non border container ) OR interactable container content
         if (hoveringInteractable || this.inputHandler.state.hoveringInteractable) {

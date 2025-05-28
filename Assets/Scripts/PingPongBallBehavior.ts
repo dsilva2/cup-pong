@@ -156,21 +156,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
   }
 
   onUpdate() {
-    // Check if ball has strayed too far from origin
-    if (!this.isBeingInteracted) {
-      const currentPos = this.t.getWorldPosition();
-      const currentOrigin =
-        Math.floor(this.throwCount / 2) % 2 === 0
-          ? this.originPoint1
-          : this.originPoint2;
-      const distanceFromOrigin = currentPos.distance(currentOrigin);
-
-      if (distanceFromOrigin > this.distanceThreshold) {
-        this.regenerateBall();
-      }
-    }
-
-    // Update buffers for synchronization
+    // Only update buffers for synchronization when being interacted with
     if (this.isBeingInteracted) {
       this.positionBuffer.add(this.t.getWorldPosition());
       this.rotationBuffer.add(this.t.getWorldRotation());
@@ -183,9 +169,15 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     this.physicsBody.enabled = true;
     this.hasHitCupThisThrow = false;
 
-    const throwSet = Math.floor((this.throwCount - 1) / 2);
-    const isEvenSet = throwSet % 2 === 0;
-    const targetOrigin = isEvenSet ? this.originPoint1 : this.originPoint2;
+    // Switch origin points every 2 throws
+    // Throws 1-2: use originPoint1
+    // Throws 3-4: use originPoint2
+    // Throws 5-6: use originPoint1
+    // And so on...
+    const targetOrigin =
+      Math.floor(this.throwCount / 2) % 2 === 0
+        ? this.originPoint1
+        : this.originPoint2;
 
     // Reset position to the appropriate origin point
     this.t.setWorldPosition(targetOrigin);
@@ -206,9 +198,13 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     if (this.audio) {
       this.audio.play(1.0);
     }
+    this.throwCount++;
   }
 
   onTriggerStart(interactor: Interactor) {
+    print("=== Trigger Start ===");
+    print("Throw count at start: " + this.throwCount);
+
     // Set our interaction flag
     this.isBeingInteracted = true;
 
@@ -239,9 +235,6 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
       // Set velocity directly instead of using forces
       this.physicsBody.velocity = baseVelocity;
-
-      // Increment throw count
-      this.throwCount++;
 
       // Regenerate the ball after a delay
       this.regenerationTimer.reset(this.regenerationDelay);

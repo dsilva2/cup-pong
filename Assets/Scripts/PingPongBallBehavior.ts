@@ -30,6 +30,38 @@ export class PingPongBallBehavior extends TennisBallBehavior {
   private textObject: Text;
   private closeButton: Interactable;
   private closeButtonText: Text;
+  private closeButtonObject: SceneObject;
+
+  private readonly cupQuestions = {
+    "cup v2": "What reality show do you think I am most likely to watch?",
+    "cup v2 1": "What do you think I am most likely to splurge on?",
+    "cup v2 2": "Do I seem like a morning person or a night owl?",
+    "cup v2 3": "Do I remind you of anyone you know?",
+    "cup v2 4":
+      "What was something that brought a smile to your face this week?",
+    "cup v2 5": "What's one thing you will never say no to?",
+    "cup v2 6": "Has a stranger ever changed your life?",
+    "cup v2 7": "When was the last time you surprised yourself?",
+    "cup v2 8": "What title would you give this chapter of your life?",
+    "cup v2 9": "What's the most unexplainable thing that has happened to you?",
+    "cup v2 10": "What is the nicest thing a friend has done for you?",
+    "cup v2 11": "What are you currently not giving enough time to?",
+    "cup v2 12": "Admit something",
+    "cup v2 13": "What parts of yourself do you see in me?",
+    "cup v2 14": "How does one earn your vulnerability?",
+    "cup v2 15": "What are you still trying to prove to yourself?",
+    "cup v2 16":
+      "What question are you trying to answer most in your life right now?",
+    "cup v2 17":
+      "What is something you wouldn't want to change about yourself?",
+    "cup v2 18":
+      "What's one thing you're proud of that you've never told anyone?",
+    "cup v2 19": "What's a lesson you had to learn the hard way?",
+  };
+
+  private getQuestionForCup(cupName: string): string {
+    return this.cupQuestions[cupName] || "Unknown cup!";
+  }
 
   onAwake() {
     super.onAwake();
@@ -76,28 +108,46 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
     // Position the text in front of the camera
     const textTransform = textSceneObject.getTransform();
-    textTransform.setWorldPosition(new vec3(0, 0, -5)); // 5 units in front of camera
+    textTransform.setWorldPosition(new vec3(0, 0, -105));
 
     // Create close button
-    const closeButtonObject = global.scene.createSceneObject("CloseButton");
-    this.closeButton = closeButtonObject.createComponent(
+    this.closeButtonObject = global.scene.createSceneObject("CloseButton");
+
+    // Add Interactable component
+    this.closeButton = this.closeButtonObject.createComponent(
       Interactable.getTypeName()
     );
 
     // Add text component to the close button
-    this.closeButtonText = closeButtonObject.createComponent("Text");
+    this.closeButtonText = this.closeButtonObject.createComponent("Text");
     this.closeButtonText.text = "X";
 
-    // Set up close button callback
-    this.closeButton.onTriggerStart.add(() => {
-      this.textObject.enabled = false;
-      this.closeButton.enabled = false;
-      this.closeButtonText.enabled = false;
+    // Set up pinch detection for close button
+    const handInputData = SIK.HandInputData;
+    const rightHand = handInputData.getHand("right");
+
+    // Create update event to check pinch state
+    this.createEvent("UpdateEvent").bind(() => {
+      if (rightHand.isPinching() && this.closeButton.enabled) {
+        // Check if pinch is near the close button
+        const buttonPos = this.closeButtonObject
+          .getTransform()
+          .getWorldPosition();
+        const pinchPos = rightHand.indexTip.position;
+        const distance = buttonPos.distance(pinchPos);
+
+        if (distance < 5) {
+          // 5 units threshold
+          this.textObject.enabled = false;
+          this.closeButton.enabled = false;
+          this.closeButtonText.enabled = false;
+        }
+      }
     });
 
     // Position close button in top-right corner
-    const closeButtonTransform = closeButtonObject.getTransform();
-    closeButtonTransform.setLocalPosition(new vec3(6.5, 1.5, 0));
+    const closeButtonTransform = this.closeButtonObject.getTransform();
+    closeButtonTransform.setLocalPosition(new vec3(6.5, 1.5, -50));
 
     this.textObject.enabled = false;
     this.closeButton.enabled = false;
@@ -258,8 +308,9 @@ export class PingPongBallBehavior extends TennisBallBehavior {
           // Disable the cup object
           cupObject.enabled = false;
 
-          // Update and show the text with the cup's name
-          this.textObject.text = "Hit " + cupObject.name + "!";
+          // Get and display the question for this cup
+          const question = this.getQuestionForCup(cupObject.name);
+          this.textObject.text = question;
           this.textObject.enabled = true;
           this.closeButton.enabled = true;
           this.closeButtonText.enabled = true;

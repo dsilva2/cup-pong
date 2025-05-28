@@ -27,7 +27,6 @@
   MaxVisibility: Editable
   ScriptInputsHidden:
     audio: false
-    displayText: false
     meshVisual: false
     targetOutlineMaterial: false
   ScriptTypesHidden:
@@ -36,7 +35,6 @@
     - audio: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
       targetOutlineMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
       meshVisual: !<reference.RenderMeshVisual> 00000000-0000-0000-0000-000000000000
-      displayText: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -44,7 +42,6 @@
     - // @input Component.AudioComponent audio
     - '// @input Asset.Material targetOutlineMaterial {"hint":"This is the material that will provide the mesh outline"}'
     - // @input Component.RenderMeshVisual meshVisual
-    - // @input SceneObject displayText
   DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
   SetupScript:
     code: ""

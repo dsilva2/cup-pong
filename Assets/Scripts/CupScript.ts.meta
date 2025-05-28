@@ -1,0 +1,42 @@
+- !<AssetImportMetadata/cfad46e2-5361-4ca4-aa01-e54ebff67642>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> f6060890-aecb-47da-bf4d-8dd0d06f79ac
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> f6060890-aecb-47da-bf4d-8dd0d06f79ac
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 94c3b78b-5524-4bba-aef8-0de48fc3c8c5
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/94c3b78b-5524-4bba-aef8-0de48fc3c8c5>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  InternalVersion: 0
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 4e578cfb-03b8-4183-b89e-d6f1f3a3447d
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    cupObject: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  DefaultScriptInputs:
+    - cupObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input SceneObject cupObject

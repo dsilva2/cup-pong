@@ -198,7 +198,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     if (this.audio) {
       this.audio.play(1.0);
     }
-    this.throwCount++;
+    //this.throwCount++;
   }
 
   onTriggerStart(interactor: Interactor) {
@@ -307,6 +307,23 @@ export class PingPongBallBehavior extends TennisBallBehavior {
           this.textObject.enabled = true;
           this.closeButton.enabled = true;
           this.closeButtonText.enabled = true;
+
+          if (
+            cupObject.name == "cup v2" ||
+            cupObject.name == "cup v2 1" ||
+            cupObject.name == "cup v2 2" ||
+            cupObject.name == "cup v2 3" ||
+            cupObject.name == "cup v2 4" ||
+            cupObject.name == "cup v2 5" ||
+            cupObject.name == "cup v2 6" ||
+            cupObject.name == "cup v2 7" ||
+            cupObject.name == "cup v2 8" ||
+            cupObject.name == "cup v2 9"
+          ) {
+            this.textObject.getTransform().setWorldRotation(quat.fromEulerAngles(0, Math.PI, 0));
+            this.closeButton.getTransform().setWorldRotation(quat.fromEulerAngles(0, Math.PI, 0));
+            this.closeButtonObject.getTransform().setLocalPosition(new vec3(6.5, 1.5, -150));
+          }
         }
       }
     });
@@ -388,8 +405,8 @@ export class PingPongBallBehavior extends TennisBallBehavior {
           if (!found) {
             print(
               "Warning: CupStorageProperty.resetPosition not found on any script component for cup: " +
-                parentObject.name +
-                ". Please make sure the CupStorageProperty component is attached to the cup in the Inspector."
+              parentObject.name +
+              ". Please make sure the CupStorageProperty component is attached to the cup in the Inspector."
             );
           }
         } else {

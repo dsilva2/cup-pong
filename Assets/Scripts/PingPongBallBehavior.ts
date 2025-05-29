@@ -26,6 +26,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
   private rotationBuffer: Buffer = new Buffer(4);
   private velocityBuffer: Buffer = new Buffer(4);
   private throwCount: number = 0; // Initialize to 0
+  private turned: boolean = false;
   private hasHitCupThisThrow: boolean = false;
   private textObject: Text;
   private closeButton: Interactable;
@@ -320,9 +321,16 @@ export class PingPongBallBehavior extends TennisBallBehavior {
             cupObject.name == "cup v2 8" ||
             cupObject.name == "cup v2 9"
           ) {
-            this.textObject.getTransform().setWorldRotation(quat.fromEulerAngles(0, Math.PI, 0));
-            this.closeButton.getTransform().setWorldRotation(quat.fromEulerAngles(0, Math.PI, 0));
+            this.textObject.getTransform().setLocalRotation(quat.fromEulerAngles(0, Math.PI, 0));
+            this.closeButton.getTransform().setLocalRotation(quat.fromEulerAngles(0, Math.PI, 0));
             this.closeButtonObject.getTransform().setLocalPosition(new vec3(6.5, 1.5, -150));
+            this.turned = true
+          }
+          else if (this.turned) {
+            this.textObject.getTransform().setLocalRotation(quat.fromEulerAngles(0, 0, 0));
+            this.closeButton.getTransform().setLocalRotation(quat.fromEulerAngles(0, 0, 0));
+            this.closeButtonObject.getTransform().setLocalPosition(new vec3(6.5, 1.5, -50));
+            this.turned = false;
           }
         }
       }

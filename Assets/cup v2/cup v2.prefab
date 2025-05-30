@@ -1,0 +1,71 @@
+- !<ObjectPrefab/e25bfbc9-2594-43ab-9280-dba90282cc73>
+  PackagePath: ""
+  objects:
+    - !<own> 3c53e30c-ecb6-42cf-a2e4-95011ee0b4ac
+  LazyLoading: false
+  RetainAssets: true
+- !<SceneObject/2a055cf9-dbb4-4fd8-ac0d-d9c61be0e1f9>
+  PrefabRemaps:
+    []
+  Name: cup v2
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    - !<own> 3af7b6dd-198b-4ecc-9914-d2b149a95576
+  Components:
+    []
+- !<SceneObject/3af7b6dd-198b-4ecc-9914-d2b149a95576>
+  PrefabRemaps:
+    []
+  Name: Body2
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 10.000000, y: 10.000000, z: 10.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 44169637-59b1-4672-965f-0fdd57459459
+- !<SceneObject/3c53e30c-ecb6-42cf-a2e4-95011ee0b4ac>
+  PrefabRemaps:
+    []
+  Name: cup v2
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    - !<own> 2a055cf9-dbb4-4fd8-ac0d-d9c61be0e1f9
+  Components:
+    []
+- !<RenderMeshVisual/44169637-59b1-4672-965f-0fdd57459459>
+  PrefabRemaps:
+    []
+  Name: component_0
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> ad0f599c-6d4c-4ec7-84e7-f7d39f4dd5be
+  Mesh: !<reference> 71b8dcce-b234-4932-b21d-a91cfda8d8ab
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}

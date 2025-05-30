@@ -14,7 +14,7 @@ import { InteractableManipulation } from "SpectaclesInteractionKit.lspkg/Compone
 @component
 export class PingPongBallBehavior extends TennisBallBehavior {
   protected OBJECT_MASS = 0.02;
-  protected HAND_ACCELERATION_MULTIPLIER = 5.08;
+  protected HAND_ACCELERATION_MULTIPLIER = 4.08;
   protected HAND_BASE_VELOCITY_MULTIPLIER = 3.6;
   private originPoint1: vec3;
   private originPoint2: vec3;
@@ -34,12 +34,11 @@ export class PingPongBallBehavior extends TennisBallBehavior {
   private closeButtonObject: SceneObject;
 
   private readonly cupQuestions = {
-    "cup v2": "What reality show do you think I am most likely to watch?",
+    "cup v2 0": "What reality show do you think I am most likely to watch?",
     "cup v2 1": "What do you think I am most likely to splurge on?",
     "cup v2 2": "Do I seem like a morning person or a night owl?",
     "cup v2 3": "Do I remind you of anyone you know?",
-    "cup v2 4":
-      "What was something that brought a smile to your face this week?",
+    "cup v2 4": "What was something that brought a smile to your face this week?",
     "cup v2 5": "What's one thing you will never say no to?",
     "cup v2 6": "Has a stranger ever changed your life?",
     "cup v2 7": "When was the last time you surprised yourself?",
@@ -50,13 +49,10 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     "cup v2 12": "Admit something",
     "cup v2 13": "What parts of yourself do you see in me?",
     "cup v2 14": "How does one earn your vulnerability?",
-    "cup v2 15": "What are you still trying to prove to yourself?",
-    "cup v2 16":
-      "What question are you trying to answer most in your life right now?",
-    "cup v2 17":
-      "What is something you wouldn't want to change about yourself?",
-    "cup v2 18":
-      "What's one thing you're proud of that you've never told anyone?",
+    "cup v2 15": "What are you trying to prove to yourself?",
+    "cup v2 16": "What question are you trying to answer most in your life right now?",
+    "cup v2 17": "What is something you wouldn't want to change about yourself?",
+    "cup v2 18": "What's one thing you're proud of that you've never told anyone?",
     "cup v2 19": "What's a lesson you had to learn the hard way?",
   };
 
@@ -93,8 +89,8 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
     this.t = this.getTransform();
     // Initialize origin points for each player
-    this.originPoint1 = new vec3(10, 10, -20);
-    this.originPoint2 = new vec3(-10, 10, -180);
+    this.originPoint1 = new vec3(20, 5, -20);  // Right side, slightly elevated, near player's end
+    this.originPoint2 = new vec3(-20, 5, -180); // Right side, slightly elevated, far end
     this.t.setWorldPosition(this.originPoint1);
 
     // Create a regeneration timer but don't start it yet
@@ -171,14 +167,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     this.hasHitCupThisThrow = false;
 
     // Switch origin points every 2 throws
-    // Throws 1-2: use originPoint1
-    // Throws 3-4: use originPoint2
-    // Throws 5-6: use originPoint1
-    // And so on...
-    const targetOrigin =
-      Math.floor(this.throwCount / 2) % 2 === 0
-        ? this.originPoint1
-        : this.originPoint2;
+    let targetOrigin = (Math.floor(this.throwCount / 2) % 2 === 0) ? this.originPoint1 : this.originPoint2;
 
     // Reset position to the appropriate origin point
     this.t.setWorldPosition(targetOrigin);
@@ -199,7 +188,6 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     if (this.audio) {
       this.audio.play(1.0);
     }
-    //this.throwCount++;
   }
 
   onTriggerStart(interactor: Interactor) {
@@ -256,87 +244,6 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     return rainbowColors[randomIndex];
   }
 
-  private animateCupRemoval(cupObject: SceneObject) {
-    // Animation parameters
-    const riseDuration = 1.0; // seconds for rise
-    const dashDuration = 0.3; // seconds for dash
-    const totalDuration = riseDuration + dashDuration;
-    const riseHeight = 50; // units to rise
-    const dashDistance = 200; // units to dash right
-    const startTime = getTime();
-    const startPosition = cupObject.getTransform().getWorldPosition();
-
-    // Create update event for animation
-    const animationEvent = this.createEvent("UpdateEvent");
-    animationEvent.bind(() => {
-      const elapsed = getTime() - startTime;
-
-      if (elapsed < riseDuration) {
-        // Phase 1: Rising up
-        const riseProgress = elapsed / riseDuration;
-        const easedProgress = 1 - Math.pow(1 - riseProgress, 3);
-
-        const newPosition = new vec3(
-          startPosition.x,
-          startPosition.y + riseHeight * easedProgress,
-          startPosition.z
-        );
-        cupObject.getTransform().setWorldPosition(newPosition);
-      } else {
-        // Phase 2: Dashing to the right
-        const dashProgress = (elapsed - riseDuration) / dashDuration;
-        const easedDashProgress = dashProgress * dashProgress; // Accelerating dash
-
-        const newPosition = new vec3(
-          startPosition.x + dashDistance * easedDashProgress,
-          startPosition.y + riseHeight, // Stay at risen height
-          startPosition.z
-        );
-        cupObject.getTransform().setWorldPosition(newPosition);
-
-        // Check if animation is complete
-        if (elapsed >= totalDuration) {
-          // Remove the update event
-          animationEvent.enabled = false;
-
-          // Disable the cup object
-          cupObject.enabled = false;
-
-          // Get and display the question for this cup
-          const question = this.getQuestionForCup(cupObject.name);
-          this.textObject.text = question;
-          this.textObject.enabled = true;
-          this.closeButton.enabled = true;
-          this.closeButtonText.enabled = true;
-
-          if (
-            cupObject.name == "cup v2" ||
-            cupObject.name == "cup v2 1" ||
-            cupObject.name == "cup v2 2" ||
-            cupObject.name == "cup v2 3" ||
-            cupObject.name == "cup v2 4" ||
-            cupObject.name == "cup v2 5" ||
-            cupObject.name == "cup v2 6" ||
-            cupObject.name == "cup v2 7" ||
-            cupObject.name == "cup v2 8" ||
-            cupObject.name == "cup v2 9"
-          ) {
-            this.textObject.getTransform().setLocalRotation(quat.fromEulerAngles(0, Math.PI, 0));
-            this.closeButton.getTransform().setLocalRotation(quat.fromEulerAngles(0, Math.PI, 0));
-            this.closeButtonObject.getTransform().setLocalPosition(new vec3(6.5, 1.5, -150));
-            this.turned = true
-          }
-          else if (this.turned) {
-            this.textObject.getTransform().setLocalRotation(quat.fromEulerAngles(0, 0, 0));
-            this.closeButton.getTransform().setLocalRotation(quat.fromEulerAngles(0, 0, 0));
-            this.closeButtonObject.getTransform().setLocalPosition(new vec3(6.5, 1.5, -50));
-            this.turned = false;
-          }
-        }
-      }
-    });
-  }
-
   onCollisionEnter(e) {
     let collision = e.collision;
     let shouldPlayAudio = false;
@@ -363,6 +270,17 @@ export class PingPongBallBehavior extends TennisBallBehavior {
       const hitSceneObject = collision.collider.getSceneObject();
       print("Ping pong ball hit: " + hitSceneObject.name);
       print("hit scene object" + JSON.stringify(hitSceneObject));
+
+      // Handle cup collision and reduce bounciness
+      if (hitSceneObject.name.indexOf("cup") >= 0) {
+        // Reduce the ball's velocity on cup hit to simulate less bounciness
+        if (this.physicsBody) {
+          // Reduce the velocity by 70%
+          this.physicsBody.velocity = this.physicsBody.velocity.uniformScale(0.3);
+          // Reduce angular velocity as well
+          this.physicsBody.angularVelocity = this.physicsBody.angularVelocity.uniformScale(0.3);
+        }
+      }
 
       // Check if we hit liquid
       if (
@@ -430,24 +348,91 @@ export class PingPongBallBehavior extends TennisBallBehavior {
       ) {
         shouldPlayAudio = true;
       }
-
-      // Handle cylinder/cup collision
-      if (hitSceneObject.name.indexOf("cup") >= 0) {
-        // Find the parent cup object (the one with the number in its name)
-        let parentObject = hitSceneObject;
-        while (parentObject && !parentObject.name.match(/cup v2 \d+/)) {
-          parentObject = parentObject.getParent();
-        }
-
-        if (parentObject) {
-          const message = "Hit cup: " + parentObject.name;
-          print(message);
-        }
-      }
     });
 
     if (shouldPlayAudio) {
       this.audio.play(1);
     }
+  }
+
+  private animateCupRemoval(cupObject: SceneObject) {
+    // Animation parameters
+    const riseDuration = 1.0; // seconds for rise
+    const dashDuration = 0.3; // seconds for dash
+    const totalDuration = riseDuration + dashDuration;
+    const riseHeight = 50; // units to rise
+    const dashDistance = 200; // units to dash right
+    const startTime = getTime();
+    const startPosition = cupObject.getTransform().getWorldPosition();
+
+    // Create update event for animation
+    const animationEvent = this.createEvent("UpdateEvent");
+    animationEvent.bind(() => {
+      const elapsed = getTime() - startTime;
+
+      if (elapsed < riseDuration) {
+        // Phase 1: Rising up
+        const riseProgress = elapsed / riseDuration;
+        const easedProgress = 1 - Math.pow(1 - riseProgress, 3);
+
+        const newPosition = new vec3(
+          startPosition.x,
+          startPosition.y + riseHeight * easedProgress,
+          startPosition.z
+        );
+        cupObject.getTransform().setWorldPosition(newPosition);
+      } else {
+        // Phase 2: Dashing to the right
+        const dashProgress = (elapsed - riseDuration) / dashDuration;
+        const easedDashProgress = dashProgress * dashProgress; // Accelerating dash
+
+        const newPosition = new vec3(
+          startPosition.x + dashDistance * easedDashProgress,
+          startPosition.y + riseHeight, // Stay at risen height
+          startPosition.z
+        );
+        cupObject.getTransform().setWorldPosition(newPosition);
+
+        // Check if animation is complete
+        if (elapsed >= totalDuration) {
+          // Remove the update event
+          animationEvent.enabled = false;
+
+          // Disable the cup object
+          cupObject.enabled = false;
+
+          // Get and display the question for this cup
+          const question = this.getQuestionForCup(cupObject.name);
+          this.textObject.text = question;
+          this.textObject.enabled = true;
+          this.closeButton.enabled = true;
+          this.closeButtonText.enabled = true;
+
+          if (
+            cupObject.name == "cup v2 0" ||
+            cupObject.name == "cup v2 1" ||
+            cupObject.name == "cup v2 2" ||
+            cupObject.name == "cup v2 3" ||
+            cupObject.name == "cup v2 4" ||
+            cupObject.name == "cup v2 5" ||
+            cupObject.name == "cup v2 6" ||
+            cupObject.name == "cup v2 7" ||
+            cupObject.name == "cup v2 8" ||
+            cupObject.name == "cup v2 9"
+          ) {
+            this.textObject.getTransform().setLocalRotation(quat.fromEulerAngles(0, Math.PI, 0));
+            this.closeButton.getTransform().setLocalRotation(quat.fromEulerAngles(0, Math.PI, 0));
+            this.closeButtonObject.getTransform().setLocalPosition(new vec3(6.5, 1.5, -150));
+            this.turned = true
+          }
+          else if (this.turned) {
+            this.textObject.getTransform().setLocalRotation(quat.fromEulerAngles(0, 0, 0));
+            this.closeButton.getTransform().setLocalRotation(quat.fromEulerAngles(0, 0, 0));
+            this.closeButtonObject.getTransform().setLocalPosition(new vec3(6.5, 1.5, -50));
+            this.turned = false;
+          }
+        }
+      }
+    });
   }
 }

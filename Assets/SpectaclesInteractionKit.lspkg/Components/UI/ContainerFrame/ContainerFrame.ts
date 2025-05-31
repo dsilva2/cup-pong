@@ -1,24 +1,24 @@
-import animate, {AnimationManager, CancelSet} from "../../../Utils/animate"
-import Event, {PublicApi, unsubscribe} from "../../../Utils/Event"
-import {FrameInputHandler, FrameInputOptions} from "./modules/FrameInputHandler"
+import animate, { AnimationManager, CancelSet } from "../../../Utils/animate"
+import Event, { PublicApi, unsubscribe } from "../../../Utils/Event"
+import { FrameInputHandler, FrameInputOptions } from "./modules/FrameInputHandler"
 
-import {Billboard} from "../../../Components/Interaction/Billboard/Billboard"
-import {Interactable} from "../../../Components/Interaction/Interactable/Interactable"
-import {InteractableManipulation} from "../../../Components/Interaction/InteractableManipulation/InteractableManipulation"
-import {InteractionPlane} from "../../../Components/Interaction/InteractionPlane/InteractionPlane"
-import {HandInteractor} from "../../../Core/HandInteractor/HandInteractor"
-import {Interactor, InteractorInputType, TargetingMode} from "../../../Core/Interactor/Interactor"
-import {InteractorEvent} from "../../../Core/Interactor/InteractorEvent"
+import { Billboard } from "../../../Components/Interaction/Billboard/Billboard"
+import { Interactable } from "../../../Components/Interaction/Interactable/Interactable"
+import { InteractableManipulation } from "../../../Components/Interaction/InteractableManipulation/InteractableManipulation"
+import { InteractionPlane } from "../../../Components/Interaction/InteractionPlane/InteractionPlane"
+import { HandInteractor } from "../../../Core/HandInteractor/HandInteractor"
+import { Interactor, InteractorInputType, TargetingMode } from "../../../Core/Interactor/Interactor"
+import { InteractorEvent } from "../../../Core/Interactor/InteractorEvent"
 import WorldCameraFinderProvider from "../../../Providers/CameraProvider/WorldCameraFinderProvider"
-import {CursorControllerProvider} from "../../../Providers/CursorControllerProvider/CursorControllerProvider"
-import {lerp} from "../../../Utils/mathUtils"
+import { CursorControllerProvider } from "../../../Providers/CursorControllerProvider/CursorControllerProvider"
+import { lerp } from "../../../Utils/mathUtils"
 import NativeLogger from "../../../Utils/NativeLogger"
-import {validate} from "../../../Utils/validate"
-import {CursorHandler} from "./modules/CursorHandler"
-import {HoverBehavior} from "./modules/HoverBehavior"
-import {LabeledPinchButton} from "./modules/LabeledPinchButton"
-import {SmoothFollow} from "./modules/SmoothFollow"
-import {SnappableBehavior} from "./modules/SnappableBehavior"
+import { validate } from "../../../Utils/validate"
+import { CursorHandler } from "./modules/CursorHandler"
+import { HoverBehavior } from "./modules/HoverBehavior"
+import { LabeledPinchButton } from "./modules/LabeledPinchButton"
+import { SmoothFollow } from "./modules/SmoothFollow"
+import { SnappableBehavior } from "./modules/SnappableBehavior"
 
 const log = new NativeLogger("ContainerFrame")
 
@@ -527,8 +527,36 @@ precision when interacting with buttons and UI elements using hand tracking."
     })
 
     this.closeButton.onTrigger.add(() => {
+      log.d("Close button triggered")
       this.inputState.isPinching = false
-      this.hideVisual()
+
+      const disableObjectAndChildren = (obj: SceneObject) => {
+        if (!isNull(obj)) {
+          // Disable the object itself
+          obj.enabled = false
+
+          // Disable any text components on this object
+          const textComps = obj.getComponents("Component.Text")
+          textComps.forEach((textComp) => {
+            textComp.enabled = false
+          })
+
+          // Disable all children and their text components
+          obj.children.forEach((child: SceneObject) => {
+            child.enabled = false
+            const childTextComps = child.getComponents("Component.Text")
+            childTextComps.forEach((textComp) => {
+              textComp.enabled = false
+            })
+          })
+        }
+      }
+
+      // Disable both frame and target hierarchies
+      disableObjectAndChildren(this.frame)
+      disableObjectAndChildren(this.target)
+
+      this.enabled = false
     })
 
     this.followButton = new LabeledPinchButton({
@@ -1581,6 +1609,11 @@ precision when interacting with buttons and UI elements using hand tracking."
       this.parentHoverBehavior.destroy()
       this.snapBehavior?.destroy()
 
+      // Destroy the target object which contains the content
+      if (!isNull(this.target)) {
+        this.target.destroy()
+      }
+
       if (!isNull(this.frame)) {
         this.frame.destroy()
       }
@@ -1635,7 +1668,7 @@ precision when interacting with buttons and UI elements using hand tracking."
    * @param currentOpacity
    * @param targetOpacity
    */
-  tweenOpacity = (currentOpacity: number, targetOpacity: number, endCallback = () => {}) => {
+  tweenOpacity = (currentOpacity: number, targetOpacity: number, endCallback = () => { }) => {
     if (this.opacityCancel) this.opacityCancel.cancel()
     animate({
       duration: OPACITY_TWEEN_DURATION * Math.abs(targetOpacity - currentOpacity),

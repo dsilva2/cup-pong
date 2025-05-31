@@ -10,6 +10,7 @@ import {
   Interactor,
 } from "SpectaclesInteractionKit.lspkg/Core/Interactor/Interactor";
 import { InteractableManipulation } from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation";
+import { ContainerFrame } from "SpectaclesInteractionKit.lspkg/Components/UI/ContainerFrame/ContainerFrame";
 
 @component
 export class PingPongBallBehavior extends TennisBallBehavior {
@@ -32,6 +33,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
   private closeButton: Interactable;
   private closeButtonText: Text;
   private closeButtonObject: SceneObject;
+  private containerFrame: ContainerFrame;
 
   private readonly cupQuestions = {
     "cup v2 0": "What reality show do you think I am most likely to watch?",
@@ -96,60 +98,6 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     // Create a regeneration timer but don't start it yet
     this.regenerationTimer = this.createEvent("DelayedCallbackEvent");
     this.regenerationTimer.bind(this.regenerateBall.bind(this));
-
-    // Create a text object
-    const textSceneObject = global.scene.createSceneObject("Text");
-    this.textObject = textSceneObject.createComponent("Text");
-
-    // Set basic text properties
-    this.textObject.text = ""; // Will be set when a cup is hit
-
-    // Position the text in front of the camera
-    const textTransform = textSceneObject.getTransform();
-    textTransform.setWorldPosition(new vec3(0, 0, -105));
-
-    // Create close button
-    this.closeButtonObject = global.scene.createSceneObject("CloseButton");
-
-    // Add Interactable component
-    this.closeButton = this.closeButtonObject.createComponent(
-      Interactable.getTypeName()
-    );
-
-    // Add text component to the close button
-    this.closeButtonText = this.closeButtonObject.createComponent("Text");
-    this.closeButtonText.text = "X";
-
-    // Set up pinch detection for close button
-    const handInputData = SIK.HandInputData;
-    const rightHand = handInputData.getHand("right");
-
-    // Create update event to check pinch state
-    this.createEvent("UpdateEvent").bind(() => {
-      if (rightHand.isPinching() && this.closeButton.enabled) {
-        // Check if pinch is near the close button
-        const buttonPos = this.closeButtonObject
-          .getTransform()
-          .getWorldPosition();
-        const pinchPos = rightHand.indexTip.position;
-        const distance = buttonPos.distance(pinchPos);
-
-        if (distance < 5) {
-          // 5 units threshold
-          this.textObject.enabled = false;
-          this.closeButton.enabled = false;
-          this.closeButtonText.enabled = false;
-        }
-      }
-    });
-
-    // Position close button in top-right corner
-    const closeButtonTransform = this.closeButtonObject.getTransform();
-    closeButtonTransform.setLocalPosition(new vec3(6.5, 1.5, -50));
-
-    this.textObject.enabled = false;
-    this.closeButton.enabled = false;
-    this.closeButtonText.enabled = false;
   }
 
   onUpdate() {
@@ -357,21 +305,19 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
   private animateCupRemoval(cupObject: SceneObject) {
     // Animation parameters
-    const riseDuration = 1.0; // seconds for rise
-    const dashDuration = 0.3; // seconds for dash
+    const riseDuration = 1.0;
+    const dashDuration = 0.3;
     const totalDuration = riseDuration + dashDuration;
-    const riseHeight = 50; // units to rise
-    const dashDistance = 200; // units to dash right
+    const riseHeight = 50;
+    const dashDistance = 200;
     const startTime = getTime();
     const startPosition = cupObject.getTransform().getWorldPosition();
 
-    // Create update event for animation
     const animationEvent = this.createEvent("UpdateEvent");
     animationEvent.bind(() => {
       const elapsed = getTime() - startTime;
 
       if (elapsed < riseDuration) {
-        // Phase 1: Rising up
         const riseProgress = elapsed / riseDuration;
         const easedProgress = 1 - Math.pow(1 - riseProgress, 3);
 
@@ -382,57 +328,106 @@ export class PingPongBallBehavior extends TennisBallBehavior {
         );
         cupObject.getTransform().setWorldPosition(newPosition);
       } else {
-        // Phase 2: Dashing to the right
         const dashProgress = (elapsed - riseDuration) / dashDuration;
-        const easedDashProgress = dashProgress * dashProgress; // Accelerating dash
+        const easedDashProgress = dashProgress * dashProgress;
 
         const newPosition = new vec3(
           startPosition.x + dashDistance * easedDashProgress,
-          startPosition.y + riseHeight, // Stay at risen height
+          startPosition.y + riseHeight,
           startPosition.z
         );
         cupObject.getTransform().setWorldPosition(newPosition);
 
-        // Check if animation is complete
         if (elapsed >= totalDuration) {
-          // Remove the update event
           animationEvent.enabled = false;
-
-          // Disable the cup object
           cupObject.enabled = false;
 
-          // Get and display the question for this cup
+          // Get the question for this cup
           const question = this.getQuestionForCup(cupObject.name);
-          this.textObject.text = question;
-          this.textObject.enabled = true;
-          this.closeButton.enabled = true;
-          this.closeButtonText.enabled = true;
 
-          if (
-            cupObject.name == "cup v2 0" ||
-            cupObject.name == "cup v2 1" ||
-            cupObject.name == "cup v2 2" ||
-            cupObject.name == "cup v2 3" ||
-            cupObject.name == "cup v2 4" ||
-            cupObject.name == "cup v2 5" ||
-            cupObject.name == "cup v2 6" ||
-            cupObject.name == "cup v2 7" ||
-            cupObject.name == "cup v2 8" ||
-            cupObject.name == "cup v2 9"
-          ) {
-            this.textObject.getTransform().setLocalRotation(quat.fromEulerAngles(0, Math.PI, 0));
-            this.closeButton.getTransform().setLocalRotation(quat.fromEulerAngles(0, Math.PI, 0));
-            this.closeButtonObject.getTransform().setLocalPosition(new vec3(6.5, 1.5, -150));
-            this.turned = true
+          // Calculate position for the frame based on which side the cup was on
+          let framePosition: vec3;
+          let frameRotation: quat;
+
+          // Position both frames at the center of the table (between players)
+          const centerZ = -100; // Center position between the two ends
+
+          if (cupObject.name.match(/cup v2 [0-9]$/)) {
+            // Cups 0-9 (far side) - face towards near player
+            framePosition = new vec3(0, 0, centerZ);
+            frameRotation = quat.fromEulerAngles(0, Math.PI, 0); // Face towards near player
+          } else {
+            // Cups 10-19 (near side) - face towards far player  
+            framePosition = new vec3(0, 0, centerZ);
+            frameRotation = quat.fromEulerAngles(0, 0, 0); // Face towards far player
           }
-          else if (this.turned) {
-            this.textObject.getTransform().setLocalRotation(quat.fromEulerAngles(0, 0, 0));
-            this.closeButton.getTransform().setLocalRotation(quat.fromEulerAngles(0, 0, 0));
-            this.closeButtonObject.getTransform().setLocalPosition(new vec3(6.5, 1.5, -50));
-            this.turned = false;
-          }
+
+          // Show the question in a new container frame
+          this.showQuestionInFrame(question, framePosition, frameRotation);
         }
       }
     });
+  }
+
+  private showQuestionInFrame(question: string, position: vec3, rotation: quat) {
+    // Create a new scene object for the container frame
+    const frameObject = global.scene.createSceneObject("QuestionFrame");
+    frameObject.getTransform().setWorldPosition(position);
+    frameObject.getTransform().setWorldRotation(rotation);
+
+    // Create the container frame component
+    this.containerFrame = frameObject.createComponent(ContainerFrame.getTypeName());
+
+    // Configure the container frame - make it smaller
+    this.containerFrame.innerSize = new vec2(50, 25);
+    this.containerFrame.border = 5;
+    this.containerFrame.autoShowHide = false;
+    this.containerFrame.showCloseButton = true;
+    this.containerFrame.allowTranslation = true;
+    this.containerFrame.cutOutCenter = false;
+    this.containerFrame.autoScaleContent = false; // Disable auto scaling to prevent stretching
+    this.containerFrame.opacity = 1;
+
+    // Force show the frame and its elements
+    this.containerFrame.showVisual();
+
+    // Split text into multiple lines if it's too long
+    const wrappedText = this.wrapText(question, 35); // Wrap at ~35 characters per line
+
+    // Create a text object and parent it to the container's target object
+    const textObj = global.scene.createSceneObject("QuestionText");
+    const textComp = textObj.createComponent("Text");
+    textComp.text = wrappedText;
+    textComp.size = 96; // Much larger font size
+
+    // Important: Parent to the container's target object, not the frame itself
+    textObj.setParent(this.containerFrame.getTargetObject());
+
+    // Position the text at center
+    textObj.getTransform().setLocalPosition(new vec3(0, 0, 0));
+  }
+
+  // Helper function to wrap text at a certain character count
+  private wrapText(text: string, maxCharsPerLine: number): string {
+    const words = text.split(' ');
+    let lines: string[] = [];
+    let currentLine = '';
+
+    for (const word of words) {
+      if ((currentLine + word).length <= maxCharsPerLine) {
+        currentLine += (currentLine ? ' ' : '') + word;
+      } else {
+        if (currentLine) {
+          lines.push(currentLine);
+        }
+        currentLine = word;
+      }
+    }
+
+    if (currentLine) {
+      lines.push(currentLine);
+    }
+
+    return lines.join('\n');
   }
 }

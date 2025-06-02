@@ -1,0 +1,95 @@
+- !<AssetImportMetadata/9f5763f2-e4e3-4aa7-915a-8f9938cb09f1>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> e25bfbc9-2594-43ab-9280-dba90282cc73
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> e25bfbc9-2594-43ab-9280-dba90282cc73
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> 4a24fbb0-5b23-49ce-bb79-ef285af761a3
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<SceneObject/45150dcc-723e-49d2-8a30-881b265c7347>
+  PrefabRemaps:
+    []
+  Name: cup v2
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    - !<own> 88382664-ac65-40e0-ab95-a8160374fae1
+  Components:
+    []
+- !<ObjectPrefabAssetData/4a24fbb0-5b23-49ce-bb79-ef285af761a3>
+  SourceRemaps:
+    - 2a055cf9-dbb4-4fd8-ac0d-d9c61be0e1f9: 45150dcc-723e-49d2-8a30-881b265c7347
+    - 3af7b6dd-198b-4ecc-9914-d2b149a95576: 88382664-ac65-40e0-ab95-a8160374fae1
+    - 3c53e30c-ecb6-42cf-a2e4-95011ee0b4ac: c1eaa0ef-9943-4e07-804f-afa519d59935
+    - 44169637-59b1-4672-965f-0fdd57459459: 9bfcf5b2-ad27-4b81-a4d1-04c8a992b652
+    - e25bfbc9-2594-43ab-9280-dba90282cc73: c5d0cc0a-af7e-4a75-bb7e-19aa5437454b
+  SourceState: !<own> c5d0cc0a-af7e-4a75-bb7e-19aa5437454b
+- !<SceneObject/88382664-ac65-40e0-ab95-a8160374fae1>
+  PrefabRemaps:
+    []
+  Name: Body2
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 10.000000, y: 10.000000, z: 10.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 9bfcf5b2-ad27-4b81-a4d1-04c8a992b652
+- !<RenderMeshVisual/9bfcf5b2-ad27-4b81-a4d1-04c8a992b652>
+  PrefabRemaps:
+    []
+  Name: component_0
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> ad0f599c-6d4c-4ec7-84e7-f7d39f4dd5be
+  Mesh: !<reference> 71b8dcce-b234-4932-b21d-a91cfda8d8ab
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<SceneObject/c1eaa0ef-9943-4e07-804f-afa519d59935>
+  PrefabRemaps:
+    []
+  Name: cup v2
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    - !<own> 45150dcc-723e-49d2-8a30-881b265c7347
+  Components:
+    []
+- !<ObjectPrefab/c5d0cc0a-af7e-4a75-bb7e-19aa5437454b>
+  PackagePath: ""
+  objects:
+    - !<own> c1eaa0ef-9943-4e07-804f-afa519d59935
+  LazyLoading: false
+  RetainAssets: true

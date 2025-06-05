@@ -329,7 +329,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     const dashDuration = 0.3;
     const totalDuration = riseDuration + dashDuration;
     const riseHeight = 50;
-    const dashDistance = 200;
+    const dashDistance = 2000;
     const startTime = getTime();
     const startPosition = cupObject.getTransform().getWorldPosition();
 

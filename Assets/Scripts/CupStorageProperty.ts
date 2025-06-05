@@ -14,7 +14,27 @@ export class CupStorageProperty extends BaseScriptComponent {
   public cupObject: SceneObject;
 
   private t: Transform;
-  private initialPosition: vec3;
+
+  // Hard-coded positions for each cup
+  private static readonly CUP_POSITIONS: { [key: string]: vec3 } = {
+    "cup v2 0": new vec3(0.0, -48.087738, -187.163513),
+    "cup v2 1": new vec3(0.0, -48.087738, -197.163513),
+    "cup v2 2": new vec3(0.0, -48.087738, -177.163513),
+    "cup v2 3": new vec3(0.0, -48.087738, -207.163513),
+    "cup v2 5": new vec3(-9.0, -48.087738, -182.163513),
+    "cup v2 6": new vec3(-9.0, -48.087738, -172.163513),
+    "cup v2 7": new vec3(-9.0, -48.087738, -192.755127),
+    "cup v2 8": new vec3(9.0, -48.087738, -182.163513),
+    "cup v2 9": new vec3(9.0, -48.087738, -192.163513),
+    "cup v2 10": new vec3(-15.0, -25.0, -91.132706),
+    "cup v2 11": new vec3(9.0, -48.087738, -202.163513),
+    "cup v2 12": new vec3(-18.0, -48.087738, -187.163513),
+    "cup v2 15": new vec3(-9.0, -48.087738, -202.163513),
+    "cup v2 16": new vec3(18.0, -48.087738, -197.163513),
+    "cup v2 17": new vec3(18.0, -48.087738, -187.163513),
+    "cup v2 18": new vec3(-18.0, -48.087738, -177.163513),
+    "cup v2 19": new vec3(18.0, -48.087738, -177.163513),
+  };
 
   // StorageProperty for syncing position
   private propPosition = StorageProperty.autoVec3(
@@ -60,8 +80,11 @@ export class CupStorageProperty extends BaseScriptComponent {
     // Get the transform component
     this.t = this.cupObject.getTransform();
 
-    // Store initial position
-    this.initialPosition = this.t.getWorldPosition();
+    // Set initial position from hard-coded positions
+    const cupName = this.cupObject.name;
+    if (CupStorageProperty.CUP_POSITIONS[cupName]) {
+      this.t.setWorldPosition(CupStorageProperty.CUP_POSITIONS[cupName]);
+    }
 
     // Ensure cup is visible initially
     if (this.cupObject) {
@@ -75,11 +98,13 @@ export class CupStorageProperty extends BaseScriptComponent {
           (this.cupObject ? this.cupObject.name : "(no cupObject)")
       );
 
-      // Ensure cup is visible after sync is ready
+      // Ensure cup is visible and in correct position after sync is ready
       if (this.cupObject) {
         this.cupObject.enabled = true;
-        // Set initial position when sync is ready
-        this.t.setWorldPosition(this.initialPosition);
+        const cupName = this.cupObject.name;
+        if (CupStorageProperty.CUP_POSITIONS[cupName]) {
+          this.t.setWorldPosition(CupStorageProperty.CUP_POSITIONS[cupName]);
+        }
       }
     });
   }
@@ -93,7 +118,10 @@ export class CupStorageProperty extends BaseScriptComponent {
         (this.cupObject ? this.cupObject.name : "(no cupObject)")
     );
 
-    // Reset to initial position
-    this.t.setWorldPosition(this.initialPosition);
+    // Reset to hard-coded position
+    const cupName = this.cupObject.name;
+    if (CupStorageProperty.CUP_POSITIONS[cupName]) {
+      this.t.setWorldPosition(CupStorageProperty.CUP_POSITIONS[cupName]);
+    }
   }
 }

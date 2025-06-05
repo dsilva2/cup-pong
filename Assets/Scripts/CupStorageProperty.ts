@@ -14,6 +14,7 @@ export class CupStorageProperty extends BaseScriptComponent {
   public cupObject: SceneObject;
 
   private t: Transform;
+  private initialPosition: vec3;
 
   // StorageProperty for syncing position
   private propPosition = StorageProperty.autoVec3(
@@ -59,6 +60,9 @@ export class CupStorageProperty extends BaseScriptComponent {
     // Get the transform component
     this.t = this.cupObject.getTransform();
 
+    // Store initial position
+    this.initialPosition = this.t.getWorldPosition();
+
     // Ensure cup is visible initially
     if (this.cupObject) {
       this.cupObject.enabled = true;
@@ -74,6 +78,8 @@ export class CupStorageProperty extends BaseScriptComponent {
       // Ensure cup is visible after sync is ready
       if (this.cupObject) {
         this.cupObject.enabled = true;
+        // Set initial position when sync is ready
+        this.t.setWorldPosition(this.initialPosition);
       }
     });
   }
@@ -87,8 +93,7 @@ export class CupStorageProperty extends BaseScriptComponent {
         (this.cupObject ? this.cupObject.name : "(no cupObject)")
     );
 
-    // Set position directly
-    const newPosition = new vec3(0, 5000, 0);
-    this.t.setWorldPosition(newPosition);
+    // Reset to initial position
+    this.t.setWorldPosition(this.initialPosition);
   }
 }

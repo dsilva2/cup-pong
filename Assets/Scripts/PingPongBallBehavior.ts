@@ -95,8 +95,8 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
     this.t = this.getTransform();
     // Initialize origin points for each player
-    this.originPoint1 = new vec3(20, 5, -28); // Right side, slightly elevated, near player's end
-    this.originPoint2 = new vec3(-20, 5, -180); // Right side, slightly elevated, far end
+    this.originPoint1 = new vec3(20, 0, -60); // Right side, slightly elevated, near player's end
+    this.originPoint2 = new vec3(-20, 0, -235); // Right side, slightly elevated, far end
     this.t.setWorldPosition(this.originPoint1);
 
     // Create a regeneration timer but don't start it yet
@@ -123,6 +123,9 @@ export class PingPongBallBehavior extends TennisBallBehavior {
       Math.floor(this.throwCount / 2) % 2 === 0
         ? this.originPoint1
         : this.originPoint2;
+
+    print("Regenerating ball - Throw count: " + this.throwCount +
+      ", Using origin point: " + (Math.floor(this.throwCount / 2) % 2 === 0 ? "1 (near)" : "2 (far)"));
 
     // Reset position to the appropriate origin point
     this.t.setWorldPosition(targetOrigin);
@@ -165,6 +168,10 @@ export class PingPongBallBehavior extends TennisBallBehavior {
   onTriggerEnd() {
     this.isBeingInteracted = false;
     this.hasHitCupThisThrow = false;
+
+    // Increment throw count when ball is released
+    this.throwCount++;
+    print("Throw count incremented to: " + this.throwCount);
 
     // Keep physics enabled when released and apply hand velocity
     if (this.physicsBody) {
@@ -288,8 +295,8 @@ export class PingPongBallBehavior extends TennisBallBehavior {
           if (!found) {
             print(
               "Warning: CupStorageProperty.resetPosition not found on any script component for cup: " +
-                parentObject.name +
-                ". Please make sure the CupStorageProperty component is attached to the cup in the Inspector."
+              parentObject.name +
+              ". Please make sure the CupStorageProperty component is attached to the cup in the Inspector."
             );
           }
         } else {

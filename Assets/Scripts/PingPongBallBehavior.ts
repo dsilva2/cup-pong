@@ -40,7 +40,8 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     "cup v2 1": "What do you think I am most likely to splurge on?",
     "cup v2 2": "Do I seem like a morning person or a night owl?",
     "cup v2 3": "Do I remind you of anyone you know?",
-    "cup v2 4": "What was something that brought a smile to your face this week?",
+    "cup v2 4":
+      "What was something that brought a smile to your face this week?",
     "cup v2 5": "What's one thing you will never say no to?",
     "cup v2 6": "Has a stranger ever changed your life?",
     "cup v2 7": "When was the last time you surprised yourself?",
@@ -52,9 +53,12 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     "cup v2 13": "What parts of yourself do you see in me?",
     "cup v2 14": "How does one earn your vulnerability?",
     "cup v2 15": "What are you trying to prove to yourself?",
-    "cup v2 16": "What question are you trying to answer most in your life right now?",
-    "cup v2 17": "What is something you wouldn't want to change about yourself?",
-    "cup v2 18": "What's one thing you're proud of that you've never told anyone?",
+    "cup v2 16":
+      "What question are you trying to answer most in your life right now?",
+    "cup v2 17":
+      "What is something you wouldn't want to change about yourself?",
+    "cup v2 18":
+      "What's one thing you're proud of that you've never told anyone?",
     "cup v2 19": "What's a lesson you had to learn the hard way?",
   };
 
@@ -91,7 +95,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
     this.t = this.getTransform();
     // Initialize origin points for each player
-    this.originPoint1 = new vec3(20, 5, -20);  // Right side, slightly elevated, near player's end
+    this.originPoint1 = new vec3(20, 5, -28); // Right side, slightly elevated, near player's end
     this.originPoint2 = new vec3(-20, 5, -180); // Right side, slightly elevated, far end
     this.t.setWorldPosition(this.originPoint1);
 
@@ -115,7 +119,10 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     this.hasHitCupThisThrow = false;
 
     // Switch origin points every 2 throws
-    let targetOrigin = (Math.floor(this.throwCount / 2) % 2 === 0) ? this.originPoint1 : this.originPoint2;
+    let targetOrigin =
+      Math.floor(this.throwCount / 2) % 2 === 0
+        ? this.originPoint1
+        : this.originPoint2;
 
     // Reset position to the appropriate origin point
     this.t.setWorldPosition(targetOrigin);
@@ -224,9 +231,11 @@ export class PingPongBallBehavior extends TennisBallBehavior {
         // Reduce the ball's velocity on cup hit to simulate less bounciness
         if (this.physicsBody) {
           // Reduce the velocity by 70%
-          this.physicsBody.velocity = this.physicsBody.velocity.uniformScale(0.3);
+          this.physicsBody.velocity =
+            this.physicsBody.velocity.uniformScale(0.3);
           // Reduce angular velocity as well
-          this.physicsBody.angularVelocity = this.physicsBody.angularVelocity.uniformScale(0.3);
+          this.physicsBody.angularVelocity =
+            this.physicsBody.angularVelocity.uniformScale(0.3);
         }
       }
 
@@ -279,8 +288,8 @@ export class PingPongBallBehavior extends TennisBallBehavior {
           if (!found) {
             print(
               "Warning: CupStorageProperty.resetPosition not found on any script component for cup: " +
-              parentObject.name +
-              ". Please make sure the CupStorageProperty component is attached to the cup in the Inspector."
+                parentObject.name +
+                ". Please make sure the CupStorageProperty component is attached to the cup in the Inspector."
             );
           }
         } else {
@@ -357,7 +366,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
             framePosition = new vec3(0, 0, centerZ);
             frameRotation = quat.fromEulerAngles(0, Math.PI, 0); // Face towards near player
           } else {
-            // Cups 10-19 (near side) - face towards far player  
+            // Cups 10-19 (near side) - face towards far player
             framePosition = new vec3(0, 0, centerZ);
             frameRotation = quat.fromEulerAngles(0, 0, 0); // Face towards far player
           }
@@ -369,14 +378,20 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     });
   }
 
-  private showQuestionInFrame(question: string, position: vec3, rotation: quat) {
+  private showQuestionInFrame(
+    question: string,
+    position: vec3,
+    rotation: quat
+  ) {
     // Create a new scene object for the container frame
     const frameObject = global.scene.createSceneObject("QuestionFrame");
     frameObject.getTransform().setWorldPosition(position);
     frameObject.getTransform().setWorldRotation(rotation);
 
     // Create the container frame component
-    this.containerFrame = frameObject.createComponent(ContainerFrame.getTypeName());
+    this.containerFrame = frameObject.createComponent(
+      ContainerFrame.getTypeName()
+    );
 
     // Configure the container frame - make it smaller
     this.containerFrame.innerSize = new vec2(50, 25);
@@ -409,13 +424,13 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
   // Helper function to wrap text at a certain character count
   private wrapText(text: string, maxCharsPerLine: number): string {
-    const words = text.split(' ');
+    const words = text.split(" ");
     let lines: string[] = [];
-    let currentLine = '';
+    let currentLine = "";
 
     for (const word of words) {
       if ((currentLine + word).length <= maxCharsPerLine) {
-        currentLine += (currentLine ? ' ' : '') + word;
+        currentLine += (currentLine ? " " : "") + word;
       } else {
         if (currentLine) {
           lines.push(currentLine);
@@ -428,6 +443,6 @@ export class PingPongBallBehavior extends TennisBallBehavior {
       lines.push(currentLine);
     }
 
-    return lines.join('\n');
+    return lines.join("\n");
   }
 }

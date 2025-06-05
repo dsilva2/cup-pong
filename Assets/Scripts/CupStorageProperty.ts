@@ -26,14 +26,28 @@ export class CupStorageProperty extends BaseScriptComponent {
     }
   );
 
-  // StoragePropertySet for SyncEntity
-  private storagePropertySet = new StoragePropertySet([this.propPosition]);
+  // StorageProperty for syncing visibility
+  private propEnabled = StorageProperty.autoBool(
+    "enabled",
+    () => this.cupObject.enabled,
+    (newValue) => {
+      if (this.cupObject) {
+        this.cupObject.enabled = newValue;
+      }
+    }
+  );
 
-  // SyncEntity for multiplayer sync - CHANGED: removed auto-own
+  // StoragePropertySet for SyncEntity
+  private storagePropertySet = new StoragePropertySet([
+    this.propPosition,
+    this.propEnabled,
+  ]);
+
+  // SyncEntity for multiplayer sync - with auto-ownership
   private syncEntity: SyncEntity = new SyncEntity(
     this,
     this.storagePropertySet,
-    false // Changed to false - no auto-ownership
+    true // Enable auto-ownership to ensure proper initialization
   );
 
   onAwake(): void {
@@ -45,12 +59,22 @@ export class CupStorageProperty extends BaseScriptComponent {
     // Get the transform component
     this.t = this.cupObject.getTransform();
 
+    // Ensure cup is visible initially
+    if (this.cupObject) {
+      this.cupObject.enabled = true;
+    }
+
     // Listen for ready event
     this.syncEntity.notifyOnReady(() => {
       print(
         "CupStorageProperty ready for: " +
           (this.cupObject ? this.cupObject.name : "(no cupObject)")
       );
+
+      // Ensure cup is visible after sync is ready
+      if (this.cupObject) {
+        this.cupObject.enabled = true;
+      }
     });
   }
 
@@ -63,7 +87,7 @@ export class CupStorageProperty extends BaseScriptComponent {
         (this.cupObject ? this.cupObject.name : "(no cupObject)")
     );
 
-    // Set position directly - no ownership needed
+    // Set position directly
     const newPosition = new vec3(0, 5000, 0);
     this.t.setWorldPosition(newPosition);
   }

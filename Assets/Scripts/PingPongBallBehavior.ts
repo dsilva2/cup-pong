@@ -37,22 +37,22 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
   private readonly cupQuestions = {
     "cup v2 0": "What reality show do you think I am most likely to watch?",
-    "cup v2 1": "What do you think I am most likely to splurge on?",
+    "cup v2 12": "What do you think I am most likely to splurge on?",
     "cup v2 2": "Do I seem like a morning person or a night owl?",
     "cup v2 3": "Do I remind you of anyone you know?",
     "cup v2 4":
       "What was something that brought a smile to your face this week?",
-    "cup v2 5": "What's one thing you will never say no to?",
+    "cup v2 15": "What's one thing you will never say no to?",
     "cup v2 6": "Has a stranger ever changed your life?",
     "cup v2 7": "When was the last time you surprised yourself?",
-    "cup v2 8": "What title would you give this chapter of your life?",
+    "cup v2 14": "What title would you give this chapter of your life?",
     "cup v2 9": "What's the most unexplainable thing that has happened to you?",
     "cup v2 10": "What is the nicest thing a friend has done for you?",
     "cup v2 11": "What are you currently not giving enough time to?",
-    "cup v2 12": "Admit something",
+    "cup v2 1": "Admit something",
     "cup v2 13": "What parts of yourself do you see in me?",
-    "cup v2 14": "How does one earn your vulnerability?",
-    "cup v2 15": "What are you trying to prove to yourself?",
+    "cup v2 8": "How does one earn your vulnerability?",
+    "cup v2 5": "What are you trying to prove to yourself?",
     "cup v2 16":
       "What question are you trying to answer most in your life right now?",
     "cup v2 17":
@@ -124,8 +124,12 @@ export class PingPongBallBehavior extends TennisBallBehavior {
         ? this.originPoint1
         : this.originPoint2;
 
-    print("Regenerating ball - Throw count: " + this.throwCount +
-      ", Using origin point: " + (Math.floor(this.throwCount / 2) % 2 === 0 ? "1 (near)" : "2 (far)"));
+    print(
+      "Regenerating ball - Throw count: " +
+        this.throwCount +
+        ", Using origin point: " +
+        (Math.floor(this.throwCount / 2) % 2 === 0 ? "1 (near)" : "2 (far)")
+    );
 
     // Reset position to the appropriate origin point
     this.t.setWorldPosition(targetOrigin);
@@ -295,8 +299,8 @@ export class PingPongBallBehavior extends TennisBallBehavior {
           if (!found) {
             print(
               "Warning: CupStorageProperty.resetPosition not found on any script component for cup: " +
-              parentObject.name +
-              ". Please make sure the CupStorageProperty component is attached to the cup in the Inspector."
+                parentObject.name +
+                ". Please make sure the CupStorageProperty component is attached to the cup in the Inspector."
             );
           }
         } else {

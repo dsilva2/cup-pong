@@ -5809,7 +5809,7 @@
   Enabled: true
   Layers: 1
   LocalTransform:
-    position: {x: 0.000000, y: -133.087738, z: -187.163513}
+    position: {x: 150.000000, y: -133.087738, z: -37.163502}
     rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
     scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     hasSegmentScaleCompensation: false
@@ -8724,7 +8724,7 @@
   Enabled: true
   Layers: 1
   LocalTransform:
-    position: {x: 0.000000, y: 20.857748, z: -40.000000}
+    position: {x: 0.000000, y: 20.857748, z: 0.000000}
     rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
     scale: {x: 4.000000, y: 4.000000, z: 4.000000}
     hasSegmentScaleCompensation: false
@@ -16135,7 +16135,6 @@
     - !<own> bdd31a5d-5439-40c5-a4f0-aaacc9c03a44
     - !<own> 676b6c1b-4d79-4160-aa9c-c56d5feb9ad8
     - !<own> 42116496-6dff-420d-8138-1fef7ec1dab5
-    - !<own> 4d0ab994-d9e5-4beb-a177-a552a8a67095
   Components:
     []
 - !<ScriptComponent/96f2d1d8-6a6b-4f71-a945-4c24d7bf216f>
@@ -26851,6 +26850,7 @@
     - !<own> 9cd8373a-c976-4f5d-af69-65f30e353d79
     - !<own> 45953818-196f-4a46-80cb-e5a6a43c11a3
     - !<own> 9c1ec729-2d2d-4f40-a402-f658cc0901b9
+    - !<own> 4d0ab994-d9e5-4beb-a177-a552a8a67095
     - !<own> 312daebd-b300-4172-a684-4fd5f48bf778
     - !<own> 26cd87cb-de18-4ed7-afa1-3c14475ab53d
     - !<own> b768e69a-9cd2-4a65-b5c4-71088e0d3c98

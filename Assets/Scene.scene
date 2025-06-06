@@ -531,22 +531,6 @@
   ScriptTypes:
     "":
       {}
-- !<ScriptComponent/04761225-e8ec-42be-b2b6-660191b06f0a>
-  PrefabRemaps:
-    []
-  Name: SyncEntityExample
-  Enabled: true
-  ScriptAsset: !<reference> df192039-0ebe-4ed6-90eb-cbb5eaf90cc3
-  ScriptInputsDefault:
-    {}
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      {}
-  ScriptTypes:
-    "":
-      {}
 - !<RenderMeshVisual/04bba936-6969-4cc4-82c5-217178719154>
   PrefabRemaps:
     []
@@ -5833,8 +5817,6 @@
     - !<own> 7a42d1c8-4b8d-4a50-9762-bbf75a78c687
   Components:
     - !<own> 00461aea-b3d7-4fc3-b714-ae332a7cb451
-    - !<own> 7f9e176e-418f-4614-bc2f-b47bc20db962
-    - !<own> 04761225-e8ec-42be-b2b6-660191b06f0a
 - !<ScriptComponent/3189a72b-cc0f-475a-80b7-6821c45e2283>
   PrefabRemaps:
     []
@@ -13502,38 +13484,6 @@
     bottom: -1.050000
     right: 3.750000
     top: 1.050000
-- !<ScriptComponent/7f9e176e-418f-4614-bc2f-b47bc20db962>
-  PrefabRemaps:
-    []
-  Name: SyncTransform
-  Enabled: true
-  ScriptAsset: !<reference> f3c20594-375f-43d8-a93f-a8e75bd6a61d
-  ScriptInputsDefault:
-    networkIdTypeString: true
-    customNetworkId: true
-    positionSyncString: true
-    rotationSyncString: true
-    scaleSyncString: true
-    persistenceString: true
-    sendsPerSecondLimit: true
-    useSmoothing: true
-    interpolationTarget: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      networkIdTypeString: objectId
-      customNetworkId: enter_unique_id
-      positionSyncString: Local
-      rotationSyncString: Local
-      scaleSyncString: Local
-      persistenceString: Session
-      sendsPerSecondLimit: 10
-      useSmoothing: true
-      interpolationTarget: -0.250000
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/7ff98fe3-d9cd-494a-8611-78e2d786d5fc>
   PrefabRemaps:
     []

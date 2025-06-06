@@ -101,7 +101,13 @@ export class CupStorageProperty extends BaseScriptComponent {
     // Reset to hard-coded position
     const cupName = this.cupObject.name;
     if (CupStorageProperty.CUP_POSITIONS[cupName]) {
-      this.t.setWorldPosition(CupStorageProperty.CUP_POSITIONS[cupName]);
+      const resetPos = CupStorageProperty.CUP_POSITIONS[cupName];
+      this.t.setWorldPosition(resetPos);
+
+      // Only sync if we own the store
+      if (this.syncEntity.isStoreOwned()) {
+        this.propPosition.putCurrentValue(this.syncEntity.currentStore);
+      }
     }
   }
 }

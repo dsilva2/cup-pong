@@ -699,7 +699,7 @@
   PrefabRemaps:
     []
   Name: CupStorageProperty
-  Enabled: false
+  Enabled: true
   ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
   ScriptInputsDefault:
     {}
@@ -14264,7 +14264,7 @@
   PrefabRemaps:
     []
   Name: CupStorageProperty
-  Enabled: false
+  Enabled: true
   ScriptAsset: !<reference> 755e1634-e35a-4045-beb4-50d5edaa76c0
   ScriptInputsDefault:
     {}

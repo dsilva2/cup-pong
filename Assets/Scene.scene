@@ -531,6 +531,22 @@
   ScriptTypes:
     "":
       {}
+- !<ScriptComponent/04761225-e8ec-42be-b2b6-660191b06f0a>
+  PrefabRemaps:
+    []
+  Name: SyncEntityExample
+  Enabled: true
+  ScriptAsset: !<reference> df192039-0ebe-4ed6-90eb-cbb5eaf90cc3
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
 - !<RenderMeshVisual/04bba936-6969-4cc4-82c5-217178719154>
   PrefabRemaps:
     []
@@ -5818,6 +5834,7 @@
   Components:
     - !<own> 00461aea-b3d7-4fc3-b714-ae332a7cb451
     - !<own> 7f9e176e-418f-4614-bc2f-b47bc20db962
+    - !<own> 04761225-e8ec-42be-b2b6-660191b06f0a
 - !<ScriptComponent/3189a72b-cc0f-475a-80b7-6821c45e2283>
   PrefabRemaps:
     []

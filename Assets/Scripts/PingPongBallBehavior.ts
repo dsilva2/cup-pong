@@ -95,8 +95,8 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
     this.t = this.getTransform();
     // Initialize origin points for each player
-    this.originPoint1 = new vec3(0, -20, -40); // Right side, slightly elevated, near player's end
-    this.originPoint2 = new vec3(-20, 0, -235); // Right side, slightly elevated, far end
+    this.originPoint1 = new vec3(0, -20, -40); // Player's end of table
+    this.originPoint2 = new vec3(0, -20, -250); // Far end of table
     this.t.setWorldPosition(this.originPoint1);
 
     // Create a regeneration timer but don't start it yet
@@ -174,7 +174,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     this.hasHitCupThisThrow = false;
 
     // Increment throw count when ball is released
-    // this.throwCount++;
+    this.throwCount++;
     print("Throw count incremented to: " + this.throwCount);
 
     // Keep physics enabled when released and apply hand velocity

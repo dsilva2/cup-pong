@@ -149,6 +149,26 @@
     - !<own> f92bde55-8373-4dd8-92d7-fc51219ed0ef
   Components:
     []
+- !<ScriptComponent/0024d5f1-2709-44e0-b52f-b2690e811c78>
+  PrefabRemaps:
+    []
+  Name: PositionInitializer
+  Enabled: true
+  ScriptAsset: !<reference> 225d583c-8e02-48b8-ac6d-86363fd87979
+  ScriptInputsDefault:
+    positionInFrontOfCamera: true
+    shouldFaceCamera: true
+    triggerOnlyForMapper: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      positionInFrontOfCamera: !<Vec3> {x: 0.000000, y: 0.000000, z: -110.000000}
+      shouldFaceCamera: false
+      triggerOnlyForMapper: true
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/00461aea-b3d7-4fc3-b714-ae332a7cb451>
   PrefabRemaps:
     []
@@ -2634,6 +2654,38 @@
     - !<own> c5d004a1-3452-471a-b9bd-a3d34b8d9e00
   Components:
     []
+- !<ScriptComponent/115f8299-67f6-403d-a058-daf1bd9e91af>
+  PrefabRemaps:
+    []
+  Name: SyncTransform
+  Enabled: true
+  ScriptAsset: !<reference> f3c20594-375f-43d8-a93f-a8e75bd6a61d
+  ScriptInputsDefault:
+    networkIdTypeString: true
+    customNetworkId: true
+    positionSyncString: true
+    rotationSyncString: true
+    scaleSyncString: true
+    persistenceString: true
+    sendsPerSecondLimit: true
+    useSmoothing: true
+    interpolationTarget: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      networkIdTypeString: objectId
+      customNetworkId: enter_unique_id
+      positionSyncString: Local
+      rotationSyncString: Local
+      scaleSyncString: Local
+      persistenceString: Session
+      sendsPerSecondLimit: 10
+      useSmoothing: true
+      interpolationTarget: -0.250000
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/118f5ee0-f0ea-4fef-9b5e-83461138945a>
   PrefabRemaps:
     []
@@ -3041,6 +3093,8 @@
     - !<own> 17782fa5-6f8a-4db7-8315-ead17cb6a3a0
   Components:
     - !<own> 75a8ffba-a72f-4117-8943-c5c6bdf74031
+    - !<own> ce669328-a2e6-4a98-90b1-5d807505dc56
+    - !<own> 43a699b5-b0db-4a86-9699-61df8469281e
 - !<SceneObject/15dfa191-a0ef-4a45-950c-992805d16756>
   PrefabRemaps:
     []
@@ -3192,6 +3246,38 @@
   BlendNormals: false
   BlendShapes:
     {}
+- !<ScriptComponent/176c927d-aa5c-4f8b-99e8-3fcdb908b523>
+  PrefabRemaps:
+    []
+  Name: SyncTransform
+  Enabled: true
+  ScriptAsset: !<reference> f3c20594-375f-43d8-a93f-a8e75bd6a61d
+  ScriptInputsDefault:
+    networkIdTypeString: true
+    customNetworkId: true
+    positionSyncString: true
+    rotationSyncString: true
+    scaleSyncString: true
+    persistenceString: true
+    sendsPerSecondLimit: true
+    useSmoothing: true
+    interpolationTarget: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      networkIdTypeString: objectId
+      customNetworkId: enter_unique_id
+      positionSyncString: Local
+      rotationSyncString: Local
+      scaleSyncString: Local
+      persistenceString: Session
+      sendsPerSecondLimit: 10
+      useSmoothing: true
+      interpolationTarget: -0.250000
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/17782fa5-6f8a-4db7-8315-ead17cb6a3a0>
   PrefabRemaps:
     []
@@ -3224,6 +3310,26 @@
     - !<own> 1d75158d-c25e-49bd-bfe1-5141a38f280a
   Components:
     - !<own> 929d3251-891b-46d9-b3db-e4cf454abe60
+- !<ScriptComponent/1866f309-bd91-41e4-8419-8880a375cb92>
+  PrefabRemaps:
+    []
+  Name: PositionInitializer
+  Enabled: true
+  ScriptAsset: !<reference> 225d583c-8e02-48b8-ac6d-86363fd87979
+  ScriptInputsDefault:
+    positionInFrontOfCamera: true
+    shouldFaceCamera: true
+    triggerOnlyForMapper: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      positionInFrontOfCamera: !<Vec3> {x: 0.000000, y: 0.000000, z: -110.000000}
+      shouldFaceCamera: false
+      triggerOnlyForMapper: true
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/1877f49b-3001-4a64-a898-c1598e0b6685>
   PrefabRemaps:
     []
@@ -3512,6 +3618,38 @@
   Components:
     - !<own> 62ca58cc-1ad0-43e4-a6d7-1c15f18ed007
     - !<own> fe543216-a357-4ed6-a9d0-c8463248eea5
+- !<ScriptComponent/1b116ac4-e640-47bf-9490-f317e06e6012>
+  PrefabRemaps:
+    []
+  Name: SyncTransform
+  Enabled: true
+  ScriptAsset: !<reference> f3c20594-375f-43d8-a93f-a8e75bd6a61d
+  ScriptInputsDefault:
+    networkIdTypeString: true
+    customNetworkId: true
+    positionSyncString: true
+    rotationSyncString: true
+    scaleSyncString: true
+    persistenceString: true
+    sendsPerSecondLimit: true
+    useSmoothing: true
+    interpolationTarget: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      networkIdTypeString: objectId
+      customNetworkId: enter_unique_id
+      positionSyncString: Local
+      rotationSyncString: Local
+      scaleSyncString: Local
+      persistenceString: Session
+      sendsPerSecondLimit: 10
+      useSmoothing: true
+      interpolationTarget: -0.250000
+  ScriptTypes:
+    "":
+      {}
 - !<Text/1b32cfb6-c968-4d02-a6f8-58c2068f58cf>
   PrefabRemaps:
     []
@@ -3803,6 +3941,26 @@
   Components:
     - !<own> 3712e45f-6aa0-4c70-ba1a-8cf900ef4d10
     - !<own> 6f7817dc-15e6-4c80-b419-08bc8838d6c9
+- !<ScriptComponent/1d2e4741-ee15-45c7-9752-3ccdb5e028a1>
+  PrefabRemaps:
+    []
+  Name: PositionInitializer
+  Enabled: true
+  ScriptAsset: !<reference> 225d583c-8e02-48b8-ac6d-86363fd87979
+  ScriptInputsDefault:
+    positionInFrontOfCamera: true
+    shouldFaceCamera: true
+    triggerOnlyForMapper: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      positionInFrontOfCamera: !<Vec3> {x: 0.000000, y: 0.000000, z: -110.000000}
+      shouldFaceCamera: false
+      triggerOnlyForMapper: true
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/1d75158d-c25e-49bd-bfe1-5141a38f280a>
   PrefabRemaps:
     []
@@ -3870,6 +4028,38 @@
     bottom: -1.050000
     right: 3.750000
     top: 1.050000
+- !<ScriptComponent/1e705236-3088-4197-98b6-96d7ef5320b0>
+  PrefabRemaps:
+    []
+  Name: SyncTransform
+  Enabled: true
+  ScriptAsset: !<reference> f3c20594-375f-43d8-a93f-a8e75bd6a61d
+  ScriptInputsDefault:
+    networkIdTypeString: true
+    customNetworkId: true
+    positionSyncString: true
+    rotationSyncString: true
+    scaleSyncString: true
+    persistenceString: true
+    sendsPerSecondLimit: true
+    useSmoothing: true
+    interpolationTarget: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      networkIdTypeString: objectId
+      customNetworkId: enter_unique_id
+      positionSyncString: Local
+      rotationSyncString: Local
+      scaleSyncString: Local
+      persistenceString: Session
+      sendsPerSecondLimit: 10
+      useSmoothing: true
+      interpolationTarget: -0.250000
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/1e913a8c-2148-4b8b-9377-efa79d6e6e9e>
   PrefabRemaps:
     []
@@ -4510,6 +4700,26 @@
   ForceCompound: false
   Intangible: false
   ShowCollider: false
+- !<ScriptComponent/25e529d7-aaef-4f14-a75f-adaac998a28c>
+  PrefabRemaps:
+    []
+  Name: PositionInitializer
+  Enabled: true
+  ScriptAsset: !<reference> 225d583c-8e02-48b8-ac6d-86363fd87979
+  ScriptInputsDefault:
+    positionInFrontOfCamera: true
+    shouldFaceCamera: true
+    triggerOnlyForMapper: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      positionInFrontOfCamera: !<Vec3> {x: 0.000000, y: 0.000000, z: -110.000000}
+      shouldFaceCamera: false
+      triggerOnlyForMapper: true
+  ScriptTypes:
+    "":
+      {}
 - !<ColliderComponent/25ebbe4c-989b-4a23-8a13-cfade3694388>
   PrefabRemaps:
     []
@@ -4635,6 +4845,8 @@
     - !<own> 154dff40-f122-4d4b-a03f-8dd3b7b8b81f
   Components:
     - !<own> 5a46330d-cfcc-4274-b390-eb68a06b4b2a
+    - !<own> 0024d5f1-2709-44e0-b52f-b2690e811c78
+    - !<own> 8e90e89d-f77e-4fd5-95f5-4a57c90d8181
 - !<SceneObject/26d3355b-4277-4f86-8227-8730eb62ccda>
   PrefabRemaps:
     []
@@ -5411,6 +5623,26 @@
     []
   Components:
     []
+- !<ScriptComponent/2d2b9823-98f7-4522-8f41-c8c0edee833e>
+  PrefabRemaps:
+    []
+  Name: PositionInitializer
+  Enabled: true
+  ScriptAsset: !<reference> 225d583c-8e02-48b8-ac6d-86363fd87979
+  ScriptInputsDefault:
+    positionInFrontOfCamera: true
+    shouldFaceCamera: true
+    triggerOnlyForMapper: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      positionInFrontOfCamera: !<Vec3> {x: 0.000000, y: 0.000000, z: -110.000000}
+      shouldFaceCamera: false
+      triggerOnlyForMapper: true
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/2d5f7ba0-f422-4dfa-99ae-a236be7277d0>
   PrefabRemaps:
     []
@@ -6111,6 +6343,38 @@
     - !<own> e3948e50-3f2e-43a7-9198-6f827f894fa2
   Components:
     []
+- !<ScriptComponent/35b8e999-8803-4ebe-b2a4-a77e3e18ba78>
+  PrefabRemaps:
+    []
+  Name: SyncTransform
+  Enabled: true
+  ScriptAsset: !<reference> f3c20594-375f-43d8-a93f-a8e75bd6a61d
+  ScriptInputsDefault:
+    networkIdTypeString: true
+    customNetworkId: true
+    positionSyncString: true
+    rotationSyncString: true
+    scaleSyncString: true
+    persistenceString: true
+    sendsPerSecondLimit: true
+    useSmoothing: true
+    interpolationTarget: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      networkIdTypeString: objectId
+      customNetworkId: enter_unique_id
+      positionSyncString: Local
+      rotationSyncString: Local
+      scaleSyncString: Local
+      persistenceString: Session
+      sendsPerSecondLimit: 10
+      useSmoothing: true
+      interpolationTarget: -0.250000
+  ScriptTypes:
+    "":
+      {}
 - !<ColliderComponent/35bbcbe7-f994-4e1a-bd96-69a44340b995>
   PrefabRemaps:
     []
@@ -6247,6 +6511,26 @@
   Components:
     - !<own> 0ae8afa7-79bc-4443-8788-71718dc62e85
     - !<own> 391c1ae4-1537-43b5-b82e-40b2b36603bf
+- !<ScriptComponent/370c56d3-4689-481d-b717-bbcd6fc9a3cb>
+  PrefabRemaps:
+    []
+  Name: PositionInitializer
+  Enabled: true
+  ScriptAsset: !<reference> 225d583c-8e02-48b8-ac6d-86363fd87979
+  ScriptInputsDefault:
+    positionInFrontOfCamera: true
+    shouldFaceCamera: true
+    triggerOnlyForMapper: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      positionInFrontOfCamera: !<Vec3> {x: 0.000000, y: 0.000000, z: -110.000000}
+      shouldFaceCamera: false
+      triggerOnlyForMapper: true
+  ScriptTypes:
+    "":
+      {}
 - !<RenderMeshVisual/3712e45f-6aa0-4c70-ba1a-8cf900ef4d10>
   PrefabRemaps:
     []
@@ -6778,6 +7062,38 @@
   Components:
     - !<own> 46f2731a-d462-421a-a17a-de757408037d
     - !<own> 2c38c746-ac1e-49e3-9126-4ebb9920d20a
+- !<ScriptComponent/3a4b8d2e-1ac2-4c6d-a621-6092d1f66967>
+  PrefabRemaps:
+    []
+  Name: SyncTransform
+  Enabled: true
+  ScriptAsset: !<reference> f3c20594-375f-43d8-a93f-a8e75bd6a61d
+  ScriptInputsDefault:
+    networkIdTypeString: true
+    customNetworkId: true
+    positionSyncString: true
+    rotationSyncString: true
+    scaleSyncString: true
+    persistenceString: true
+    sendsPerSecondLimit: true
+    useSmoothing: true
+    interpolationTarget: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      networkIdTypeString: objectId
+      customNetworkId: enter_unique_id
+      positionSyncString: Local
+      rotationSyncString: Local
+      scaleSyncString: Local
+      persistenceString: Session
+      sendsPerSecondLimit: 10
+      useSmoothing: true
+      interpolationTarget: -0.250000
+  ScriptTypes:
+    "":
+      {}
 - !<RenderMeshVisual/3aa74af0-ba6f-48c3-87ab-5d04492c9c40>
   PrefabRemaps:
     []
@@ -7163,6 +7479,8 @@
     - !<own> 08e38232-f16a-4a17-9fa5-9584312cdccf
   Components:
     - !<own> 0836089e-c16e-4de1-aa19-36c09f0a7885
+    - !<own> ba4f1e67-8315-43b2-b20a-f90673833248
+    - !<own> cc46bedc-3d69-453b-811d-5f035ef4d12d
 - !<SceneObject/3eeaa234-4724-409e-966b-f613e2ae5c4a>
   PrefabRemaps:
     []
@@ -7801,6 +8119,38 @@
     CapitalizationOverride: None
   DepthTest: false
   TwoSided: false
+- !<ScriptComponent/43a699b5-b0db-4a86-9699-61df8469281e>
+  PrefabRemaps:
+    []
+  Name: SyncTransform
+  Enabled: true
+  ScriptAsset: !<reference> f3c20594-375f-43d8-a93f-a8e75bd6a61d
+  ScriptInputsDefault:
+    networkIdTypeString: true
+    customNetworkId: true
+    positionSyncString: true
+    rotationSyncString: true
+    scaleSyncString: true
+    persistenceString: true
+    sendsPerSecondLimit: true
+    useSmoothing: true
+    interpolationTarget: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      networkIdTypeString: objectId
+      customNetworkId: enter_unique_id
+      positionSyncString: Local
+      rotationSyncString: Local
+      scaleSyncString: Local
+      persistenceString: Session
+      sendsPerSecondLimit: 10
+      useSmoothing: true
+      interpolationTarget: -0.250000
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/43bff73f-a942-4073-ab7f-2521ef02c62f>
   PrefabRemaps:
     []
@@ -8917,6 +9267,26 @@
   ForceCompound: false
   Intangible: false
   ShowCollider: false
+- !<ScriptComponent/4fcff827-22da-491d-87e8-0ba300066c58>
+  PrefabRemaps:
+    []
+  Name: PositionInitializer
+  Enabled: true
+  ScriptAsset: !<reference> 225d583c-8e02-48b8-ac6d-86363fd87979
+  ScriptInputsDefault:
+    positionInFrontOfCamera: true
+    shouldFaceCamera: true
+    triggerOnlyForMapper: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      positionInFrontOfCamera: !<Vec3> {x: 0.000000, y: 0.000000, z: -110.000000}
+      shouldFaceCamera: false
+      triggerOnlyForMapper: true
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/4ff15510-daf2-45aa-bf21-78cea3b1277c>
   PrefabRemaps:
     []
@@ -9350,6 +9720,38 @@
   BlendNormals: false
   BlendShapes:
     {}
+- !<ScriptComponent/56949c49-f91a-43ec-82bc-d709c67285a0>
+  PrefabRemaps:
+    []
+  Name: SyncTransform
+  Enabled: true
+  ScriptAsset: !<reference> f3c20594-375f-43d8-a93f-a8e75bd6a61d
+  ScriptInputsDefault:
+    networkIdTypeString: true
+    customNetworkId: true
+    positionSyncString: true
+    rotationSyncString: true
+    scaleSyncString: true
+    persistenceString: true
+    sendsPerSecondLimit: true
+    useSmoothing: true
+    interpolationTarget: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      networkIdTypeString: objectId
+      customNetworkId: enter_unique_id
+      positionSyncString: Local
+      rotationSyncString: Local
+      scaleSyncString: Local
+      persistenceString: Session
+      sendsPerSecondLimit: 10
+      useSmoothing: true
+      interpolationTarget: -0.250000
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/570c2c6a-b97f-48f3-9fbc-6d11e305f247>
   PrefabRemaps:
     []
@@ -9670,6 +10072,38 @@
   Components:
     - !<own> f017d942-1cbf-4243-8b9d-c5c4244a7769
     - !<own> 8862a0e2-7af7-47d0-9bff-06e6040cb865
+- !<ScriptComponent/5a10be60-1d6d-405a-9ad0-e37feb605760>
+  PrefabRemaps:
+    []
+  Name: SyncTransform
+  Enabled: true
+  ScriptAsset: !<reference> f3c20594-375f-43d8-a93f-a8e75bd6a61d
+  ScriptInputsDefault:
+    networkIdTypeString: true
+    customNetworkId: true
+    positionSyncString: true
+    rotationSyncString: true
+    scaleSyncString: true
+    persistenceString: true
+    sendsPerSecondLimit: true
+    useSmoothing: true
+    interpolationTarget: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      networkIdTypeString: objectId
+      customNetworkId: enter_unique_id
+      positionSyncString: Local
+      rotationSyncString: Local
+      scaleSyncString: Local
+      persistenceString: Session
+      sendsPerSecondLimit: 10
+      useSmoothing: true
+      interpolationTarget: -0.250000
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/5a2c62fd-9feb-4c0b-884c-3660e381cbb4>
   PrefabRemaps:
     []
@@ -9991,6 +10425,26 @@
     []
   Components:
     - !<own> 5baf3140-0a47-49e2-a4ab-d723cc2da934
+- !<ScriptComponent/5ec5ef0d-cb88-4caa-8168-234d2a419053>
+  PrefabRemaps:
+    []
+  Name: PositionInitializer
+  Enabled: true
+  ScriptAsset: !<reference> 225d583c-8e02-48b8-ac6d-86363fd87979
+  ScriptInputsDefault:
+    positionInFrontOfCamera: true
+    shouldFaceCamera: true
+    triggerOnlyForMapper: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      positionInFrontOfCamera: !<Vec3> {x: 0.000000, y: 0.000000, z: -110.000000}
+      shouldFaceCamera: false
+      triggerOnlyForMapper: true
+  ScriptTypes:
+    "":
+      {}
 - !<RenderMeshVisual/5ee69346-47d9-4176-b28a-5280e7d30f3c>
   PrefabRemaps:
     []
@@ -10343,6 +10797,8 @@
     - !<own> 5cb04737-d860-4506-8500-21482aef9274
   Components:
     - !<own> e1a6c678-a122-4a07-8829-46d19f1f6ef5
+    - !<own> 91118d34-49fa-4e06-84d6-c181099255f8
+    - !<own> 56949c49-f91a-43ec-82bc-d709c67285a0
 - !<SceneObject/61e0756f-46ea-43db-aaf7-c611848dddac>
   PrefabRemaps:
     []
@@ -10377,6 +10833,8 @@
     - !<own> 187b3ad9-19f0-45bf-8960-064bc17b2560
   Components:
     - !<own> 41240d6a-7a15-4f32-ab7a-39237e505904
+    - !<own> 939b7847-0035-4b50-adc9-d5f5d903c9b4
+    - !<own> d8f6a012-5b77-4298-97ff-343cc9e631d5
 - !<SceneObject/6279936f-04ac-4b52-a7f9-544f6596e085>
   PrefabRemaps:
     []
@@ -10888,6 +11346,8 @@
     - !<own> 6b01d039-2a2d-4ac4-9a7a-dece34592dde
   Components:
     - !<own> 70f20073-0226-42a8-b8fd-ef4486decabe
+    - !<own> eb729e7d-befd-4d6a-906c-97e9f795e83d
+    - !<own> 1e705236-3088-4197-98b6-96d7ef5320b0
 - !<Text/680ef34d-02eb-4a3c-bb41-06c7a4443b19>
   PrefabRemaps:
     []
@@ -12090,6 +12550,8 @@
     - !<own> 39448208-886a-4da0-a758-9fece49b194f
   Components:
     - !<own> d871c58d-4d83-4ef1-a7b5-76c80e999048
+    - !<own> 370c56d3-4689-481d-b717-bbcd6fc9a3cb
+    - !<own> 1b116ac4-e640-47bf-9490-f317e06e6012
 - !<RenderMeshVisual/7156f99e-ad7b-4ed8-92e4-496238962a5b>
   PrefabRemaps:
     []
@@ -12918,6 +13380,38 @@
     - !<own> 1cb307f0-032d-4c2a-b2fe-1305479acbef
   Components:
     []
+- !<ScriptComponent/798c8561-25ec-4ee7-9922-10c0cfb7b518>
+  PrefabRemaps:
+    []
+  Name: SyncTransform
+  Enabled: true
+  ScriptAsset: !<reference> f3c20594-375f-43d8-a93f-a8e75bd6a61d
+  ScriptInputsDefault:
+    networkIdTypeString: true
+    customNetworkId: true
+    positionSyncString: true
+    rotationSyncString: true
+    scaleSyncString: true
+    persistenceString: true
+    sendsPerSecondLimit: true
+    useSmoothing: true
+    interpolationTarget: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      networkIdTypeString: objectId
+      customNetworkId: enter_unique_id
+      positionSyncString: Local
+      rotationSyncString: Local
+      scaleSyncString: Local
+      persistenceString: Session
+      sendsPerSecondLimit: 10
+      useSmoothing: true
+      interpolationTarget: -0.250000
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/7995dce0-8e9a-4fa6-9f71-db55776865c7>
   PrefabRemaps:
     []
@@ -13155,6 +13649,26 @@
     - !<own> 6a7814d2-83d1-4cd7-9596-dcfb5c24bb49
   Components:
     []
+- !<ScriptComponent/7c945805-618e-465f-ba40-b4aaa51034c1>
+  PrefabRemaps:
+    []
+  Name: PositionInitializer
+  Enabled: true
+  ScriptAsset: !<reference> 225d583c-8e02-48b8-ac6d-86363fd87979
+  ScriptInputsDefault:
+    positionInFrontOfCamera: true
+    shouldFaceCamera: true
+    triggerOnlyForMapper: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      positionInFrontOfCamera: !<Vec3> {x: 0.000000, y: 0.000000, z: -110.000000}
+      shouldFaceCamera: false
+      triggerOnlyForMapper: true
+  ScriptTypes:
+    "":
+      {}
 - !<RenderMeshVisual/7ca149be-4aa9-4abd-a832-eb137a71dd2c>
   PrefabRemaps:
     []
@@ -14637,6 +15151,8 @@
     - !<own> 7ad9352a-70dd-4fe0-91ec-3a8193721469
   Components:
     - !<own> 752f27d5-9b4d-40e3-97e9-8d2ddd120d11
+    - !<own> f3116d3f-608d-427c-9267-fee24cbb8f0f
+    - !<own> 115f8299-67f6-403d-a058-daf1bd9e91af
 - !<SceneObject/895702ab-2afb-4b1b-b7f0-45389deafa67>
   PrefabRemaps:
     []
@@ -15255,6 +15771,26 @@
   BlendNormals: false
   BlendShapes:
     {}
+- !<ScriptComponent/8e5dfecb-8a3c-46db-9271-1dce1b461896>
+  PrefabRemaps:
+    []
+  Name: PositionInitializer
+  Enabled: true
+  ScriptAsset: !<reference> 225d583c-8e02-48b8-ac6d-86363fd87979
+  ScriptInputsDefault:
+    positionInFrontOfCamera: true
+    shouldFaceCamera: true
+    triggerOnlyForMapper: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      positionInFrontOfCamera: !<Vec3> {x: 0.000000, y: 0.000000, z: -110.000000}
+      shouldFaceCamera: false
+      triggerOnlyForMapper: true
+  ScriptTypes:
+    "":
+      {}
 - !<RenderMeshVisual/8e5fb0d1-8b8b-483a-9172-c000cad00bcd>
   PrefabRemaps:
     []
@@ -15275,6 +15811,38 @@
   BlendNormals: false
   BlendShapes:
     {}
+- !<ScriptComponent/8e90e89d-f77e-4fd5-95f5-4a57c90d8181>
+  PrefabRemaps:
+    []
+  Name: SyncTransform
+  Enabled: true
+  ScriptAsset: !<reference> f3c20594-375f-43d8-a93f-a8e75bd6a61d
+  ScriptInputsDefault:
+    networkIdTypeString: true
+    customNetworkId: true
+    positionSyncString: true
+    rotationSyncString: true
+    scaleSyncString: true
+    persistenceString: true
+    sendsPerSecondLimit: true
+    useSmoothing: true
+    interpolationTarget: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      networkIdTypeString: objectId
+      customNetworkId: enter_unique_id
+      positionSyncString: Local
+      rotationSyncString: Local
+      scaleSyncString: Local
+      persistenceString: Session
+      sendsPerSecondLimit: 10
+      useSmoothing: true
+      interpolationTarget: -0.250000
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/8eac3e50-8ab8-4785-8d31-036e2cf15553>
   PrefabRemaps:
     []
@@ -15321,6 +15889,26 @@
     []
   Components:
     - !<own> f87dde1b-def0-4478-8d56-b5a9f0e57242
+- !<ScriptComponent/8f67c651-f276-440c-81be-498a7bc465b0>
+  PrefabRemaps:
+    []
+  Name: PositionInitializer
+  Enabled: true
+  ScriptAsset: !<reference> 225d583c-8e02-48b8-ac6d-86363fd87979
+  ScriptInputsDefault:
+    positionInFrontOfCamera: true
+    shouldFaceCamera: true
+    triggerOnlyForMapper: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      positionInFrontOfCamera: !<Vec3> {x: 0.000000, y: 0.000000, z: -110.000000}
+      shouldFaceCamera: false
+      triggerOnlyForMapper: true
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/8f7179f1-0044-4410-87ee-ca061e111d23>
   PrefabRemaps:
     []
@@ -15354,6 +15942,8 @@
     - !<own> 6b68de78-3881-47fd-82e5-ec82090c8c3b
   Components:
     - !<own> 42b585bc-95f2-4dae-b068-002daef6859c
+    - !<own> 4fcff827-22da-491d-87e8-0ba300066c58
+    - !<own> 97ae3174-3c22-4935-95bc-d8c2c2bc1550
 - !<RenderMeshVisual/8f7eaa9e-243f-4207-a909-edfc6b9ec742>
   PrefabRemaps:
     []
@@ -15520,6 +16110,26 @@
     []
   Components:
     []
+- !<ScriptComponent/91118d34-49fa-4e06-84d6-c181099255f8>
+  PrefabRemaps:
+    []
+  Name: PositionInitializer
+  Enabled: true
+  ScriptAsset: !<reference> 225d583c-8e02-48b8-ac6d-86363fd87979
+  ScriptInputsDefault:
+    positionInFrontOfCamera: true
+    shouldFaceCamera: true
+    triggerOnlyForMapper: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      positionInFrontOfCamera: !<Vec3> {x: 0.000000, y: 0.000000, z: -110.000000}
+      shouldFaceCamera: false
+      triggerOnlyForMapper: true
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/9113cb91-a8ad-4d45-b4dc-d8ae3de50bf0>
   PrefabRemaps:
     []
@@ -15855,6 +16465,26 @@
     []
   Components:
     - !<own> e1fc57dc-d5a4-481d-9adf-6cea9f68d38d
+- !<ScriptComponent/939b7847-0035-4b50-adc9-d5f5d903c9b4>
+  PrefabRemaps:
+    []
+  Name: PositionInitializer
+  Enabled: true
+  ScriptAsset: !<reference> 225d583c-8e02-48b8-ac6d-86363fd87979
+  ScriptInputsDefault:
+    positionInFrontOfCamera: true
+    shouldFaceCamera: true
+    triggerOnlyForMapper: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      positionInFrontOfCamera: !<Vec3> {x: 0.000000, y: 0.000000, z: -110.000000}
+      shouldFaceCamera: false
+      triggerOnlyForMapper: true
+  ScriptTypes:
+    "":
+      {}
 - !<RenderMeshVisual/93d285f7-18e0-4542-9870-8643f1b43789>
   PrefabRemaps:
     []
@@ -16190,6 +16820,38 @@
   BlendNormals: false
   BlendShapes:
     {}
+- !<ScriptComponent/97ae3174-3c22-4935-95bc-d8c2c2bc1550>
+  PrefabRemaps:
+    []
+  Name: SyncTransform
+  Enabled: true
+  ScriptAsset: !<reference> f3c20594-375f-43d8-a93f-a8e75bd6a61d
+  ScriptInputsDefault:
+    networkIdTypeString: true
+    customNetworkId: true
+    positionSyncString: true
+    rotationSyncString: true
+    scaleSyncString: true
+    persistenceString: true
+    sendsPerSecondLimit: true
+    useSmoothing: true
+    interpolationTarget: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      networkIdTypeString: objectId
+      customNetworkId: enter_unique_id
+      positionSyncString: Local
+      rotationSyncString: Local
+      scaleSyncString: Local
+      persistenceString: Session
+      sendsPerSecondLimit: 10
+      useSmoothing: true
+      interpolationTarget: -0.250000
+  ScriptTypes:
+    "":
+      {}
 - !<RenderMeshVisual/97b313f7-54be-409b-9063-ce283f6883bf>
   PrefabRemaps:
     []
@@ -16374,6 +17036,8 @@
     - !<own> 9191d23b-f8a8-4daf-86ee-305c7e09db15
   Components:
     - !<own> 73228e2c-a751-4e1a-b0db-b35c6f8e302b
+    - !<own> c44ed94c-401b-411f-9019-2ea5f441d589
+    - !<own> dabcd368-6722-4bcb-b916-923a1ca3e72f
 - !<RenderMeshVisual/99221a03-704c-4943-882a-c4b3ae0fbb63>
   PrefabRemaps:
     []
@@ -16528,6 +17192,8 @@
     - !<own> a3633062-6b30-418b-921d-1252a2089945
   Components:
     - !<own> 6ad98bc1-043d-43b4-8e13-2b79dea6ce23
+    - !<own> 1d2e4741-ee15-45c7-9752-3ccdb5e028a1
+    - !<own> 176c927d-aa5c-4f8b-99e8-3fcdb908b523
 - !<ScriptComponent/9b6c0329-6d7c-47e9-8074-e5c1b8facc16>
   PrefabRemaps:
     []
@@ -17469,6 +18135,8 @@
     - !<own> d6fe8fe7-7a2e-48ea-b42d-b9506245e9e1
   Components:
     - !<own> af44c967-0b31-403c-89ac-71acefebe1b5
+    - !<own> 7c945805-618e-465f-ba40-b4aaa51034c1
+    - !<own> 5a10be60-1d6d-405a-9ad0-e37feb605760
 - !<SceneObject/a482d3bd-8bfb-48e6-9c2b-1cf9748e7efd>
   PrefabRemaps:
     []
@@ -19334,6 +20002,26 @@
     []
   Components:
     []
+- !<ScriptComponent/b06ead3e-69ea-41a4-86bf-743d54252ca6>
+  PrefabRemaps:
+    []
+  Name: PositionInitializer
+  Enabled: true
+  ScriptAsset: !<reference> 225d583c-8e02-48b8-ac6d-86363fd87979
+  ScriptInputsDefault:
+    positionInFrontOfCamera: true
+    shouldFaceCamera: true
+    triggerOnlyForMapper: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      positionInFrontOfCamera: !<Vec3> {x: 0.000000, y: 0.000000, z: -110.000000}
+      shouldFaceCamera: false
+      triggerOnlyForMapper: true
+  ScriptTypes:
+    "":
+      {}
 - !<Text/b08c41d4-76cc-4796-8354-2d5ca1980453>
   PrefabRemaps:
     []
@@ -19670,6 +20358,8 @@
     - !<own> 8adcdc55-0b34-4437-be57-1d33f7d8f6f2
   Components:
     - !<own> 4e2be8bf-c81e-43e7-a624-31321bb3cd1e
+    - !<own> 1866f309-bd91-41e4-8419-8880a375cb92
+    - !<own> dbb725c1-4fea-4ba6-a385-a0095e0ff685
 - !<SceneObject/b36767f7-9846-44ba-8aef-2250e94e38b8>
   PrefabRemaps:
     []
@@ -20011,6 +20701,8 @@
     - !<own> 776356e2-a60d-44ab-ba9d-94860f3a8f50
   Components:
     - !<own> 986299a7-0a72-44eb-b568-7a3fb80d328b
+    - !<own> 5ec5ef0d-cb88-4caa-8168-234d2a419053
+    - !<own> 35b8e999-8803-4ebe-b2a4-a77e3e18ba78
 - !<SceneObject/b560b281-e300-4ce9-a79d-1d9469e8cde6>
   PrefabRemaps:
     []
@@ -20325,6 +21017,8 @@
     - !<own> e7c381aa-43f0-4bfa-85d5-e7d1d3ba1bf6
   Components:
     - !<own> 54da3a2c-bdea-4ace-96a1-4af418a71e70
+    - !<own> 2d2b9823-98f7-4522-8f41-c8c0edee833e
+    - !<own> d9cd01e0-fedd-4d47-a4d3-71b89b939cdd
 - !<SceneObject/b7b00241-016a-4ad6-bf55-15ad892ba37b>
   PrefabRemaps:
     []
@@ -20685,6 +21379,26 @@
       tapTexture: !<reference.Texture> e33d2c7f-1d12-4250-92fb-433c25ce1923
       handOutlineMaterial: !<reference.Material> 7ac80b6c-979a-4a00-a694-099f296be161
       handOccluderMaterial: !<reference.Material> bb8479b9-021e-4c42-809a-60edf99cbeac
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/ba4f1e67-8315-43b2-b20a-f90673833248>
+  PrefabRemaps:
+    []
+  Name: PositionInitializer
+  Enabled: true
+  ScriptAsset: !<reference> 225d583c-8e02-48b8-ac6d-86363fd87979
+  ScriptInputsDefault:
+    positionInFrontOfCamera: true
+    shouldFaceCamera: true
+    triggerOnlyForMapper: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      positionInFrontOfCamera: !<Vec3> {x: 0.000000, y: 0.000000, z: -110.000000}
+      shouldFaceCamera: false
+      triggerOnlyForMapper: true
   ScriptTypes:
     "":
       {}
@@ -21379,6 +22093,8 @@
     - !<own> f2af1cdb-26cc-49e6-9587-2e984ea03577
   Components:
     - !<own> 930d0457-bc61-4710-a095-8392bd85eed9
+    - !<own> b06ead3e-69ea-41a4-86bf-743d54252ca6
+    - !<own> d8360b07-85dd-4f6a-9a06-5c11527a8453
 - !<ColliderComponent/c319db4e-6ada-40cb-ad38-95ab52b33d59>
   PrefabRemaps:
     []
@@ -21501,6 +22217,26 @@
   ForceCompound: false
   Intangible: false
   ShowCollider: true
+- !<ScriptComponent/c44ed94c-401b-411f-9019-2ea5f441d589>
+  PrefabRemaps:
+    []
+  Name: PositionInitializer
+  Enabled: true
+  ScriptAsset: !<reference> 225d583c-8e02-48b8-ac6d-86363fd87979
+  ScriptInputsDefault:
+    positionInFrontOfCamera: true
+    shouldFaceCamera: true
+    triggerOnlyForMapper: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      positionInFrontOfCamera: !<Vec3> {x: 0.000000, y: 0.000000, z: -110.000000}
+      shouldFaceCamera: false
+      triggerOnlyForMapper: true
+  ScriptTypes:
+    "":
+      {}
 - !<ColliderComponent/c476703a-0ea6-46c7-a747-20ec7b0cdb59>
   PrefabRemaps:
     []
@@ -22321,6 +23057,38 @@
     - !<own> c141b2cc-f335-4f2c-883b-2e62e57dd486
   Components:
     []
+- !<ScriptComponent/cc46bedc-3d69-453b-811d-5f035ef4d12d>
+  PrefabRemaps:
+    []
+  Name: SyncTransform
+  Enabled: true
+  ScriptAsset: !<reference> f3c20594-375f-43d8-a93f-a8e75bd6a61d
+  ScriptInputsDefault:
+    networkIdTypeString: true
+    customNetworkId: true
+    positionSyncString: true
+    rotationSyncString: true
+    scaleSyncString: true
+    persistenceString: true
+    sendsPerSecondLimit: true
+    useSmoothing: true
+    interpolationTarget: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      networkIdTypeString: objectId
+      customNetworkId: enter_unique_id
+      positionSyncString: Local
+      rotationSyncString: Local
+      scaleSyncString: Local
+      persistenceString: Session
+      sendsPerSecondLimit: 10
+      useSmoothing: true
+      interpolationTarget: -0.250000
+  ScriptTypes:
+    "":
+      {}
 - !<RenderMeshVisual/ccc3cd02-a1a4-44a7-845f-b02767803393>
   PrefabRemaps:
     []
@@ -22481,6 +23249,26 @@
     - !<own> 194e0f35-eb45-47ef-bba1-c897786c16ca
   Components:
     []
+- !<ScriptComponent/ce669328-a2e6-4a98-90b1-5d807505dc56>
+  PrefabRemaps:
+    []
+  Name: PositionInitializer
+  Enabled: true
+  ScriptAsset: !<reference> 225d583c-8e02-48b8-ac6d-86363fd87979
+  ScriptInputsDefault:
+    positionInFrontOfCamera: true
+    shouldFaceCamera: true
+    triggerOnlyForMapper: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      positionInFrontOfCamera: !<Vec3> {x: 0.000000, y: 0.000000, z: -110.000000}
+      shouldFaceCamera: false
+      triggerOnlyForMapper: true
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/ceed673b-74b0-47f4-a919-0f1e78621579>
   PrefabRemaps:
     []
@@ -23140,6 +23928,38 @@
   Components:
     - !<own> beb275e2-ec7b-4817-9d5e-be3b95d8e5d4
     - !<own> 699c0c97-65fe-47ec-9fc2-8ebff0093540
+- !<ScriptComponent/d8360b07-85dd-4f6a-9a06-5c11527a8453>
+  PrefabRemaps:
+    []
+  Name: SyncTransform
+  Enabled: true
+  ScriptAsset: !<reference> f3c20594-375f-43d8-a93f-a8e75bd6a61d
+  ScriptInputsDefault:
+    networkIdTypeString: true
+    customNetworkId: true
+    positionSyncString: true
+    rotationSyncString: true
+    scaleSyncString: true
+    persistenceString: true
+    sendsPerSecondLimit: true
+    useSmoothing: true
+    interpolationTarget: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      networkIdTypeString: objectId
+      customNetworkId: enter_unique_id
+      positionSyncString: Local
+      rotationSyncString: Local
+      scaleSyncString: Local
+      persistenceString: Session
+      sendsPerSecondLimit: 10
+      useSmoothing: true
+      interpolationTarget: -0.250000
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/d871c58d-4d83-4ef1-a7b5-76c80e999048>
   PrefabRemaps:
     []
@@ -23232,6 +24052,38 @@
     - !<own> 8f0ba0af-d3a5-4a91-ae6c-a5be9e825367
     - !<own> 46caf7a4-a663-4ff1-9d1f-72d314101eac
     - !<own> a496f61a-e97d-4ef9-953f-aa30ce5ac3c5
+- !<ScriptComponent/d8f6a012-5b77-4298-97ff-343cc9e631d5>
+  PrefabRemaps:
+    []
+  Name: SyncTransform
+  Enabled: true
+  ScriptAsset: !<reference> f3c20594-375f-43d8-a93f-a8e75bd6a61d
+  ScriptInputsDefault:
+    networkIdTypeString: true
+    customNetworkId: true
+    positionSyncString: true
+    rotationSyncString: true
+    scaleSyncString: true
+    persistenceString: true
+    sendsPerSecondLimit: true
+    useSmoothing: true
+    interpolationTarget: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      networkIdTypeString: objectId
+      customNetworkId: enter_unique_id
+      positionSyncString: Local
+      rotationSyncString: Local
+      scaleSyncString: Local
+      persistenceString: Session
+      sendsPerSecondLimit: 10
+      useSmoothing: true
+      interpolationTarget: -0.250000
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/d91d004e-8314-4f05-ae87-8d9f5bf24c0c>
   PrefabRemaps:
     []
@@ -23298,6 +24150,38 @@
   Components:
     - !<own> 4ff277e4-9dd3-4588-ab70-873a43791a6f
     - !<own> c1e1a78a-3b23-4273-859f-882be28ec949
+- !<ScriptComponent/d9cd01e0-fedd-4d47-a4d3-71b89b939cdd>
+  PrefabRemaps:
+    []
+  Name: SyncTransform
+  Enabled: true
+  ScriptAsset: !<reference> f3c20594-375f-43d8-a93f-a8e75bd6a61d
+  ScriptInputsDefault:
+    networkIdTypeString: true
+    customNetworkId: true
+    positionSyncString: true
+    rotationSyncString: true
+    scaleSyncString: true
+    persistenceString: true
+    sendsPerSecondLimit: true
+    useSmoothing: true
+    interpolationTarget: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      networkIdTypeString: objectId
+      customNetworkId: enter_unique_id
+      positionSyncString: Local
+      rotationSyncString: Local
+      scaleSyncString: Local
+      persistenceString: Session
+      sendsPerSecondLimit: 10
+      useSmoothing: true
+      interpolationTarget: -0.250000
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/d9e12476-91b2-487c-b026-96059ccbb48d>
   PrefabRemaps:
     []
@@ -23416,7 +24300,71 @@
     []
   Components:
     - !<own> 08537416-43de-4f1f-83cf-1f1d6f7f7eb9
+- !<ScriptComponent/dabcd368-6722-4bcb-b916-923a1ca3e72f>
+  PrefabRemaps:
+    []
+  Name: SyncTransform
+  Enabled: true
+  ScriptAsset: !<reference> f3c20594-375f-43d8-a93f-a8e75bd6a61d
+  ScriptInputsDefault:
+    networkIdTypeString: true
+    customNetworkId: true
+    positionSyncString: true
+    rotationSyncString: true
+    scaleSyncString: true
+    persistenceString: true
+    sendsPerSecondLimit: true
+    useSmoothing: true
+    interpolationTarget: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      networkIdTypeString: objectId
+      customNetworkId: enter_unique_id
+      positionSyncString: Local
+      rotationSyncString: Local
+      scaleSyncString: Local
+      persistenceString: Session
+      sendsPerSecondLimit: 10
+      useSmoothing: true
+      interpolationTarget: -0.250000
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/dac58198-27ce-4a13-bf94-29a39daf694a>
+  PrefabRemaps:
+    []
+  Name: SyncTransform
+  Enabled: true
+  ScriptAsset: !<reference> f3c20594-375f-43d8-a93f-a8e75bd6a61d
+  ScriptInputsDefault:
+    networkIdTypeString: true
+    customNetworkId: true
+    positionSyncString: true
+    rotationSyncString: true
+    scaleSyncString: true
+    persistenceString: true
+    sendsPerSecondLimit: true
+    useSmoothing: true
+    interpolationTarget: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      networkIdTypeString: objectId
+      customNetworkId: enter_unique_id
+      positionSyncString: Local
+      rotationSyncString: Local
+      scaleSyncString: Local
+      persistenceString: Session
+      sendsPerSecondLimit: 10
+      useSmoothing: true
+      interpolationTarget: -0.250000
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/dbb725c1-4fea-4ba6-a385-a0095e0ff685>
   PrefabRemaps:
     []
   Name: SyncTransform
@@ -24720,6 +25668,38 @@
   BlendNormals: false
   BlendShapes:
     {}
+- !<ScriptComponent/e652bc75-f148-4614-9057-f14cc510f1e0>
+  PrefabRemaps:
+    []
+  Name: SyncTransform
+  Enabled: true
+  ScriptAsset: !<reference> f3c20594-375f-43d8-a93f-a8e75bd6a61d
+  ScriptInputsDefault:
+    networkIdTypeString: true
+    customNetworkId: true
+    positionSyncString: true
+    rotationSyncString: true
+    scaleSyncString: true
+    persistenceString: true
+    sendsPerSecondLimit: true
+    useSmoothing: true
+    interpolationTarget: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      networkIdTypeString: objectId
+      customNetworkId: enter_unique_id
+      positionSyncString: Local
+      rotationSyncString: Local
+      scaleSyncString: Local
+      persistenceString: Session
+      sendsPerSecondLimit: 10
+      useSmoothing: true
+      interpolationTarget: -0.250000
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/e661c093-7e74-427b-82d0-a606b268f54e>
   PrefabRemaps:
     []
@@ -25220,6 +26200,26 @@
   ForceCompound: false
   Intangible: false
   ShowCollider: false
+- !<ScriptComponent/eb729e7d-befd-4d6a-906c-97e9f795e83d>
+  PrefabRemaps:
+    []
+  Name: PositionInitializer
+  Enabled: true
+  ScriptAsset: !<reference> 225d583c-8e02-48b8-ac6d-86363fd87979
+  ScriptInputsDefault:
+    positionInFrontOfCamera: true
+    shouldFaceCamera: true
+    triggerOnlyForMapper: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      positionInFrontOfCamera: !<Vec3> {x: 0.000000, y: 0.000000, z: -110.000000}
+      shouldFaceCamera: false
+      triggerOnlyForMapper: true
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/eb9e0bf9-c82e-4c62-a94e-372a26a90c57>
   PrefabRemaps:
     []
@@ -25946,6 +26946,26 @@
   ScriptTypes:
     "":
       {}
+- !<ScriptComponent/f3116d3f-608d-427c-9267-fee24cbb8f0f>
+  PrefabRemaps:
+    []
+  Name: PositionInitializer
+  Enabled: true
+  ScriptAsset: !<reference> 225d583c-8e02-48b8-ac6d-86363fd87979
+  ScriptInputsDefault:
+    positionInFrontOfCamera: true
+    shouldFaceCamera: true
+    triggerOnlyForMapper: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      positionInFrontOfCamera: !<Vec3> {x: 0.000000, y: 0.000000, z: -110.000000}
+      shouldFaceCamera: false
+      triggerOnlyForMapper: true
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/f35a4822-a685-4bcc-b0fe-770c32bb208e>
   PrefabRemaps:
     []
@@ -26649,6 +27669,8 @@
     - !<own> da201d79-10bd-494f-8780-58bd1e8dd2b9
   Components:
     - !<own> 10a544b9-1ce3-4568-b5b1-d2c6d10b1844
+    - !<own> 8f67c651-f276-440c-81be-498a7bc465b0
+    - !<own> 3a4b8d2e-1ac2-4c6d-a621-6092d1f66967
 - !<SceneObject/f92bde55-8373-4dd8-92d7-fc51219ed0ef>
   PrefabRemaps:
     []
@@ -27345,6 +28367,8 @@
     - !<own> 91f525a3-698d-480c-a380-03053bee61a7
   Components:
     - !<own> c6613494-98d3-46b1-962b-29840413efc5
+    - !<own> 25e529d7-aaef-4f14-a75f-adaac998a28c
+    - !<own> e652bc75-f148-4614-9057-f14cc510f1e0
 - !<ColliderComponent/ff081aaa-a688-480b-83c2-9a19382b3f42>
   PrefabRemaps:
     []
@@ -27382,6 +28406,8 @@
     - !<own> e51d97c2-4a47-4ac0-8cd1-9810da4cfa9a
   Components:
     - !<own> 2e200675-fcd1-4cf8-8ee3-58a4cb47483a
+    - !<own> 8e5dfecb-8a3c-46db-9271-1dce1b461896
+    - !<own> 798c8561-25ec-4ee7-9922-10c0cfb7b518
 - !<SceneObject/ff9f8572-3f3b-443e-9897-d7b97ce49977>
   PrefabRemaps:
     []

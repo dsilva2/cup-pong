@@ -15,6 +15,30 @@ export class CupStorageProperty extends BaseScriptComponent {
 
   private t: Transform;
 
+  // Hard-coded positions for each cup
+  private static readonly CUP_POSITIONS: { [key: string]: vec3 } = {
+    "cup v2 0": new vec3(0.0, -48.087738, -187.163513),
+    "cup v2 1": new vec3(0.0, -48.087738, -197.163513),
+    "cup v2 2": new vec3(0.0, -48.087738, -177.163513),
+    "cup v2 3": new vec3(0.0, -48.087738, -207.163513),
+    "cup v2 5": new vec3(-9.0, -48.087738, -182.163513),
+    "cup v2 6": new vec3(-9.0, -48.087738, -172.163513),
+    "cup v2 7": new vec3(-9.0, -48.087738, -192.755127),
+    "cup v2 8": new vec3(9.0, -48.087738, -182.163513),
+    "cup v2 9": new vec3(9.0, -48.087738, -192.163513),
+    "cup v2 10": new vec3(-15.0, -25.0, -91.132706),
+    "cup v2 11": new vec3(9.0, -48.087738, -202.163513),
+    "cup v2 12": new vec3(-18.0, -48.087738, -187.163513),
+    "cup v2 15": new vec3(-9.0, -48.087738, -202.163513),
+    "cup v2 16": new vec3(18.0, -48.087738, -197.163513),
+    "cup v2 17": new vec3(18.0, -48.087738, -187.163513),
+    "cup v2 18": new vec3(-18.0, -48.087738, -177.163513),
+    "cup v2 19": new vec3(18.0, -48.087738, -177.163513),
+    "cup v2 4": new vec3(0.0, -48.087738, -167.163513),
+    "cup v2 13": new vec3(9.0, -48.087738, -172.163513),
+    "cup v2 14": new vec3(-18, -48.087738, -197.163513),
+  };
+
   // StorageProperty for syncing position
   private propPosition = StorageProperty.autoVec3(
     "position",
@@ -45,6 +69,12 @@ export class CupStorageProperty extends BaseScriptComponent {
     // Get the transform component
     this.t = this.cupObject.getTransform();
 
+    // Set initial position from hard-coded positions
+    const cupName = this.cupObject.name;
+    if (CupStorageProperty.CUP_POSITIONS[cupName]) {
+      this.t.setWorldPosition(CupStorageProperty.CUP_POSITIONS[cupName]);
+    }
+
     // Listen for ready event
     this.syncEntity.notifyOnReady(() => {
       print(
@@ -63,8 +93,10 @@ export class CupStorageProperty extends BaseScriptComponent {
         (this.cupObject ? this.cupObject.name : "(no cupObject)")
     );
 
-    // Set position directly - no ownership needed
-    const newPosition = new vec3(0, 5000, 0);
-    this.t.setWorldPosition(newPosition);
+    // Reset to hard-coded position
+    const cupName = this.cupObject.name;
+    if (CupStorageProperty.CUP_POSITIONS[cupName]) {
+      this.t.setWorldPosition(CupStorageProperty.CUP_POSITIONS[cupName]);
+    }
   }
 }

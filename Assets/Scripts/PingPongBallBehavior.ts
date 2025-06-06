@@ -174,7 +174,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
     this.hasHitCupThisThrow = false;
 
     // Increment throw count when ball is released
-    this.throwCount++;
+    // this.throwCount++;
     print("Throw count incremented to: " + this.throwCount);
 
     // Keep physics enabled when released and apply hand velocity

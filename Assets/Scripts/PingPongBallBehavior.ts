@@ -95,7 +95,7 @@ export class PingPongBallBehavior extends TennisBallBehavior {
 
     this.t = this.getTransform();
     // Initialize origin points for each player
-    this.originPoint1 = new vec3(20, 0, -60); // Right side, slightly elevated, near player's end
+    this.originPoint1 = new vec3(0, -20, -40); // Right side, slightly elevated, near player's end
     this.originPoint2 = new vec3(-20, 0, -235); // Right side, slightly elevated, far end
     this.t.setWorldPosition(this.originPoint1);
 

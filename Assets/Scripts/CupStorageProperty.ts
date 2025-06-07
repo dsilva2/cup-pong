@@ -17,26 +17,26 @@ export class CupStorageProperty extends BaseScriptComponent {
 
   // Hard-coded positions for each cup
   private static readonly CUP_POSITIONS: { [key: string]: vec3 } = {
-    "cup v2 0": new vec3(0.0, -48.087738, -187.163513),
-    "cup v2 1": new vec3(0.0, -48.087738, -197.163513),
-    "cup v2 2": new vec3(0.0, -48.087738, -177.163513),
-    "cup v2 3": new vec3(0.0, -48.087738, -207.163513),
-    "cup v2 4": new vec3(0.0, -48.087738, -167.163513),
-    "cup v2 5": new vec3(-9.0, -48.087738, -182.163513),
-    "cup v2 6": new vec3(-9.0, -48.087738, -172.163513),
-    "cup v2 7": new vec3(-9.0, -48.087738, -192.755127),
-    "cup v2 8": new vec3(9.0, -48.087738, -182.163513),
-    "cup v2 9": new vec3(9.0, -48.087738, -192.163513),
-    "cup v2 10": new vec3(-15.0, -25.0, -91.132706),
-    "cup v2 11": new vec3(9.0, -48.087738, -202.163513),
-    "cup v2 12": new vec3(-18.0, -48.087738, -187.163513),
-    "cup v2 13": new vec3(9.0, -48.087738, -172.163513),
-    "cup v2 14": new vec3(-18.0, -48.087738, -197.163513),
-    "cup v2 15": new vec3(-9.0, -48.087738, -202.163513),
-    "cup v2 16": new vec3(18.0, -48.087738, -197.163513),
-    "cup v2 17": new vec3(18.0, -48.087738, -187.163513),
-    "cup v2 18": new vec3(-18.0, -48.087738, -177.163513),
-    "cup v2 19": new vec3(18.0, -48.087738, -177.163513),
+    "cup v2 0": new vec3(150.0, -48.087738, -37.163513),
+    "cup v2 1": new vec3(150.0, -48.087738, -47.163513),
+    "cup v2 2": new vec3(150.0, -48.087738, -27.163513),
+    "cup v2 3": new vec3(150.0, -48.087738, -57.163513),
+    "cup v2 4": new vec3(150.0, -48.087738, -17.163513),
+    "cup v2 5": new vec3(141.0, -48.087738, -32.163513),
+    "cup v2 6": new vec3(141.0, -48.087738, -22.163513),
+    "cup v2 7": new vec3(141.0, -48.087738, -42.755127),
+    "cup v2 8": new vec3(159.0, -48.087738, -32.163513),
+    "cup v2 9": new vec3(159.0, -48.087738, -42.163513),
+    "cup v2 10": new vec3(135.0, -25.0, 58.867294),
+    "cup v2 11": new vec3(159.0, -48.087738, -52.163513),
+    "cup v2 12": new vec3(132.0, -48.087738, -37.163513),
+    "cup v2 13": new vec3(159.0, -48.087738, -22.163513),
+    "cup v2 14": new vec3(132.0, -48.087738, -47.163513),
+    "cup v2 15": new vec3(141.0, -48.087738, -52.163513),
+    "cup v2 16": new vec3(168.0, -48.087738, -47.163513),
+    "cup v2 17": new vec3(168.0, -48.087738, -37.163513),
+    "cup v2 18": new vec3(132.0, -48.087738, -27.163513),
+    "cup v2 19": new vec3(168.0, -48.087738, -27.163513),
   };
 
   // StorageProperty for syncing position
@@ -57,7 +57,7 @@ export class CupStorageProperty extends BaseScriptComponent {
   private syncEntity: SyncEntity = new SyncEntity(
     this,
     this.storagePropertySet,
-    false // Changed to false - no auto-ownership
+    true // Changed to true - enable auto-ownership
   );
 
   onAwake(): void {
@@ -72,7 +72,12 @@ export class CupStorageProperty extends BaseScriptComponent {
     // Set initial position from hard-coded positions
     const cupName = this.cupObject.name;
     if (CupStorageProperty.CUP_POSITIONS[cupName]) {
-      this.t.setWorldPosition(CupStorageProperty.CUP_POSITIONS[cupName]);
+      const initialPos = CupStorageProperty.CUP_POSITIONS[cupName];
+      this.t.setWorldPosition(initialPos);
+      // Force write the initial position to the store
+      if (this.syncEntity.isStoreOwned()) {
+        this.propPosition.putCurrentValue(this.syncEntity.currentStore);
+      }
     }
 
     // Listen for ready event
@@ -96,7 +101,13 @@ export class CupStorageProperty extends BaseScriptComponent {
     // Reset to hard-coded position
     const cupName = this.cupObject.name;
     if (CupStorageProperty.CUP_POSITIONS[cupName]) {
-      this.t.setWorldPosition(CupStorageProperty.CUP_POSITIONS[cupName]);
+      const resetPos = CupStorageProperty.CUP_POSITIONS[cupName];
+      this.t.setWorldPosition(resetPos);
+
+      // Only sync if we own the store
+      if (this.syncEntity.isStoreOwned()) {
+        this.propPosition.putCurrentValue(this.syncEntity.currentStore);
+      }
     }
   }
 }

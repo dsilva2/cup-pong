@@ -6,7 +6,7 @@
 
 ## Overview
 
-BRUNO combines the physical skill of beer pong with interactive AR technology to create an engaging multiplayer experience. Players stand around a virtual table, taking turns to throw ping pong balls at cups. Rather than pitting players against each other, this game strives to enhance social connection between the players and assist in developing deeper relationships. The game features:
+BRUNO, developed based off of Snap's ThrowLab sample project, combines the physical skill of beer pong with interactive AR technology to create an engaging multiplayer experience. Players stand around a virtual table, taking turns to throw ping pong balls at cups. Rather than pitting players against each other, this game strives to enhance social connection between the players and assist in developing deeper relationships. The game features:
 
 - Realistic physics-based ball throwing mechanics
 - Dynamic cup removal animations when hit
@@ -18,11 +18,6 @@ The game uses hand tracking to allow players to naturally grab and throw the pin
 
 > **NOTE:**
 > This project will only work for the Spectacles platform.
-
-## Design Guidelines
-
-Designing Lenses for Spectacles offers all-new possibilities to rethink user interaction with digital spaces and the physical world.
-Get started using our [Design Guidelines](https://developers.snap.com/spectacles/best-practices/design-for-spectacles/introduction-to-spatial-design)
 
 ## Prerequisites
 

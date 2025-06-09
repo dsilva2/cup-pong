@@ -5817,6 +5817,8 @@
     - !<own> 7a42d1c8-4b8d-4a50-9762-bbf75a78c687
   Components:
     - !<own> 00461aea-b3d7-4fc3-b714-ae332a7cb451
+    - !<own> 7cce632b-bccf-4adb-97cc-437d56d80a9a
+    - !<own> 779e67ba-33e8-43c0-b2f9-7d1166cfa684
 - !<ScriptComponent/3189a72b-cc0f-475a-80b7-6821c45e2283>
   PrefabRemaps:
     []
@@ -12744,6 +12746,22 @@
     []
   Components:
     - !<own> 7daf89d7-e6f9-4be7-a14b-881dfb20aafe
+- !<ScriptComponent/779e67ba-33e8-43c0-b2f9-7d1166cfa684>
+  PrefabRemaps:
+    []
+  Name: SyncEntityExample
+  Enabled: true
+  ScriptAsset: !<reference> df192039-0ebe-4ed6-90eb-cbb5eaf90cc3
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/77e8cc2f-914a-43a0-8865-0d270cf65150>
   PrefabRemaps:
     []
@@ -13173,6 +13191,38 @@
   BlendNormals: false
   BlendShapes:
     {}
+- !<ScriptComponent/7cce632b-bccf-4adb-97cc-437d56d80a9a>
+  PrefabRemaps:
+    []
+  Name: SyncTransform
+  Enabled: true
+  ScriptAsset: !<reference> f3c20594-375f-43d8-a93f-a8e75bd6a61d
+  ScriptInputsDefault:
+    networkIdTypeString: true
+    customNetworkId: true
+    positionSyncString: true
+    rotationSyncString: true
+    scaleSyncString: true
+    persistenceString: true
+    sendsPerSecondLimit: true
+    useSmoothing: true
+    interpolationTarget: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      networkIdTypeString: objectId
+      customNetworkId: enter_unique_id
+      positionSyncString: Local
+      rotationSyncString: Local
+      scaleSyncString: Local
+      persistenceString: Session
+      sendsPerSecondLimit: 10
+      useSmoothing: true
+      interpolationTarget: -0.250000
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/7cce6cbe-a0c8-40bd-a688-cc0600eb073c>
   PrefabRemaps:
     []

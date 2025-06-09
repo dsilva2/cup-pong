@@ -1,13 +1,20 @@
 # ThrowLab
 
-[![SIK](https://img.shields.io/badge/SIK-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview?) [![Physics](https://img.shields.io/badge/Physics-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/features/physics/physics-overview?) [![Gesture Module](https://img.shields.io/badge/Gesture%20Module-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/apis/gesture-module?)  
+[![SIK](https://img.shields.io/badge/SIK-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview?) [![Physics](https://img.shields.io/badge/Physics-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/features/physics/physics-overview?) [![Gesture Module](https://img.shields.io/badge/Gesture%20Module-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/apis/gesture-module?)
 
-<img src="./README-ref/sample-list-throw-lab-rounded-edges.gif" alt="throw-lab" width="500" />
+<!-- <img src="./README-ref/sample-list-throw-lab-rounded-edges.gif" alt="throw-lab" width="500" /> -->
 
 ## Overview
 
-This is a sample Lens Studio project that demonstrates how to implement simple but realistic throwing mechanic in Lens Studio based on physics. It showcases a clean, componentized architecture that takes advantage of the new **Hand Velocity API**.
-By exploring the ThrowLab project, you’ll gain a practical understanding of implementing realistic throwing mechanics in AR. This foundation will help you build more engaging and interactive Lens Studio lenses.
+BRUNO combines the physical skill of beer pong with interactive AR technology to create an engaging multiplayer experience. Players stand around a virtual table, taking turns to throw ping pong balls at cups. Rather than pitting players against each other, this game strives to enhance social connection between the players and assist in developing deeper relationships. The game features:
+
+- Realistic physics-based ball throwing mechanics
+- Dynamic cup removal animations when hit
+- Interactive questions and challenges that appear when cups are hit
+- Turn-based gameplay that alternates between players
+- Immersive AR experience that works in your physical space
+
+The game uses hand tracking to allow players to naturally grab and throw the ping pong ball, with realistic physics simulation for accurate throws and bounces. Each successful cup hit triggers a satisfying animation and reveals a new question or challenge, keeping the gameplay fresh and engaging.
 
 > **NOTE:**
 > This project will only work for the Spectacles platform.
@@ -34,7 +41,7 @@ This API gives an easy and reliable way of getting the velocity of hand joints a
 
 The API can be used together with SIK:
 
-````
+```
    let handInputData = SIK.HandInputData;
    let hand = this.handInputData.getHand('right');
    let objectSpecificData = this.hand.objectTracking3D.objectSpecificData
@@ -42,18 +49,9 @@ The API can be used together with SIK:
       let handVelocity = objectSpecificData['global'];
       let indexVelocity = objectSpecificData['index-3'];
    }
-````
+```
 
 The following joints are available for the velocities: “index-3”, “mid-3”, “ring-3”, “pinky-3”, “thumb-3” and “global”.
-
-## Project Overview
-
-With ThrowLab, you can pinch to grab, and then throw four different objects. We have 2 example objects in the project:
-
-- [**Ball**](./Assets/Scripts/TennisBallBehavior.ts)
-- [**Dart**](./Assets/Scripts/DartBehavior.ts)
-
-Each object has slightly different behaviors and corresponding sounds on collision. Dart is a more complex example with some specific logic for hitting the dart board. 
 
 ## How It Works
 
@@ -65,6 +63,7 @@ Each object has slightly different behaviors and corresponding sounds on collisi
 
 3. **Throwing Mechanics**:  
    While pinching and moving the object, the system continuously tracks acceleration, accumulating data over the time you hold it. When you release the pinch, the final throw velocity is a combination of:
+
    - The object’s accumulated acceleration during the hold.
    - The hand’s velocity at the moment of release.
 
@@ -72,16 +71,3 @@ Each object has slightly different behaviors and corresponding sounds on collisi
 
 4. **Cleanup**:  
    After the object finishes its flight (for example, when it hits the ground and stay still), it destroys itself after some time buffer to keep the scene clean.
-
-
-## Using it in your Project
-
-The Tennis Ball object is available as an [.lspkg file](./TennisBall_Importable.lspkg). You can easily drag and drop it into your project to easily get started. Or just start with the [**TennisBallBehavior.ts**](./Assets/Scripts/TennisBallBehavior.ts) script.
-
-## Support
-
-If you have any questions or need assistance, please don't hesitate to reach out. Our community is here to help, and you can connect with us and ask for support [here](https://www.reddit.com/r/Spectacles/). We look forward to hearing from you and are excited to assist you on your journey!
-
-## Contributing
-
-Feel free to provide improvements or suggestions or directly contributing via merge request. By sharing insights, you help everyone else build better Lenses.

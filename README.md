@@ -1,8 +1,10 @@
-# ThrowLab
+# BRUNO
 
 [![SIK](https://img.shields.io/badge/SIK-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview?) [![Physics](https://img.shields.io/badge/Physics-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/features/physics/physics-overview?) [![Gesture Module](https://img.shields.io/badge/Gesture%20Module-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/apis/gesture-module?)
 
 <!-- <img src="./README-ref/sample-list-throw-lab-rounded-edges.gif" alt="throw-lab" width="500" /> -->
+
+[![BRUNO Gameplay Demo](https://img.youtube.com/vi/GCsW8Y2YCKc/0.jpg)](https://youtu.be/GCsW8Y2YCKc)
 
 ## Overview
 
@@ -46,12 +48,12 @@ The API can be used together with SIK:
    }
 ```
 
-The following joints are available for the velocities: “index-3”, “mid-3”, “ring-3”, “pinky-3”, “thumb-3” and “global”.
+The following joints are available for the velocities: "index-3", "mid-3", "ring-3", "pinky-3", "thumb-3" and "global".
 
 ## How It Works
 
 1. **Hand Detection & Velocity Calculation**:  
-   Lens Studio’s Hand Tracking system detects your hand. As you move, the Hand Velocity API provides the velocity of the relevant joints.
+   Lens Studio's Hand Tracking system detects your hand. As you move, the Hand Velocity API provides the velocity of the relevant joints.
 
 2. **Object Selection & Holding**  
    ThrowLab uses a pinch gesture provided by the Spectacles Interaction Kit (SIK) to allow the user to pinch the objects. When you pinch near an object, it attaches to your hand, simulating a pinched hold.
@@ -59,10 +61,10 @@ The following joints are available for the velocities: “index-3”, “mid-3�
 3. **Throwing Mechanics**:  
    While pinching and moving the object, the system continuously tracks acceleration, accumulating data over the time you hold it. When you release the pinch, the final throw velocity is a combination of:
 
-   - The object’s accumulated acceleration during the hold.
-   - The hand’s velocity at the moment of release.
+   - The object's accumulated acceleration during the hold.
+   - The hand's velocity at the moment of release.
 
-   By blending these factors, you get a smoother, more realistic throwing motion that accounts for the object’s buildup of speed as you swing your hand.
+   By blending these factors, you get a smoother, more realistic throwing motion that accounts for the object's buildup of speed as you swing your hand.
 
 4. **Cleanup**:  
    After the object finishes its flight (for example, when it hits the ground and stay still), it destroys itself after some time buffer to keep the scene clean.
